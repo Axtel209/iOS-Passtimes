@@ -15,7 +15,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     /* Member Variables */
     var mDb: DatabaseUtils!
-    var eventArray: [Int]!
+    var eventArray: [Event]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return eventArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

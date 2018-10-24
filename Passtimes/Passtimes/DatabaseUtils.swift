@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import CodableFirebase
 
 enum DatabaseReferences: String {
     case events
@@ -37,4 +38,14 @@ class DatabaseUtils {
     public func reference(to collectionReference: DatabaseReferences) -> CollectionReference {
         return db.collection(collectionReference.rawValue)
     }
+
+    public func addDocument<T: Codable>(object: T, to collectionReference: DatabaseReferences) {
+        do {
+            let document = try FirestoreEncoder().encode(object)
+            reference(to: collectionReference).addDocument(data: document)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
 }

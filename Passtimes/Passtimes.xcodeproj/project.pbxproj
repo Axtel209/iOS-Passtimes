@@ -18,6 +18,8 @@
 		FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */; };
 		FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF223E52180E76000F570D6 /* onGoingCollectionCell.xib */; };
 		FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */; };
+		FBF223EB2180ED4E00F570D6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223EA2180ED4E00F570D6 /* Event.swift */; };
+		FBF223EF2180F21F00F570D6 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223EE2180F21F00F570D6 /* EncodableExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtils.swift; sourceTree = "<group>"; };
 		FBF223E52180E76000F570D6 /* onGoingCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = onGoingCollectionCell.xib; sourceTree = "<group>"; };
 		FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBF223EA2180ED4E00F570D6 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FBF223EE2180F21F00F570D6 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 				FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */,
 				FBF223DB2180E0EC00F570D6 /* Feed */,
 				FBF223E42180E59600F570D6 /* Utils */,
+				FBF223EC2180ED5F00F570D6 /* ModelObjects */,
+				FBF223ED2180F1FB00F570D6 /* Extensions */,
 				FBF223D02180DF9D00F570D6 /* Assets.xcassets */,
 				FBF223D22180DF9D00F570D6 /* LaunchScreen.storyboard */,
 				FBF223D52180DF9D00F570D6 /* Info.plist */,
@@ -125,6 +131,22 @@
 				FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */,
 			);
 			name = OnGoing;
+			sourceTree = "<group>";
+		};
+		FBF223EC2180ED5F00F570D6 /* ModelObjects */ = {
+			isa = PBXGroup;
+			children = (
+				FBF223EA2180ED4E00F570D6 /* Event.swift */,
+			);
+			name = ModelObjects;
+			sourceTree = "<group>";
+		};
+		FBF223ED2180F1FB00F570D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FBF223EE2180F21F00F570D6 /* EncodableExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +229,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -221,6 +244,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -263,9 +287,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */,
+				FBF223EF2180F21F00F570D6 /* EncodableExtension.swift in Sources */,
 				FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */,
 				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
+				FBF223EB2180ED4E00F570D6 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
