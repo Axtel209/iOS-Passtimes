@@ -10,9 +10,11 @@
 		54FCAFBA229587A7E2703F00 /* Pods_Passtimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* ViewController.swift */; };
-		FBF223CF2180DF9C00F570D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Main.storyboard */; };
+		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
 		FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF223D02180DF9D00F570D6 /* Assets.xcassets */; };
 		FBF223D42180DF9D00F570D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223D22180DF9D00F570D6 /* LaunchScreen.storyboard */; };
+		FBF223DE2180E26800F570D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF223DD2180E26800F570D6 /* GoogleService-Info.plist */; };
+		FBF223E12180E3AB00F570D6 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223E02180E3AB00F570D6 /* Feed.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +24,12 @@
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FBF223CE2180DF9C00F570D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FBF223CE2180DF9C00F570D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Navigation.storyboard; sourceTree = "<group>"; };
 		FBF223D02180DF9D00F570D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBF223D32180DF9D00F570D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBF223D52180DF9D00F570D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBF223DD2180E26800F570D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FBF223E02180E3AB00F570D6 /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +83,23 @@
 			isa = PBXGroup;
 			children = (
 				FBF223C92180DF9C00F570D6 /* AppDelegate.swift */,
-				FBF223CB2180DF9C00F570D6 /* ViewController.swift */,
-				FBF223CD2180DF9C00F570D6 /* Main.storyboard */,
+				FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */,
+				FBF223DB2180E0EC00F570D6 /* Feed */,
 				FBF223D02180DF9D00F570D6 /* Assets.xcassets */,
 				FBF223D22180DF9D00F570D6 /* LaunchScreen.storyboard */,
 				FBF223D52180DF9D00F570D6 /* Info.plist */,
+				FBF223DD2180E26800F570D6 /* GoogleService-Info.plist */,
 			);
 			path = Passtimes;
+			sourceTree = "<group>";
+		};
+		FBF223DB2180E0EC00F570D6 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				FBF223E02180E3AB00F570D6 /* Feed.storyboard */,
+				FBF223CB2180DF9C00F570D6 /* ViewController.swift */,
+			);
+			name = Feed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,9 +162,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF223E12180E3AB00F570D6 /* Feed.storyboard in Resources */,
 				FBF223D42180DF9D00F570D6 /* LaunchScreen.storyboard in Resources */,
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
-				FBF223CF2180DF9C00F570D6 /* Main.storyboard in Resources */,
+				FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */,
+				FBF223DE2180E26800F570D6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,12 +244,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FBF223CD2180DF9C00F570D6 /* Main.storyboard */ = {
+		FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FBF223CE2180DF9C00F570D6 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Navigation.storyboard;
 			sourceTree = "<group>";
 		};
 		FBF223D22180DF9D00F570D6 /* LaunchScreen.storyboard */ = {
@@ -375,7 +391,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.passtimesapp.Passtimes.Passtimes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.passtimesapp.Passtimes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -394,7 +410,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.passtimesapp.Passtimes.Passtimes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.passtimesapp.Passtimes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
