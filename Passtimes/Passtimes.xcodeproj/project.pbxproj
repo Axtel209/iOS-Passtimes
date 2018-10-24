@@ -16,6 +16,8 @@
 		FBF223DE2180E26800F570D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF223DD2180E26800F570D6 /* GoogleService-Info.plist */; };
 		FBF223E12180E3AB00F570D6 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223E02180E3AB00F570D6 /* Feed.storyboard */; };
 		FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */; };
+		FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF223E52180E76000F570D6 /* onGoingCollectionCell.xib */; };
+		FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		FBF223DD2180E26800F570D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBF223E02180E3AB00F570D6 /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtils.swift; sourceTree = "<group>"; };
+		FBF223E52180E76000F570D6 /* onGoingCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = onGoingCollectionCell.xib; sourceTree = "<group>"; };
+		FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			children = (
 				FBF223E02180E3AB00F570D6 /* Feed.storyboard */,
 				FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */,
+				FBF223E72180E79900F570D6 /* OnGoing */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -111,6 +116,15 @@
 				FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		FBF223E72180E79900F570D6 /* OnGoing */ = {
+			isa = PBXGroup;
+			children = (
+				FBF223E52180E76000F570D6 /* onGoingCollectionCell.xib */,
+				FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */,
+			);
+			name = OnGoing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF223E12180E3AB00F570D6 /* Feed.storyboard in Resources */,
+				FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */,
 				FBF223D42180DF9D00F570D6 /* LaunchScreen.storyboard in Resources */,
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
 				FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */,
@@ -249,6 +264,7 @@
 			files = (
 				FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */,
 				FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */,
+				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

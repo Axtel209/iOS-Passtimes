@@ -22,7 +22,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Do any additional setup after loading the view, typically from a nib.
         mDb = DatabaseUtils.sharedInstance
 
-        //onGoingCollection.register(<#T##nib: UINib?##UINib?#>, forCellWithReuseIdentifier: <#T##String#>)
+        onGoingCollection.register(UINib.init(nibName: "onGoingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         onGoingCollection.delegate = self
         onGoingCollection.dataSource = self
     }
@@ -36,7 +36,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! OnGoingCollectionViewCell
+
+        cell.configure()
 
         return cell
     }
