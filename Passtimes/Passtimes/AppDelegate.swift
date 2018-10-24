@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+let reusableIdentifier = "cellIdentifier"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
