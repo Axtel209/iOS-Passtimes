@@ -18,6 +18,15 @@ class PickSportCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
         // Set cell cornerRadius and shadow
+        self.card.layer.cornerRadius = 10
+        self.card.layer.masksToBounds = true
+
+        self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.layer.shadowOffset = CGSize(width:0, height: 2)
+        self.layer.shadowRadius = 4.0
+        self.layer.shadowOpacity = 0.2
+        self.backgroundColor = UIColor.clear
+        self.layer.masksToBounds = false
     }
 
     // Populate cell data

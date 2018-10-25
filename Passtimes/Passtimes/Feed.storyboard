@@ -24,23 +24,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JXT-PB-QSq">
-                                <rect key="frame" x="16" y="68" width="343" height="519"/>
+                                <rect key="frame" x="10" y="62" width="355" height="541"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KWs-IV-5dJ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="10" id="KWs-IV-5dJ">
                                     <size key="itemSize" width="341" height="92"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="6" minY="6" maxX="6" maxY="16"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellIdentifier" id="AK1-Gm-j3P">
-                                        <rect key="frame" x="1" y="0.0" width="341" height="122"/>
+                                        <rect key="frame" x="16" y="6" width="323" height="122"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="122"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="323" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
-                                        <size key="customSize" width="341" height="122"/>
+                                        <size key="customSize" width="323" height="122"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -48,11 +48,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="1wd-dI-Tbr" secondAttribute="trailing" constant="16" id="3HV-JP-2Y1"/>
-                            <constraint firstItem="JXT-PB-QSq" firstAttribute="top" secondItem="1wd-dI-Tbr" secondAttribute="bottom" constant="16" id="EEV-1G-trT"/>
-                            <constraint firstItem="JXT-PB-QSq" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="16" id="QeF-5e-46e"/>
-                            <constraint firstItem="9TM-US-UEG" firstAttribute="bottom" secondItem="JXT-PB-QSq" secondAttribute="bottom" constant="16" id="h3k-6l-KSj"/>
+                            <constraint firstItem="JXT-PB-QSq" firstAttribute="top" secondItem="1wd-dI-Tbr" secondAttribute="bottom" constant="10" id="EEV-1G-trT"/>
+                            <constraint firstItem="JXT-PB-QSq" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="10" id="QeF-5e-46e"/>
+                            <constraint firstItem="9TM-US-UEG" firstAttribute="bottom" secondItem="JXT-PB-QSq" secondAttribute="bottom" id="h3k-6l-KSj"/>
                             <constraint firstItem="1wd-dI-Tbr" firstAttribute="top" secondItem="9TM-US-UEG" secondAttribute="top" constant="16" id="mby-7E-szI"/>
-                            <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="JXT-PB-QSq" secondAttribute="trailing" constant="16" id="qYo-XG-YQ0"/>
+                            <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="JXT-PB-QSq" secondAttribute="trailing" constant="10" id="qYo-XG-YQ0"/>
                             <constraint firstItem="1wd-dI-Tbr" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="16" id="uV6-oT-dMw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9TM-US-UEG"/>
