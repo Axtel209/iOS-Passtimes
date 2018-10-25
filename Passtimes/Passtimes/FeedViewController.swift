@@ -33,11 +33,11 @@ class FeedViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = sender as? IndexPath, let destination = segue.destination as? DetailEventViewController {
-            //destination.eventId = eventsA[indexPath.row].id
-
-            eventsArray[indexPath.row].id
+            // Pass eventId to DetailView
+            destination.eventId = eventsArray[indexPath.row].id
         }
     }
+    
 }
 
 /* CollectionView */
@@ -70,8 +70,6 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toDetailView", sender: indexPath)
     }
-
-
 
 }
 

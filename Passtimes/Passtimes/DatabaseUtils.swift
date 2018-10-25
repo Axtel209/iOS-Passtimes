@@ -66,6 +66,7 @@ class DatabaseUtils {
                 return
             }
 
+            // Validate snapshot
             guard let snapshot = snapshot else { return }
 
             do {
@@ -79,12 +80,37 @@ class DatabaseUtils {
                     objectsArray.append(object)
                 }
 
-                // Return objectsArray when complition
+                // Return objectsArray after complition
                 completion(objectsArray)
             } catch {
                 print("Decoding ERROR - " + error.localizedDescription)
             }
 
+        }
+    }
+
+    // Retrive Document from Firestore
+    public func readDocument<T: Codable>(from collectionReference: DatabaseReferences, reference documentReference: String, returning objectType: T.Type, completion: @escaping (T) -> Void) {
+        reference(to: collectionReference).document(documentReference).addSnapshotListener { (documentSnapshot, error) in
+            // if there is an error return
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+
+            // Validate DocumentSnapshot and data
+            guard let documentSnapshot = documentSnapshot else { return }
+            guard let data = documentSnapshot.data() else { return }
+
+            do {
+                // Decode document to object
+                let object = try FirestoreDecoder().decode(objectType, from: data)
+
+                // Return object after complition
+                completion(object)
+            } catch {
+                print("Decoding Document Error - " + error.localizedDescription)
+            }
         }
     }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54FCAFBA229587A7E2703F00 /* Pods_Passtimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */; };
+		FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8203218149BC003546D5 /* CustomViewExtension.swift */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */; };
 		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
@@ -29,6 +30,7 @@
 		07E8BBDF4C0B680962BFE6AA /* Pods-Passtimes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Passtimes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes.release.xcconfig"; sourceTree = "<group>"; };
 		67FAF05D4AAD6BFD1D5CC84F /* Pods-Passtimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Passtimes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes.debug.xcconfig"; sourceTree = "<group>"; };
 		B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Passtimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBAC8203218149BC003546D5 /* CustomViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewExtension.swift; sourceTree = "<group>"; };
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		FBF223ED2180F1FB00F570D6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FBAC8203218149BC003546D5 /* CustomViewExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */,
 				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
 				FBF223F321812A4400F570D6 /* CreateEventViewController.swift in Sources */,
+				FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */,
 				FBF223F1218122CC00F570D6 /* CalendarUtils.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
 				FBF223F521812A5600F570D6 /* DetailEventViewController.swift in Sources */,

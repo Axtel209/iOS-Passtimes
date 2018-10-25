@@ -60,9 +60,7 @@
                     <navigationItem key="navigationItem" id="CX5-6q-kcd"/>
                     <connections>
                         <outlet property="onGoingCollection" destination="JXT-PB-QSq" id="co6-5z-6Yu"/>
-                        <segue destination="UQP-7s-t3f" kind="popoverPresentation" identifier="toDetailView" id="nho-gX-bIh">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
+                        <segue destination="UQP-7s-t3f" kind="showDetail" identifier="toDetailView" id="nho-gX-bIh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4j-bq-lnB" userLabel="First Responder" sceneMemberID="firstResponder"/>

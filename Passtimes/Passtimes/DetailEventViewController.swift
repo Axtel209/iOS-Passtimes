@@ -10,26 +10,52 @@ import UIKit
 
 class DetailEventViewController: UIViewController {
 
-    let
+    /* Outlets */
+    @IBOutlet var hostImage: UIImageView!
+    @IBOutlet var month: UILabel!
+    @IBOutlet var day: UILabel!
+    @IBOutlet var eventTitle: UILabel!
+    @IBOutlet var time: UILabel!
+    @IBOutlet var location: UILabel!
+
+    /* Member Variables */
+    var eventId: String?
+    //var event: Event?
+    var mDb: DatabaseUtils!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Validate for eventId
+        if let eventId = eventId {
+            // TODO: Pull Document
+            mDb = DatabaseUtils.sharedInstance
+            mDb.readDocument(from: .events, reference: eventId, returning: Event.self) { (object) in
+                self.populateDetailView(with: object)
+            }
+        } else {
+            // TODO: Chould not load event
+        }
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func populateDetailView(with event: Event) {
+        month.text = CalendarUtils.getMonthFromDateTimestamp(event.startDate)
+        day.text = CalendarUtils.getDayFromDateTimestamp(event.startDate)
+        eventTitle.text = event.title
+        time.text = CalendarUtils.getStartEndTimefromDateTimestamp(startTime: event.startDate, endTime: event.endDate)
+        location.text = event.location
     }
-    */
+
+
     @IBAction func closeDetailView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func joinEvent(_ sender: Any) {
+        if let jointButton = sender as? UIButton {
+            // TODO: Add player to document
+            jointButton.isHidden = true
+        }
     }
 
 }
