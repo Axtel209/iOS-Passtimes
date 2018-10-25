@@ -16,6 +16,8 @@ class CreateEventViewController: UIViewController {
     /* Member Variables */
     var mDb: DatabaseUtils!
     var sportsArray: [Sport] = []
+    var isSelected: Bool = false
+    var selectedIndexPath: IndexPath = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +61,29 @@ extension CreateEventViewController: UICollectionViewDelegate, UICollectionViewD
 
         let sport = sportsArray[indexPath.row]
 
-        cell.configureCell(with: sport)
+        cell.configureCell(with: sport, isActive: false)
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Toggle selected sport
+        if(isSelected) {
+            isSelected = true
+        }
+
+        // If there is a sport selected change back to idle
+        if(!selectedIndexPath.isEmpty) {
+            if let selectedSport = collectionView.cellForItem(at: selectedIndexPath) as? PickSportCollectionViewCell {
+                selectedSport.configureCell(with: sportsArray[selectedIndexPath.row], isActive: false)
+            }
+        }
+
+        let cell = collectionView.cellForItem(at: indexPath) as! PickSportCollectionViewCell
+        cell.configureCell(with: sportsArray[indexPath.row], isActive: true)
+
+        // Set the currently selected to be the already selected
+        selectedIndexPath = indexPath
     }
 
 }
