@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bIv-uF-C9q">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="kitten_swash.ttf">
+            <string>KittenSwash</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="Jhw-9a-ZI0">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="bIv-uF-C9q" customClass="LoginViewController" customModule="Passtimes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WxS-Vr-LXV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQo-hv-6f3" userLabel="Email" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="16" y="216" width="343" height="45"/>
+                                <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-OX-nch" userLabel="Password" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="16" y="277" width="343" height="45"/>
+                                <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTv-bb-OVN">
+                                <rect key="frame" x="16" y="381" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="p5I-mq-bcn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passtimes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tF4-xJ-buL">
+                                <rect key="frame" x="16" y="80" width="343" height="76"/>
+                                <fontDescription key="fontDescription" name="KittenSwash" family="Kitten Swash" pointSize="65"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tF4-xJ-buL" firstAttribute="top" secondItem="BGO-kb-hum" secondAttribute="top" constant="60" id="3X9-FH-Y61"/>
+                            <constraint firstItem="W6s-OX-nch" firstAttribute="leading" secondItem="DQo-hv-6f3" secondAttribute="leading" id="5cU-Kz-sTK"/>
+                            <constraint firstItem="W6s-OX-nch" firstAttribute="centerX" secondItem="DQo-hv-6f3" secondAttribute="centerX" id="8Ev-9l-XkD"/>
+                            <constraint firstItem="W6s-OX-nch" firstAttribute="top" secondItem="DQo-hv-6f3" secondAttribute="bottom" constant="16" id="9n5-Zi-lHq"/>
+                            <constraint firstItem="W6s-OX-nch" firstAttribute="trailing" secondItem="DQo-hv-6f3" secondAttribute="trailing" id="AgD-iz-OqF"/>
+                            <constraint firstItem="eTv-bb-OVN" firstAttribute="top" secondItem="W6s-OX-nch" secondAttribute="bottom" constant="59" id="Bq9-gg-JK6"/>
+                            <constraint firstItem="eTv-bb-OVN" firstAttribute="centerX" secondItem="W6s-OX-nch" secondAttribute="centerX" id="FSo-RB-ecJ"/>
+                            <constraint firstItem="DQo-hv-6f3" firstAttribute="leading" secondItem="BGO-kb-hum" secondAttribute="leading" constant="16" id="Ll8-OK-GMk"/>
+                            <constraint firstItem="eTv-bb-OVN" firstAttribute="trailing" secondItem="W6s-OX-nch" secondAttribute="trailing" id="NFw-sk-aJo"/>
+                            <constraint firstItem="BGO-kb-hum" firstAttribute="trailing" secondItem="tF4-xJ-buL" secondAttribute="trailing" constant="16" id="P40-Gk-V4F"/>
+                            <constraint firstItem="eTv-bb-OVN" firstAttribute="leading" secondItem="W6s-OX-nch" secondAttribute="leading" id="P4U-qz-8GY"/>
+                            <constraint firstItem="DQo-hv-6f3" firstAttribute="top" secondItem="tF4-xJ-buL" secondAttribute="bottom" constant="60" id="VEw-6q-dxM"/>
+                            <constraint firstItem="DQo-hv-6f3" firstAttribute="centerX" secondItem="tF4-xJ-buL" secondAttribute="centerX" id="VmR-kP-Bc9"/>
+                            <constraint firstItem="tF4-xJ-buL" firstAttribute="leading" secondItem="BGO-kb-hum" secondAttribute="leading" constant="16" id="cBy-rd-u88"/>
+                            <constraint firstItem="BGO-kb-hum" firstAttribute="trailing" secondItem="DQo-hv-6f3" secondAttribute="trailing" constant="16" id="ijK-ho-6yB"/>
+                            <constraint firstItem="tF4-xJ-buL" firstAttribute="centerX" secondItem="BGO-kb-hum" secondAttribute="centerX" id="u4i-Yh-C2C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BGO-kb-hum"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="eTv-bb-OVN" id="UtJ-fE-uwt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tg1-r4-SkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

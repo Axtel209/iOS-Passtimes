@@ -27,21 +27,19 @@ class OnGoingCollectionViewCell: UICollectionViewCell {
         self.card.layer.cornerRadius = 10
         self.card.layer.masksToBounds = true
 
-        
+        // Draw topRight and bottomLeft corner radius to attending indicator
         let path = UIBezierPath(roundedRect:self.attendingIndicator.bounds,
                                 byRoundingCorners:[.topRight, .bottomLeft],
                                 cornerRadii: CGSize(width: 10, height:  10))
 
+        // Apply mask with custom path
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
         self.attendingIndicator.layer.mask = maskLayer
 
-        self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        self.layer.shadowOffset = CGSize(width:0, height: 2)
-        self.layer.shadowRadius = 4.0
-        self.layer.shadowOpacity = 0.2
+        // Draw showdow to cell
         self.backgroundColor = UIColor.clear
-        self.layer.masksToBounds = false
+        self.drawShadow(offset: CGSize(width: 0, height: 2), radius: 4.0, opacity: 0.2)
     }
 
     // Populate cell data

@@ -16,6 +16,10 @@
 		FBAC821121823C4D003546D5 /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBAC821021823C4D003546D5 /* OnBoarding.storyboard */; };
 		FBAC82132182443D003546D5 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC82122182443D003546D5 /* PageContentViewController.swift */; };
 		FBAC82152182450D003546D5 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC82142182450D003546D5 /* OnBoardingViewController.swift */; };
+		FBAC821821826451003546D5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBAC821721826451003546D5 /* Login.storyboard */; };
+		FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC821921826761003546D5 /* LoginViewController.swift */; };
+		FBAC821C21826B0A003546D5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC821B21826B0A003546D5 /* Player.swift */; };
+		FBAC821E21826BC8003546D5 /* AuthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC821D21826BC8003546D5 /* AuthUtils.swift */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */; };
 		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
@@ -45,6 +49,10 @@
 		FBAC821021823C4D003546D5 /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		FBAC82122182443D003546D5 /* PageContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		FBAC82142182450D003546D5 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		FBAC821721826451003546D5 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		FBAC821921826761003546D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FBAC821B21826B0A003546D5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		FBAC821D21826BC8003546D5 /* AuthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtils.swift; sourceTree = "<group>"; };
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +120,15 @@
 			name = OnBoarding;
 			sourceTree = "<group>";
 		};
+		FBAC821621826435003546D5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FBAC821721826451003546D5 /* Login.storyboard */,
+				FBAC821921826761003546D5 /* LoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		FBF223BD2180DF9C00F570D6 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +153,7 @@
 				FBF223C92180DF9C00F570D6 /* AppDelegate.swift */,
 				FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */,
 				FBAC820F21823B11003546D5 /* OnBoarding */,
+				FBAC821621826435003546D5 /* Login */,
 				FBAC820A21815ABA003546D5 /* PickSport */,
 				FBF223F621812A7100F570D6 /* CreateEvent */,
 				FBF223F721812A7D00F570D6 /* DetailEvent */,
@@ -166,6 +184,7 @@
 			children = (
 				FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */,
 				FBF223F0218122CC00F570D6 /* CalendarUtils.swift */,
+				FBAC821D21826BC8003546D5 /* AuthUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -184,6 +203,7 @@
 			children = (
 				FBF223EA2180ED4E00F570D6 /* Event.swift */,
 				FBAC820D21815B77003546D5 /* Sport.swift */,
+				FBAC821B21826B0A003546D5 /* Player.swift */,
 			);
 			name = ModelObjects;
 			sourceTree = "<group>";
@@ -284,6 +304,7 @@
 				FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */,
 				FBF223DE2180E26800F570D6 /* GoogleService-Info.plist in Resources */,
 				FBAC821121823C4D003546D5 /* OnBoarding.storyboard in Resources */,
+				FBAC821821826451003546D5 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +324,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -319,6 +341,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -357,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */,
 				FBAC820C21815AE8003546D5 /* PickSportCollectionViewCell.swift in Sources */,
 				FBAC820E21815B77003546D5 /* Sport.swift in Sources */,
 				FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */,
@@ -369,6 +393,8 @@
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
 				FBAC82132182443D003546D5 /* PageContentViewController.swift in Sources */,
 				FBF223F521812A5600F570D6 /* DetailEventViewController.swift in Sources */,
+				FBAC821E21826BC8003546D5 /* AuthUtils.swift in Sources */,
+				FBAC821C21826B0A003546D5 /* Player.swift in Sources */,
 				FBF223EB2180ED4E00F570D6 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

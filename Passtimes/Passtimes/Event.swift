@@ -15,13 +15,13 @@ class Event: Codable {
     let hostId: String
     let hostThumbnail: String
     let sport: String
-    let title: String
-    let latitude: Double
-    let longitude: Double
-    let location: String
-    let startDate: Int
-    let endDate: Int
-    let maxPlayers: Int
+    var title: String
+    var latitude: Double
+    var longitude: Double
+    var location: String
+    var startDate: Int
+    var endDate: Int
+    var maxPlayers: Int
     var attendees: [DocumentReference]
 
     init(id: String, hostId: String, hostThumbnail: String, sport: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxPlayers: Int, attendees: [DocumentReference]) {
