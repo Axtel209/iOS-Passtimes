@@ -22,9 +22,9 @@ class Event: Codable {
     let startDate: Int
     let endDate: Int
     let maxPlayers: Int
-    var attendingUsers: [DocumentReference]
+    var attendees: [DocumentReference]
 
-    init(id: String, hostId: String, hostThumbnail: String, sport: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxPlayers: Int, attendingUsers: [DocumentReference]) {
+    init(id: String, hostId: String, hostThumbnail: String, sport: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxPlayers: Int, attendees: [DocumentReference]) {
         self.id = id
         self.hostId = hostId
         self.hostThumbnail = hostThumbnail
@@ -36,7 +36,7 @@ class Event: Codable {
         self.startDate = startDate
         self.endDate = endDate
         self.maxPlayers = maxPlayers
-        self.attendingUsers = attendingUsers
+        self.attendees = attendees
     }
 
 }
