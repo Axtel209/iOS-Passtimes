@@ -8,9 +8,6 @@
 
 import Foundation
 import FirebaseFirestore
-import CodableFirebase
-
-extension DocumentReference: DocumentReferenceType {}
 
 class Event: Codable {
 

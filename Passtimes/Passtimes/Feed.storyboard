@@ -34,12 +34,13 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellIdentifier" id="AK1-Gm-j3P">
-                                        <rect key="frame" x="1" y="0.0" width="341" height="92"/>
+                                        <rect key="frame" x="1" y="0.0" width="341" height="122"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
+                                        <size key="customSize" width="341" height="122"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -59,6 +60,9 @@
                     <navigationItem key="navigationItem" id="CX5-6q-kcd"/>
                     <connections>
                         <outlet property="onGoingCollection" destination="JXT-PB-QSq" id="co6-5z-6Yu"/>
+                        <segue destination="UQP-7s-t3f" kind="popoverPresentation" identifier="toDetailView" id="nho-gX-bIh">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4j-bq-lnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,6 +87,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpD-MR-QNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="-241.52923538230885"/>
+        </scene>
+        <!--DetailEvent-->
+        <scene sceneID="kyD-kv-gt0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailEvent" id="UQP-7s-t3f" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bSv-oY-HTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864" y="-242"/>
         </scene>
     </scenes>
 </document>

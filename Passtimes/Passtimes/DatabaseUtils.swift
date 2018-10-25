@@ -10,6 +10,10 @@ import Foundation
 import FirebaseFirestore
 import CodableFirebase
 
+// Makes Firestore "DocumentReference" datatype Codable
+extension DocumentReference: DocumentReferenceType {}
+
+// Each Firestore Collection Reference
 enum DatabaseReferences: String {
     case events
     case players
@@ -27,7 +31,7 @@ class DatabaseUtils {
         }
         return Static.instance
     }
-
+    
     private init() {
         db = Firestore.firestore()
         let settings = db.settings
@@ -35,16 +39,52 @@ class DatabaseUtils {
         db.settings = settings
     }
 
-    public func reference(to collectionReference: DatabaseReferences) -> CollectionReference {
+    // Get CollectionReference from Firestore
+    private func reference(to collectionReference: DatabaseReferences) -> CollectionReference {
         return db.collection(collectionReference.rawValue)
     }
 
+    // Add Document to Firestore
     public func addDocument<T: Codable>(object: T, to collectionReference: DatabaseReferences) {
         do {
+            // Encode object to document
             let document = try FirestoreEncoder().encode(object)
+
+            // Add document to Firestore
             reference(to: collectionReference).addDocument(data: document)
         } catch {
-            print(error.localizedDescription)
+            print("Encoding ERROR - " + error.localizedDescription)
+        }
+    }
+
+    // Retrieve Documents from Firestore
+    public func readDecuments<T: Codable>(from collectionReference: DatabaseReferences, returning objectType: T.Type, completion: @escaping ([T]) -> Void) {
+        reference(to: collectionReference).addSnapshotListener { (snapshot, error) in
+            // if there is an error return
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+
+            guard let snapshot = snapshot else { return }
+
+            do {
+                var objectsArray: [T] = []
+
+                for document in snapshot.documents {
+                    // Decode document to object
+                    let object = try FirestoreDecoder().decode(objectType, from: document.data())
+
+                    // Add object to array
+                    objectsArray.append(object)
+                }
+
+                // Return objectsArray when complition
+                completion(objectsArray)
+            } catch {
+                print("Decoding ERROR - " + error.localizedDescription)
+            }
+
         }
     }
 

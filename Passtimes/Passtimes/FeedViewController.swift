@@ -8,40 +8,69 @@
 
 import UIKit
 
-class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class FeedViewController: UIViewController {
 
     /* Outlets */
     @IBOutlet var onGoingCollection: UICollectionView!
 
     /* Member Variables */
     var mDb: DatabaseUtils!
-    var eventArray: [Event]!
+    var eventsArray: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         mDb = DatabaseUtils.sharedInstance
+        mDb.readDecuments(from: .events, returning: Event.self) { (objectsArray) in
+            self.eventsArray = objectsArray
+            self.onGoingCollection.reloadData()
+        }
 
         onGoingCollection.register(UINib.init(nibName: "onGoingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         onGoingCollection.delegate = self
         onGoingCollection.dataSource = self
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = sender as? IndexPath, let destination = segue.destination as? DetailEventViewController {
+            //destination.eventId = eventsA[indexPath.row].id
+
+            eventsArray[indexPath.row].id
+        }
+    }
+}
+
+/* CollectionView */
+extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventArray.count
+        return eventsArray.count
+    }
+
+    // Set CollectionViewCell dimentions
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 341, height: 122)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! OnGoingCollectionViewCell
 
-        cell.configure()
+        let event = eventsArray[indexPath.row]
+
+        // Configure cell properties
+        cell.configureCell(with: event)
 
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetailView", sender: indexPath)
+    }
+
 
 
 }

@@ -19,7 +19,10 @@
 		FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF223E52180E76000F570D6 /* onGoingCollectionCell.xib */; };
 		FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */; };
 		FBF223EB2180ED4E00F570D6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223EA2180ED4E00F570D6 /* Event.swift */; };
-		FBF223EF2180F21F00F570D6 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223EE2180F21F00F570D6 /* EncodableExtension.swift */; };
+		FBF223F1218122CC00F570D6 /* CalendarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223F0218122CC00F570D6 /* CalendarUtils.swift */; };
+		FBF223F321812A4400F570D6 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223F221812A4400F570D6 /* CreateEventViewController.swift */; };
+		FBF223F521812A5600F570D6 /* DetailEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223F421812A5600F570D6 /* DetailEventViewController.swift */; };
+		FBF223F921812D8A00F570D6 /* DetailEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223F821812D8A00F570D6 /* DetailEvent.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,10 @@
 		FBF223E52180E76000F570D6 /* onGoingCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = onGoingCollectionCell.xib; sourceTree = "<group>"; };
 		FBF223E82180E7B300F570D6 /* OnGoingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBF223EA2180ED4E00F570D6 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		FBF223EE2180F21F00F570D6 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
+		FBF223F0218122CC00F570D6 /* CalendarUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarUtils.swift; sourceTree = "<group>"; };
+		FBF223F221812A4400F570D6 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		FBF223F421812A5600F570D6 /* DetailEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventViewController.swift; sourceTree = "<group>"; };
+		FBF223F821812D8A00F570D6 /* DetailEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailEvent.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,8 @@
 			children = (
 				FBF223C92180DF9C00F570D6 /* AppDelegate.swift */,
 				FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */,
+				FBF223F621812A7100F570D6 /* CreateEvent */,
+				FBF223F721812A7D00F570D6 /* DetailEvent */,
 				FBF223DB2180E0EC00F570D6 /* Feed */,
 				FBF223E42180E59600F570D6 /* Utils */,
 				FBF223EC2180ED5F00F570D6 /* ModelObjects */,
@@ -120,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */,
+				FBF223F0218122CC00F570D6 /* CalendarUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -144,9 +153,25 @@
 		FBF223ED2180F1FB00F570D6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FBF223EE2180F21F00F570D6 /* EncodableExtension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		FBF223F621812A7100F570D6 /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				FBF223F221812A4400F570D6 /* CreateEventViewController.swift */,
+			);
+			name = CreateEvent;
+			sourceTree = "<group>";
+		};
+		FBF223F721812A7D00F570D6 /* DetailEvent */ = {
+			isa = PBXGroup;
+			children = (
+				FBF223F821812D8A00F570D6 /* DetailEvent.storyboard */,
+				FBF223F421812A5600F570D6 /* DetailEventViewController.swift */,
+			);
+			name = DetailEvent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +238,7 @@
 				FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */,
 				FBF223D42180DF9D00F570D6 /* LaunchScreen.storyboard in Resources */,
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
+				FBF223F921812D8A00F570D6 /* DetailEvent.storyboard in Resources */,
 				FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */,
 				FBF223DE2180E26800F570D6 /* GoogleService-Info.plist in Resources */,
 			);
@@ -287,10 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */,
-				FBF223EF2180F21F00F570D6 /* EncodableExtension.swift in Sources */,
 				FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */,
 				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
+				FBF223F321812A4400F570D6 /* CreateEventViewController.swift in Sources */,
+				FBF223F1218122CC00F570D6 /* CalendarUtils.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
+				FBF223F521812A5600F570D6 /* DetailEventViewController.swift in Sources */,
 				FBF223EB2180ED4E00F570D6 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
