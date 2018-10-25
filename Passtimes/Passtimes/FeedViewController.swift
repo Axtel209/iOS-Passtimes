@@ -19,13 +19,14 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         mDb = DatabaseUtils.sharedInstance
         mDb.readDecuments(from: .events, returning: Event.self) { (objectsArray) in
             self.eventsArray = objectsArray
             self.onGoingCollection.reloadData()
         }
 
+        // CollectionView Setup
         onGoingCollection.register(UINib.init(nibName: "onGoingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         onGoingCollection.delegate = self
         onGoingCollection.dataSource = self
@@ -37,7 +38,11 @@ class FeedViewController: UIViewController {
             destination.eventId = eventsArray[indexPath.row].id
         }
     }
-    
+
+    @IBAction func createEvent(_ sender: Any) {
+        performSegue(withIdentifier: "toCreateView", sender: nil)
+    }
+
 }
 
 /* CollectionView */

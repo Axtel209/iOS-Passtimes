@@ -28,7 +28,7 @@ class DetailEventViewController: UIViewController {
 
         // Validate for eventId
         if let eventId = eventId {
-            // TODO: Pull Document
+            // Read event document from Firestore
             mDb = DatabaseUtils.sharedInstance
             mDb.readDocument(from: .events, reference: eventId, returning: Event.self) { (object) in
                 self.populateDetailView(with: object)
@@ -39,13 +39,15 @@ class DetailEventViewController: UIViewController {
     }
 
     func populateDetailView(with event: Event) {
+        // Set imageView round and Download image and
+        hostImage.roundedCorners(radius: hostImage.frame.size.height / 2)
+        hostImage.kf.setImage(with: URL(string: event.hostThumbnail))
         month.text = CalendarUtils.getMonthFromDateTimestamp(event.startDate)
         day.text = CalendarUtils.getDayFromDateTimestamp(event.startDate)
         eventTitle.text = event.title
         time.text = CalendarUtils.getStartEndTimefromDateTimestamp(startTime: event.startDate, endTime: event.endDate)
         location.text = event.location
     }
-
 
     @IBAction func closeDetailView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
