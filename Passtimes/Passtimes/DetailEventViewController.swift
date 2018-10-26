@@ -100,7 +100,7 @@ class DetailEventViewController: UIViewController {
         // Get CurrentPlayer DocumentReference
         let playerRef = mDb.documentReference(docRef: player.id, from: .players)
         // Update attendees to Firestore
-        mDb.updateDocument(withReference: event.id, from: .events, playerRef: playerRef) { (success) in
+        mDb.updateDocument(withReference: event.id, from: .events, data: ["attendees": FieldValue.arrayUnion([playerRef])]) { (success) in
             if(success) {
                 self.join.isHidden = true
             } else {

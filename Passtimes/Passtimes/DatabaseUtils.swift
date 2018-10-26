@@ -138,8 +138,9 @@ class DatabaseUtils {
         }
     }
 
-    public func updateDocument(withReference documentReference: String, from collectionReference: DatabaseReferences, playerRef: DocumentReference, completiomn: @escaping (Bool) -> Void) {
-        reference(to: collectionReference).document(documentReference).updateData(["attendees" : FieldValue.arrayUnion([playerRef])])
+    public func updateDocument(withReference documentReference: String, from collectionReference: DatabaseReferences, data: [String: Any], completiomn: @escaping (Bool) -> Void) {
+        // Update Document
+        reference(to: collectionReference).document(documentReference).updateData(data)
     }
 
 }
