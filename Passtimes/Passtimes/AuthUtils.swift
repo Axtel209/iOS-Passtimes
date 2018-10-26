@@ -40,4 +40,15 @@ class AuthUtils {
         return false
     }
 
+    public func signInWithEmailAndPassword(email: String, password: String, completion: @escaping () -> Void) {
+        auth.signIn(withEmail: email, password: password) { (_, error) in
+            if error != nil {
+                // TODO: display error
+            }
+
+            // Completion
+            completion()
+        }
+    }
+
 }

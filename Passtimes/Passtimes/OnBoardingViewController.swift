@@ -10,9 +10,10 @@ import UIKit
 
 class OnBoardingViewController: UIViewController {
 
-    //@IBOutlet var loginButton: UIButton!
+    /* IBOlets */
     @IBOutlet weak var pageContainer: UIView!
-    
+    @IBOutlet var loginButton: UIButton!
+
     /* Member Variables */
     var pageViewController: UIPageViewController!
     var messages = ["Hello world", "Ciao"]
@@ -20,16 +21,15 @@ class OnBoardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //loginButton.roundedCorners(radius: 7.5)
+        loginButton.roundedCorners(radius: 10)
+        loginButton.drawShadow(offset: CGSize(width: 0, height: 2), radius: 4.0, opacity: 0.2)
+
         pageViewControllerSetup()
     }
 
     func pageViewControllerSetup() {
-        pageViewController = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
+        self.pageViewController = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
         self.pageViewController.dataSource = self
-
-        //let pageContentViewController = self.viewControllerAtIndex(0)
-        //self.pageViewController.setViewControllers([pageContentViewController!], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
 
         // Start from the first page
         let pageContentViewController = viewController(at: 0)
@@ -41,7 +41,6 @@ class OnBoardingViewController: UIViewController {
         //self.addChildViewController(pageViewController)
         //self.view.addSubview(pageViewController.view)
         self.pageContainer.addSubview(pageViewController.view)
-        //self.pageViewController.didMove(toParent: )
         //self.pageViewController.didMoveToParentViewController(self)
     }
 
@@ -57,6 +56,16 @@ class OnBoardingViewController: UIViewController {
         pageContentViewController.contentMessage = self.messages[index]
 
         return pageContentViewController
+    }
+
+    @IBAction func moveToNextViewController(_ sender: Any) {
+        if let button = sender as? UIButton {
+            if (button.tag == 0) {
+                performSegue(withIdentifier: "toLogin", sender: nil)
+            } else {
+                performSegue(withIdentifier: "toSignUp", sender: nil)
+            }
+        }
     }
 
 }

@@ -8,10 +8,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="Aqf-zf-CMY">
             <objects>
-                <tabBarController id="kRi-LV-afK" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h15-XY-yvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="kRi-LV-afK" customClass="NavigationController" customModule="Passtimes" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UAU-yg-ur7"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Qsu-Mv-CZq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -22,7 +24,6 @@
                         <segue destination="baa-d4-fBd" kind="relationship" relationship="viewControllers" id="b5O-Yq-nee"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h15-XY-yvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-918" y="-240"/>
         </scene>

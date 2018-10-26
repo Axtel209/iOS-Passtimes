@@ -22,18 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
 
-        // Show login view if not currently logged in
-        let auth = AuthUtils.sharedInstance
-
-        if (!auth.isUserCurrentlySignedIn()){
-            let loginStoryBoard = UIStoryboard(name: "Login", bundle: Bundle.main)
-            let viewController = loginStoryBoard.instantiateViewController(withIdentifier: "LoginViewController")
-
-            viewController.modalTransitionStyle = .crossDissolve
-            window!.rootViewController = viewController
-            window!.makeKeyAndVisible()
-        }
-
         return true
     }
 
