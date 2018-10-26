@@ -44,4 +44,8 @@ class CalendarUtils {
         return dateFormatter.string(from: startDate) + " - " + dateFormatter.string(from: endDate)
     }
 
+    public static func getFirstWeekday() -> UInt {
+        return UInt(Calendar.current.component(.weekday, from: Date()))
+    }
+
 }

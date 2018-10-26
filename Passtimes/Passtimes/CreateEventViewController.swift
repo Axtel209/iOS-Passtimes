@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import FSCalendar
 
 class CreateEventViewController: UIViewController {
 
     /* Outlets */
     @IBOutlet var sportCollection: UICollectionView!
+    @IBOutlet var calendar: FSCalendar!
+    @IBOutlet var eventTitle: UITextField!
+    @IBOutlet var eventLocation: UITextField!
+    @IBOutlet var startTime: UITextField!
+    @IBOutlet var endTime: UITextField!
 
     /* Member Variables */
     var mDb: DatabaseUtils!
@@ -32,11 +38,55 @@ class CreateEventViewController: UIViewController {
         sportCollection.register(UINib.init(nibName: "PickSport", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         sportCollection.delegate = self
         sportCollection.dataSource = self
+        sportCollection.backgroundColor = UIColor.clear
+
+        calendarSetUp()
+
+        startTime.addTarget(self, action: #selector(timeSelector(textField:)), for: UIControl.Event.touchDown)
+
     }
-    
+
+    func calendarSetUp() {
+        //calendar.layer.borderColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+        //calendar.layer.borderWidth = 1
+        //calendar.scrollEnabled = false
+        calendar.setScope(.week, animated: false)
+        calendar.firstWeekday = CalendarUtils.getFirstWeekday()
+    }
+
+    @objc func timeSelector(textField: UITextField) {
+        
+    }
 
     @IBAction func closeCreateView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func createEvent(_ sender: Any) {
+        guard let player = AuthUtils.currentUser()
+            else {
+                SnackbarUtils.snackbarMake(message: "There was an authentification ERROR", title: nil)
+                return
+        }
+
+        // Validate empty form
+        if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
+
+            let playerRef = mDb.documentReference(docRef: player.id, from: .players)
+            let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: 1, endDate: 1, maxPlayers: 5, attendees: [])
+
+            mDb.addDocument(withId: event.setId, object: event, to: .events) { (success) in
+                if(success) {
+                    // Event added to Firestore
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    // There was an error adding the event to Firestore
+                    SnackbarUtils.snackbarMake(message: "Something went wront", title: nil)
+                }
+            }
+        } else {
+            SnackbarUtils.snackbarMake(message: "Please make sure eveything is filled", title: nil)
+        }
     }
 
 }
@@ -68,7 +118,7 @@ extension CreateEventViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Toggle selected sport
-        if(isSelected) {
+        if(!isSelected) {
             isSelected = true
         }
 

@@ -12,14 +12,13 @@ import MaterialComponents.MaterialSnackbar
 class SnackbarUtils {
 
     // Create snackbar with or without action
-    public static func snackbarMake(message: String, snackbarAction: MDCSnackbarMessageAction?, title: String?) {
+    public static func snackbarMake(message: String, title: String?) {
         let manager = MDCSnackbarManager()
         let snackbarMessage = MDCSnackbarMessage()
         snackbarMessage.text = message
         // Show action if it has one
-        if let action = snackbarAction, let title = title {
-            MDCSnackbarMessageActionHandler
-            //action.handler =
+        if let title = title {
+            let action = MDCSnackbarMessageAction()
             action.title = title
             snackbarMessage.action = action
         }

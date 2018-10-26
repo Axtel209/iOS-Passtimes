@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MaterialComponents.MaterialActivityIndicator
 
 extension UIView {
 
@@ -23,6 +24,19 @@ extension UIView {
         self.layer.shadowRadius = radius
         self.layer.shadowOpacity = opacity
         self.layer.masksToBounds = false
+    }
+
+    func activityIndicator(colors: [UIColor]) -> MDCActivityIndicator {
+        let activityIndicator = MDCActivityIndicator()
+        activityIndicator.sizeToFit()
+        activityIndicator.cycleColors = colors
+
+        // Anchor to center
+        activityIndicator.center = self.center
+        // Add activityIndicator to view
+        self.addSubview(activityIndicator)
+
+        return activityIndicator
     }
 
 }

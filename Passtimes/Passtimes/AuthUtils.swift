@@ -11,21 +11,23 @@ import FirebaseAuth
 
 class AuthUtils {
 
-    private let auth: Auth!
+//    private let auth: Auth!
+//
+//    // Get class Instance
+//    class var sharedInstance: AuthUtils {
+//        struct Static {
+//            static let instance = AuthUtils()
+//        }
+//        return Static.instance
+//    }
+//
+//    private init() {
+//        auth = Auth.auth();
+//    }
 
-    // Get class Instance
-    class var sharedInstance: AuthUtils {
-        struct Static {
-            static let instance = AuthUtils()
-        }
-        return Static.instance
-    }
+    private static let auth = Auth.auth()
 
-    private init() {
-        auth = Auth.auth();
-    }
-
-    public func currentUser() -> Player? {
+    public static func currentUser() -> Player? {
         if let user = auth.currentUser, let name = user.displayName, let thumbnail = user.photoURL {
             return Player(id: user.uid, name: name, thumbnail: thumbnail.absoluteString)
         }
@@ -33,14 +35,14 @@ class AuthUtils {
         return nil
     }
 
-    public func isUserCurrentlySignedIn() -> Bool {
+    public static func isUserCurrentlySignedIn() -> Bool {
         // Check if current User is signed in
         if auth.currentUser != nil { return true }
 
         return false
     }
 
-    public func signOut() {
+    public static func signOut() {
         do {
             try auth.signOut()
         } catch {
@@ -48,14 +50,16 @@ class AuthUtils {
         }
     }
 
-    public func signInWithEmailAndPassword(email: String, password: String, completion: @escaping () -> Void) {
+    public static func signInWithEmailAndPassword(email: String, password: String, completion: @escaping (Bool) -> Void) {
         auth.signIn(withEmail: email, password: password) { (_, error) in
             if error != nil {
                 print("Login ERROR - " + error!.localizedDescription)
+                completion(false)
+                return
             }
 
             // Completion
-            completion()
+            completion(true)
         }
     }
 

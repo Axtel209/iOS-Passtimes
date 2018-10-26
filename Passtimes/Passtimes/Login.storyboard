@@ -26,7 +26,7 @@
                                 <rect key="frame" x="16" y="216" width="343" height="45"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,7 +53,7 @@
                                 <rect key="frame" x="16" y="277" width="343" height="45.5"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -154,7 +154,7 @@
                         <outlet property="email" destination="DQo-hv-6f3" id="wTe-lX-Qdm"/>
                         <outlet property="loginButton" destination="eTv-bb-OVN" id="UtJ-fE-uwt"/>
                         <outlet property="password" destination="W6s-OX-nch" id="Op5-ON-fXg"/>
-                        <segue destination="m6C-bk-BzP" kind="unwind" identifier="unwindToNavigation" unwindAction="unwindToNavigationWithSegue:" id="CrC-P3-Odg"/>
+                        <segue destination="m6C-bk-BzP" kind="unwind" identifier="unwindToNavigation" unwindAction="unwindToNavigationWithSegue:" id="I1E-iD-fC4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tg1-r4-SkS" userLabel="First Responder" sceneMemberID="firstResponder"/>

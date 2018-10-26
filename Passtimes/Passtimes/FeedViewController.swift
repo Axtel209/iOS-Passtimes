@@ -35,6 +35,8 @@ class FeedViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = sender as? IndexPath, let destination = segue.destination as? DetailEventViewController {
             // Pass eventId to DetailView
+            print(eventsArray[indexPath.row].id)
+            print(eventsArray[indexPath.row].title)
             destination.eventId = eventsArray[indexPath.row].id
         }
     }

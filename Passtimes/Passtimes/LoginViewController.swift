@@ -18,13 +18,9 @@ class LoginViewController: UIViewController {
 
     /* Member Variables */
     var activityIndicator: MDCActivityIndicator!
-    var auth: AuthUtils!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        auth = AuthUtils.sharedInstance
 
         loginButton.roundedCorners(radius: 10)
         loginButton.drawShadow(offset: CGSize(width: 0, height: 2), radius: 4.0, opacity: 0.2)
@@ -47,11 +43,17 @@ class LoginViewController: UIViewController {
         if let email = email.text, !email.isEmpty, let password = password.text, !password.isEmpty {
             self.activityIndicator.startAnimating()
 
-            auth.signInWithEmailAndPassword(email: email, password: password) {
+            AuthUtils.signInWithEmailAndPassword(email: email, password: password) { (success) in
                 // Dismiss activityIndicator
                 self.activityIndicator.stopAnimating()
-                //self.dismiss(animated: true, completion: nil)
-                self.performSegue(withIdentifier: "unwindToNavigation", sender: nil)
+
+                print("LOGIN SUCCESS - \(success)")
+
+                if(success) {
+                   self.performSegue(withIdentifier: "unwindToNavigation", sender: nil)
+                } else {
+                    SnackbarUtils.snackbarMake(message: "Please make sure to enter correct email and password", title: nil)
+                }
             }
         }
     }

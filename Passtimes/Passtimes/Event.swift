@@ -11,9 +11,8 @@ import FirebaseFirestore
 
 class Event: Codable {
 
-    let id: String
-    let hostId: String
-    let hostThumbnail: String
+    var id: String
+    let eventHost: DocumentReference
     let sport: String
     var title: String
     var latitude: Double
@@ -24,10 +23,9 @@ class Event: Codable {
     var maxPlayers: Int
     var attendees: [DocumentReference]
 
-    init(id: String, hostId: String, hostThumbnail: String, sport: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxPlayers: Int, attendees: [DocumentReference]) {
-        self.id = id
-        self.hostId = hostId
-        self.hostThumbnail = hostThumbnail
+    init(eventHost: DocumentReference, sport: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxPlayers: Int, attendees: [DocumentReference]) {
+        self.id = UUID.init().uuidString
+        self.eventHost = eventHost
         self.sport = sport
         self.title = title
         self.latitude = latitude
@@ -37,6 +35,11 @@ class Event: Codable {
         self.endDate = endDate
         self.maxPlayers = maxPlayers
         self.attendees = attendees
+    }
+
+    var setId: String {
+        set { id = newValue }
+        get { return id }
     }
 
 }

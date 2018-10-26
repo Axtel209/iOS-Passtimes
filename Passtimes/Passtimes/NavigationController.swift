@@ -13,11 +13,9 @@ class NavigationController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Show login view if not currently logged in
-        let auth = AuthUtils.sharedInstance
-        // TODO: DELETE SIGNOUT
         //auth.signOut()
-        if (!auth.isUserCurrentlySignedIn()){
+        //AuthUtils.signOut()
+        if (!AuthUtils.isUserCurrentlySignedIn()){
             perform(#selector(showOnBoardingController), with: nil, afterDelay: 0.01)
         }
     }
