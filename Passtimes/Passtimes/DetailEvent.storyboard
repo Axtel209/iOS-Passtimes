@@ -135,7 +135,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="joinEvent:" destination="aBu-Bn-SLl" eventType="touchUpInside" id="O4u-xd-L7z"/>
+                                    <action selector="joinEvent:" destination="aBu-Bn-SLl" eventType="touchUpInside" id="W9i-bn-3P9"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hi7-cB-KHc">

@@ -84,6 +84,7 @@ class DatabaseUtils {
                 var objectsArray: [T] = []
 
                 for document in snapshot.documents {
+                    print(document.data())
                     // Decode document to object
                     let object = try FirestoreDecoder().decode(objectType, from: document.data())
 
@@ -125,15 +126,20 @@ class DatabaseUtils {
         }
     }
 
-    public func delete(document: String, from collectionReference: DatabaseReferences, completion: @escaping () -> Void) {
-        reference(to: collectionReference).document(document).delete { (error) in
+    public func deleteDocument(withReference documentReference: String, from collectionReference: DatabaseReferences, completion: @escaping (Bool) -> Void) {
+        reference(to: collectionReference).document(documentReference).delete { (error) in
             if error != nil {
                 print("Problem deleting Document ERROR - " + error!.localizedDescription)
+                completion(false)
                 return
             }
 
-            completion()
+            completion(true)
         }
+    }
+
+    public func updateDocument(withReference documentReference: String, from collectionReference: DatabaseReferences, playerRef: DocumentReference, completiomn: @escaping (Bool) -> Void) {
+        reference(to: collectionReference).document(documentReference).updateData(["attendees" : FieldValue.arrayUnion([playerRef])])
     }
 
 }

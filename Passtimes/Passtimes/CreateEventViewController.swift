@@ -73,9 +73,9 @@ class CreateEventViewController: UIViewController {
         if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
 
             let playerRef = mDb.documentReference(docRef: player.id, from: .players)
-            let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: 1, endDate: 1, maxPlayers: 5, attendees: [])
+            let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: 1, endDate: 1, maxAttendees: 5, attendees: [playerRef])
 
-            mDb.addDocument(withId: event.setId, object: event, to: .events) { (success) in
+            mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
                 if(success) {
                     // Event added to Firestore
                     self.dismiss(animated: true, completion: nil)

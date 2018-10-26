@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import MaterialComponents.MaterialSnackbar
 
 class DetailEventViewController: UIViewController {
@@ -24,7 +25,7 @@ class DetailEventViewController: UIViewController {
     /* Member Variables */
     var eventId: String?
     var event: Event?
-    var player: Player?
+    var host: Player?
     var mDb: DatabaseUtils!
 
     override func viewDidLoad() {
@@ -37,10 +38,9 @@ class DetailEventViewController: UIViewController {
             mDb.readDocument(from: .events, reference: eventId, returning: Event.self) { (eventObject) in
                 self.event = eventObject
                 // Get player DocumentReference
-                self.mDb.readDocument(from: .players, reference: eventObject.eventHost.documentID, returning: Player.self, completion: { (playerObject) in
-                    self.player = playerObject
-                    print(self.player!.id)
-                    self.populateDetailView(with: self.event!, host: self.player!)
+                self.mDb.readDocument(from: .players, reference: eventObject.eventHost.documentID, returning: Player.self, completion: { (hostObject) in
+                    self.host = hostObject
+                    self.populateDetailView(with: self.event!, host: self.host!)
                 })
             }
         } else {
@@ -52,10 +52,15 @@ class DetailEventViewController: UIViewController {
 
     func populateDetailView(with event: Event, host: Player) {
         // If the person viewing the event is the host show Delete bubtton
-        if let player = AuthUtils.currentUser(), host.id == player.id {
+        guard let player = AuthUtils.currentUser() else { return }
+        let attendees = event.attendees
+        let playerRef = mDb.documentReference(docRef: player.id, from: .players)
+
+        if (player.id == host.id) {
             join.isHidden = true
-            //TODO: CHANGE - should display if the user is not in the attending list
             delete.isHidden = false
+        } else if (isPlayerAttending(attendees: attendees, playerRef: playerRef)) {
+            join.isHidden = true
         }
 
         // Set imageView round and Download image and
@@ -73,19 +78,45 @@ class DetailEventViewController: UIViewController {
     }
 
     @IBAction func deleteEvent(_ sender: Any) {
-        if let event = event {
-//            SnackbarUtils.snackbarMake(message: "Are you sure you want to delete the event?", snackbarAction: nil, title: nil)
-            mDb.delete(document: event.id, from: .events) {
-                self.dismiss(animated: true, completion: nil)
-            }
+        guard let event = event else { return }
+
+        //SnackbarUtils.snackbarMake(message: "Are you sure you want to delete the event?", snackbarAction: nil, title: nil)
+        mDb.deleteDocument(withReference: event.id, from: .events) { (_) in
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
     @IBAction func joinEvent(_ sender: Any) {
-        if let jointButton = sender as? UIButton {
-            // TODO: Add player to document
-            jointButton.isHidden = true
+        addPlayerToAttendees()
+    }
+
+    // Returns true if the user was succesfully added to attendees
+    func addPlayerToAttendees() {
+        guard let event = event else { return }
+        guard let player = AuthUtils.currentUser() else { return }
+
+        // List of attendees
+        //var attendees = event.attendees
+        // Get CurrentPlayer DocumentReference
+        let playerRef = mDb.documentReference(docRef: player.id, from: .players)
+        // Update attendees to Firestore
+        mDb.updateDocument(withReference: event.id, from: .events, playerRef: playerRef) { (success) in
+            if(success) {
+                self.join.isHidden = true
+            } else {
+                SnackbarUtils.snackbarMake(message: "Could't join event", title: nil)
+            }
         }
     }
 
+    // Check if player is attending
+    func isPlayerAttending(attendees: [DocumentReference], playerRef: DocumentReference) -> Bool {
+        for document in attendees {
+            if(document.documentID == playerRef.documentID) {
+                return true
+            }
+        }
+
+        return false
+    }
 }
