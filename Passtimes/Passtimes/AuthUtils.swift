@@ -40,10 +40,18 @@ class AuthUtils {
         return false
     }
 
+    public func signOut() {
+        do {
+            try auth.signOut()
+        } catch {
+            print("Sign Out - ERROR")
+        }
+    }
+
     public func signInWithEmailAndPassword(email: String, password: String, completion: @escaping () -> Void) {
         auth.signIn(withEmail: email, password: password) { (_, error) in
             if error != nil {
-                // TODO: display error
+                print("Login ERROR - " + error!.localizedDescription)
             }
 
             // Completion

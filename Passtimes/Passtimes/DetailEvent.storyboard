@@ -42,16 +42,16 @@
                                         <rect key="frame" x="116" y="16.5" width="227" height="100"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pby-G9-yLX">
-                                                <rect key="frame" x="0.0" y="0.0" width="31" height="47"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTz-Za-VO8" userLabel="Month">
-                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="21.5"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="29.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROp-Re-wgv" userLabel="Day">
-                                                        <rect key="frame" x="0.0" y="21.5" width="31" height="25.5"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="29.5" height="25.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
                                                         <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -59,33 +59,33 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soccer Practice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3w-cB-crv" userLabel="Title">
-                                                <rect key="frame" x="39" y="0.0" width="149" height="47"/>
+                                                <rect key="frame" x="37.5" y="0.0" width="149" height="46"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCO-Tc-cQ6" userLabel="Clock Icon">
-                                                <rect key="frame" x="3.5" y="47" width="24" height="24"/>
+                                                <rect key="frame" x="3" y="46" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="LDR-3N-MuX"/>
                                                     <constraint firstAttribute="height" constant="24" id="cZb-6D-5B7"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jco-ar-xIQ" userLabel="Pin Icon">
-                                                <rect key="frame" x="3.5" y="76" width="24" height="24"/>
+                                                <rect key="frame" x="3" y="75" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="UhW-Of-rbi"/>
                                                     <constraint firstAttribute="height" constant="24" id="cHf-i4-LeV"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:45 PM - 5:30 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-ZC-kVZ">
-                                                <rect key="frame" x="39" y="47" width="143.5" height="24"/>
+                                                <rect key="frame" x="37.5" y="46" width="143.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XL Soccer World" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfS-9C-hh0">
-                                                <rect key="frame" x="39" y="76" width="126.5" height="24"/>
+                                                <rect key="frame" x="37.5" y="75" width="126.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -138,25 +138,42 @@
                                     <action selector="joinEvent:" destination="aBu-Bn-SLl" eventType="touchUpInside" id="O4u-xd-L7z"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hi7-cB-KHc">
+                                <rect key="frame" x="335" y="36" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="FnC-Df-Cue"/>
+                                    <constraint firstAttribute="width" constant="24" id="rir-vw-LXk"/>
+                                </constraints>
+                                <state key="normal" image="ic_delete"/>
+                                <connections>
+                                    <action selector="deleteEvent:" destination="aBu-Bn-SLl" eventType="touchUpInside" id="GxA-0H-UUs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="hi7-cB-KHc" secondAttribute="trailing" constant="16" id="0r9-uU-UNT"/>
+                            <constraint firstItem="hi7-cB-KHc" firstAttribute="centerY" secondItem="4CZ-BF-V0u" secondAttribute="centerY" id="EvV-iI-HhW"/>
                             <constraint firstItem="hQk-X9-qOc" firstAttribute="height" secondItem="0Sx-Ty-E28" secondAttribute="height" multiplier="0.2" id="Evw-tU-kWt"/>
                             <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="FRw-mM-cVL" secondAttribute="trailing" id="F6G-vb-4gh"/>
                             <constraint firstItem="uNb-B9-aim" firstAttribute="bottom" secondItem="FRw-mM-cVL" secondAttribute="bottom" id="FAw-tm-blV"/>
+                            <constraint firstItem="hi7-cB-KHc" firstAttribute="bottom" secondItem="4CZ-BF-V0u" secondAttribute="bottom" id="SCt-Nh-Bxd"/>
                             <constraint firstItem="hQk-X9-qOc" firstAttribute="leading" secondItem="4CZ-BF-V0u" secondAttribute="leading" id="Yte-2A-3AI"/>
                             <constraint firstItem="4CZ-BF-V0u" firstAttribute="leading" secondItem="uNb-B9-aim" secondAttribute="leading" constant="16" id="dic-74-A7m"/>
                             <constraint firstItem="hQk-X9-qOc" firstAttribute="top" secondItem="4CZ-BF-V0u" secondAttribute="bottom" id="qdu-lv-Nwu"/>
                             <constraint firstItem="FRw-mM-cVL" firstAttribute="leading" secondItem="uNb-B9-aim" secondAttribute="leading" id="r9j-7Y-9FS"/>
                             <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="hQk-X9-qOc" secondAttribute="trailing" constant="16" id="rfT-Is-kUr"/>
+                            <constraint firstItem="hi7-cB-KHc" firstAttribute="top" secondItem="4CZ-BF-V0u" secondAttribute="top" id="tTz-Dh-d2C"/>
                             <constraint firstItem="4CZ-BF-V0u" firstAttribute="top" secondItem="uNb-B9-aim" secondAttribute="top" constant="16" id="yDV-Vh-bDe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uNb-B9-aim"/>
                     </view>
                     <connections>
                         <outlet property="day" destination="ROp-Re-wgv" id="r41-Sp-HNC"/>
+                        <outlet property="delete" destination="hi7-cB-KHc" id="8Jd-0d-Ng9"/>
                         <outlet property="eventTitle" destination="F3w-cB-crv" id="WhF-Z5-2R5"/>
                         <outlet property="hostImage" destination="nab-bv-01C" id="t8r-4j-zHd"/>
+                        <outlet property="join" destination="FRw-mM-cVL" id="SoB-d3-JQz"/>
                         <outlet property="location" destination="qfS-9C-hh0" id="VUA-Iz-khd"/>
                         <outlet property="month" destination="tTz-Za-VO8" id="5dG-J6-1Vv"/>
                         <outlet property="time" destination="ft1-ZC-kVZ" id="lSi-Yk-ecw"/>
@@ -169,5 +186,6 @@
     </scenes>
     <resources>
         <image name="ic_close" width="24" height="24"/>
+        <image name="ic_delete" width="24" height="24"/>
     </resources>
 </document>

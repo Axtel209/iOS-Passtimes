@@ -11,6 +11,8 @@ import UIKit
 class DetailEventViewController: UIViewController {
 
     /* Outlets */
+    @IBOutlet var delete: UIButton!
+    @IBOutlet var join: UIButton!
     @IBOutlet var hostImage: UIImageView!
     @IBOutlet var month: UILabel!
     @IBOutlet var day: UILabel!
@@ -19,18 +21,22 @@ class DetailEventViewController: UIViewController {
     @IBOutlet var location: UILabel!
 
     /* Member Variables */
+    var auth: AuthUtils!
     var eventId: String?
-    //var event: Event?
+    var event: Event?
     var mDb: DatabaseUtils!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        auth = AuthUtils.sharedInstance
 
         // Validate for eventId
         if let eventId = eventId {
             // Read event document from Firestore
             mDb = DatabaseUtils.sharedInstance
             mDb.readDocument(from: .events, reference: eventId, returning: Event.self) { (object) in
+                self.event = object
                 self.populateDetailView(with: object)
             }
         } else {
@@ -39,6 +45,13 @@ class DetailEventViewController: UIViewController {
     }
 
     func populateDetailView(with event: Event) {
+        // If the person viewing the event is the host show Delete bubtton
+        if let player = auth.currentUser(), event.hostId == player.id {
+            join.isHidden = true
+            //TODO: CHANGE - should display if the user is not in the attending list
+            delete.isHidden = false
+        }
+
         // Set imageView round and Download image and
         hostImage.roundedCorners(radius: hostImage.frame.size.height / 2)
         hostImage.kf.setImage(with: URL(string: event.hostThumbnail))
@@ -51,6 +64,14 @@ class DetailEventViewController: UIViewController {
 
     @IBAction func closeDetailView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func deleteEvent(_ sender: Any) {
+        if let event = event {
+            mDb.delete(document: event.id, from: .events) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 
     @IBAction func joinEvent(_ sender: Any) {

@@ -114,4 +114,15 @@ class DatabaseUtils {
         }
     }
 
+    public func delete(document: String, from collectionReference: DatabaseReferences, completion: @escaping () -> Void) {
+        reference(to: collectionReference).document(document).delete { (error) in
+            if error != nil {
+                print("Problem deleting Document ERROR - " + error!.localizedDescription)
+                return
+            }
+
+            completion()
+        }
+    }
+
 }

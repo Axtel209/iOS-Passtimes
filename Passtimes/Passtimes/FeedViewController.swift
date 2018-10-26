@@ -19,7 +19,7 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         mDb = DatabaseUtils.sharedInstance
         mDb.readDecuments(from: .events, returning: Event.self) { (objectsArray) in
             self.eventsArray = objectsArray
