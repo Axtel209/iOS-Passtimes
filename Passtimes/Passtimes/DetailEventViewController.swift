@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialSnackbar
 
 class DetailEventViewController: UIViewController {
 
@@ -68,6 +69,8 @@ class DetailEventViewController: UIViewController {
 
     @IBAction func deleteEvent(_ sender: Any) {
         if let event = event {
+            //SnackbarUtils.createSnackbar(message: "Are you sure you want to delete the event?", action: MDCSnackbarMessageAction(), title: "Delete")
+//            SnackbarUtils.snackbarMake(message: "Are you sure you want to delete the event?", snackbarAction: nil, title: nil)
             mDb.delete(document: event.id, from: .events) {
                 self.dismiss(animated: true, completion: nil)
             }

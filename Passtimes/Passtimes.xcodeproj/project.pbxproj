@@ -21,6 +21,7 @@
 		FBAC821C21826B0A003546D5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC821B21826B0A003546D5 /* Player.swift */; };
 		FBAC821E21826BC8003546D5 /* AuthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC821D21826BC8003546D5 /* AuthUtils.swift */; };
 		FBAC822021828323003546D5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC821F21828323003546D5 /* NavigationController.swift */; };
+		FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC82212182BC99003546D5 /* SnackbarUtils.swift */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */; };
 		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
@@ -55,6 +56,7 @@
 		FBAC821B21826B0A003546D5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FBAC821D21826BC8003546D5 /* AuthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtils.swift; sourceTree = "<group>"; };
 		FBAC821F21828323003546D5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		FBAC82212182BC99003546D5 /* SnackbarUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarUtils.swift; sourceTree = "<group>"; };
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				FBF223E22180E58A00F570D6 /* DatabaseUtils.swift */,
 				FBF223F0218122CC00F570D6 /* CalendarUtils.swift */,
 				FBAC821D21826BC8003546D5 /* AuthUtils.swift */,
+				FBAC82212182BC99003546D5 /* SnackbarUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
@@ -348,6 +352,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
@@ -393,6 +398,7 @@
 			files = (
 				FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */,
 				FBAC820C21815AE8003546D5 /* PickSportCollectionViewCell.swift in Sources */,
+				FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */,
 				FBAC820E21815B77003546D5 /* Sport.swift in Sources */,
 				FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */,
 				FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */,
