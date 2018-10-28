@@ -49,7 +49,7 @@ class DatabaseUtils {
     }
 
     // Add Document to Firestore
-    public func addDocument<T: Codable>(withId id: String, object: T, to collectionReference: DatabaseReferences, complition: @escaping (Bool) -> Void) {
+    public func addDocument<T: Codable>(withId id: String, object: T, to collectionReference: DatabaseReferences, complition: ((Bool) -> ())?) {
         do {
             // Encode object to document
             let document = try FirestoreEncoder().encode(object)
@@ -58,10 +58,10 @@ class DatabaseUtils {
             reference(to: collectionReference).document(id).setData(document) { (error) in
                 if error != nil {
                     print(error!.localizedDescription)
-                    complition(false)
+                    complition?(false)
                     return
                 }
-                complition(true)
+                complition?(true)
             }
         } catch {
             print("Encoding ERROR - " + error.localizedDescription)

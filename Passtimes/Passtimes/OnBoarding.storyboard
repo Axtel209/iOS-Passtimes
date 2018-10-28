@@ -59,6 +59,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="moveToNextViewController:" destination="vLK-Cn-xjd" eventType="touchUpInside" id="6QT-KH-NLR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,6 +83,7 @@
                         <outlet property="loginButton" destination="Wpm-bO-USG" id="bM2-Go-r4A"/>
                         <outlet property="pageContainer" destination="XhY-AR-7NJ" id="rEi-yu-SlW"/>
                         <segue destination="XtF-2x-JgY" kind="showDetail" identifier="toLogin" id="T9c-fk-qOq"/>
+                        <segue destination="e1i-Ay-lOW" kind="showDetail" identifier="toSignUp" id="8eN-aq-j31"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YP-0R-qAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,7 +96,15 @@
                 <viewControllerPlaceholder storyboardName="Login" id="XtF-2x-JgY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmg-4e-fs0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="672"/>
+            <point key="canvasLocation" x="-394" y="670"/>
+        </scene>
+        <!--SignUp-->
+        <scene sceneID="rgS-bC-2iQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" id="e1i-Ay-lOW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B5Q-50-8FZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="670"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="eQu-zi-f7e">

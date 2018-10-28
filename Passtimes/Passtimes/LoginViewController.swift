@@ -22,13 +22,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Set Up view
+        viewSetUp()
+    }
+
+    func viewSetUp() {
+        // Login button with round corners
         loginButton.roundedCorners(radius: 10)
         loginButton.drawShadow(offset: CGSize(width: 0, height: 2), radius: 4.0, opacity: 0.2)
 
-        activityIndicatorSetUp()
-    }
-
-    func activityIndicatorSetUp() {
+        // ActivityIndicator
         activityIndicator = MDCActivityIndicator()
         activityIndicator.sizeToFit()
         activityIndicator.cycleColors = [#colorLiteral(red: 0.9257785678, green: 0.1494095027, blue: 0.3405916691, alpha: 1)]

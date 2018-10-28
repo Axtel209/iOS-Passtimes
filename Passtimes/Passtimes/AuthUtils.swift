@@ -63,4 +63,36 @@ class AuthUtils {
         }
     }
 
+    public static func signUpwithEmailAndPassword(email: String, password: String, name: String, photo: Data) {
+        auth.createUser(withEmail: email, password: password) { (authData, error) in
+            if error != nil {
+                print("Something went wrong ERROR - " + error!.localizedDescription)
+            }
+
+            guard let data = authData else { return }
+
+            StorageUtils.uploadImage(into: .profiles, withPath: data.user.uid, image: photo, completion: { (imageURL) in
+                self.insertUserIntoDatabase(uid: data.user.uid, name: name, thumbnail: imageURL)
+            })
+        }
+    }
+
+    private static func insertUserIntoDatabase(uid: String, name: String, thumbnail: String) {
+        let player = Player(id: uid, name: name, thumbnail: thumbnail)
+        let db = DatabaseUtils.sharedInstance
+        db.addDocument(withId: uid, object: player, to: .players, complition: nil)
+    }
+
+    private static func updateUserInfo() {
+        guard let changeRequest = auth.currentUser?.createProfileChangeRequest() else { return }
+        //changeRequest.displayName = name
+
+        changeRequest.commitChanges(completion: { (error) in
+            if error != nil {
+                print("User change request - ERROR")
+                return
+            }
+        })
+    }
+
 }

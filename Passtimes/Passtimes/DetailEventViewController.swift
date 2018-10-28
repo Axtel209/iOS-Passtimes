@@ -22,14 +22,20 @@ class DetailEventViewController: UIViewController {
     @IBOutlet var time: UILabel!
     @IBOutlet var location: UILabel!
 
+    @IBOutlet var attendeesCollectionView: UICollectionView!
+
     /* Member Variables */
     var eventId: String?
     var event: Event?
     var host: Player?
+    var attendees: [Player] = []
     var mDb: DatabaseUtils!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        attendeesCollectionView.delegate = self
+        attendeesCollectionView.dataSource = self
 
         // Validate for eventId
         if let eventId = eventId {
@@ -42,6 +48,16 @@ class DetailEventViewController: UIViewController {
                     self.host = hostObject
                     self.populateDetailView(with: self.event!, host: self.host!)
                 })
+
+                /* NEEDS REFACTOR TO READ ONCE */
+                // Get each player from the attendee list
+                self.attendees.removeAll()
+                for attendee in eventObject.attendees {
+                    self.mDb.readDocument(from: .players, reference: attendee.documentID, returning: Player.self, completion: { (playerObject) in
+                        self.attendees.append(playerObject)
+                        self.attendeesCollectionView.reloadData()
+                    })
+                }
             }
         } else {
             // TODO: Chould not load event
@@ -107,6 +123,7 @@ class DetailEventViewController: UIViewController {
                 SnackbarUtils.snackbarMake(message: "Could't join event", title: nil)
             }
         }
+        // Update 
     }
 
     // Check if player is attending
@@ -119,4 +136,24 @@ class DetailEventViewController: UIViewController {
 
         return false
     }
+}
+
+extension DetailEventViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return attendees.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath)
+
+        cell.backgroundColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+
+        return cell
+    }
+
 }

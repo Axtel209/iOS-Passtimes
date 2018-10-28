@@ -15,6 +15,7 @@ class Player: Codable {
     var name: String
     var thumbnail: String
     var favorites: [DocumentReference] = []
+    var attending: [DocumentReference] = []
 
     init(id: String, name: String, thumbnail: String) {
         self.id = id
@@ -22,9 +23,10 @@ class Player: Codable {
         self.thumbnail = thumbnail
     }
 
-    convenience init(id: String, name: String, thumbnail: String, favorites: [DocumentReference]) {
+    convenience init(id: String, name: String, thumbnail: String, favorites: [DocumentReference], attending: [DocumentReference]) {
         self.init(id: id, name: name, thumbnail: thumbnail)
         self.favorites = favorites
+        self.attending = attending
     }
 
 }

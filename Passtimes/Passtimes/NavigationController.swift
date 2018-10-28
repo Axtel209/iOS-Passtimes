@@ -14,7 +14,7 @@ class NavigationController: UITabBarController {
         super.viewDidLoad()
 
         //auth.signOut()
-        //AuthUtils.signOut()
+        AuthUtils.signOut()
         if (!AuthUtils.isUserCurrentlySignedIn()){
             perform(#selector(showOnBoardingController), with: nil, afterDelay: 0.01)
         }

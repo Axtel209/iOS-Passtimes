@@ -23,6 +23,11 @@
 		FBAC822021828323003546D5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC821F21828323003546D5 /* NavigationController.swift */; };
 		FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC82212182BC99003546D5 /* SnackbarUtils.swift */; };
 		FBAC82262182F1EB003546D5 /* ActivityIndicatorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC82252182F1EB003546D5 /* ActivityIndicatorUtils.swift */; };
+		FBCEE6FC2183D0AC00ED9C9C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE6FB2183D0AC00ED9C9C /* SignUpViewController.swift */; };
+		FBCEE6FF2183D0C600ED9C9C /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE6FE2183D0C600ED9C9C /* SignUp.storyboard */; };
+		FBCEE7012183D9AD00ED9C9C /* ValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE7002183D9AD00ED9C9C /* ValidationUtils.swift */; };
+		FBCEE7032185084400ED9C9C /* ImagePickerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE7022185084300ED9C9C /* ImagePickerUtils.swift */; };
+		FBCEE70521852B5D00ED9C9C /* StorageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE70421852B5D00ED9C9C /* StorageUtils.swift */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */; };
 		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
@@ -59,6 +64,11 @@
 		FBAC821F21828323003546D5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		FBAC82212182BC99003546D5 /* SnackbarUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarUtils.swift; sourceTree = "<group>"; };
 		FBAC82252182F1EB003546D5 /* ActivityIndicatorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorUtils.swift; sourceTree = "<group>"; };
+		FBCEE6FB2183D0AC00ED9C9C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FBCEE6FE2183D0C600ED9C9C /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		FBCEE7002183D9AD00ED9C9C /* ValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
+		FBCEE7022185084300ED9C9C /* ImagePickerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerUtils.swift; sourceTree = "<group>"; };
+		FBCEE70421852B5D00ED9C9C /* StorageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUtils.swift; sourceTree = "<group>"; };
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +145,15 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		FBCEE6FD2183D0B000ED9C9C /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FBCEE6FE2183D0C600ED9C9C /* SignUp.storyboard */,
+				FBCEE6FB2183D0AC00ED9C9C /* SignUpViewController.swift */,
+			);
+			name = SignUp;
+			sourceTree = "<group>";
+		};
 		FBF223BD2180DF9C00F570D6 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +180,7 @@
 				FBAC821F21828323003546D5 /* NavigationController.swift */,
 				FBAC820F21823B11003546D5 /* OnBoarding */,
 				FBAC821621826435003546D5 /* Login */,
+				FBCEE6FD2183D0B000ED9C9C /* SignUp */,
 				FBAC820A21815ABA003546D5 /* PickSport */,
 				FBF223F621812A7100F570D6 /* CreateEvent */,
 				FBF223F721812A7D00F570D6 /* DetailEvent */,
@@ -194,6 +214,9 @@
 				FBAC821D21826BC8003546D5 /* AuthUtils.swift */,
 				FBAC82212182BC99003546D5 /* SnackbarUtils.swift */,
 				FBAC82252182F1EB003546D5 /* ActivityIndicatorUtils.swift */,
+				FBCEE7002183D9AD00ED9C9C /* ValidationUtils.swift */,
+				FBCEE7022185084300ED9C9C /* ImagePickerUtils.swift */,
+				FBCEE70421852B5D00ED9C9C /* StorageUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -305,6 +328,7 @@
 			files = (
 				FBAC820921815AAE003546D5 /* PickSport.xib in Resources */,
 				FBF223E12180E3AB00F570D6 /* Feed.storyboard in Resources */,
+				FBCEE6FF2183D0C600ED9C9C /* SignUp.storyboard in Resources */,
 				FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */,
 				FBF223D42180DF9D00F570D6 /* LaunchScreen.storyboard in Resources */,
 				FBAC82072181569F003546D5 /* CreateEvent.storyboard in Resources */,
@@ -401,12 +425,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBCEE70521852B5D00ED9C9C /* StorageUtils.swift in Sources */,
 				FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */,
+				FBCEE7012183D9AD00ED9C9C /* ValidationUtils.swift in Sources */,
 				FBAC820C21815AE8003546D5 /* PickSportCollectionViewCell.swift in Sources */,
 				FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */,
 				FBAC820E21815B77003546D5 /* Sport.swift in Sources */,
 				FBAC82262182F1EB003546D5 /* ActivityIndicatorUtils.swift in Sources */,
 				FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */,
+				FBCEE7032185084400ED9C9C /* ImagePickerUtils.swift in Sources */,
 				FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */,
 				FBAC822021828323003546D5 /* NavigationController.swift in Sources */,
 				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
@@ -415,6 +442,7 @@
 				FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */,
 				FBF223F1218122CC00F570D6 /* CalendarUtils.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
+				FBCEE6FC2183D0AC00ED9C9C /* SignUpViewController.swift in Sources */,
 				FBAC82132182443D003546D5 /* PageContentViewController.swift in Sources */,
 				FBF223F521812A5600F570D6 /* DetailEventViewController.swift in Sources */,
 				FBAC821E21826BC8003546D5 /* AuthUtils.swift in Sources */,

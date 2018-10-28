@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQo-hv-6f3" userLabel="Email" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="16" y="216" width="343" height="45"/>
+                                <rect key="frame" x="21" y="216" width="333" height="45"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
@@ -50,7 +50,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-OX-nch" userLabel="Password" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="16" y="277" width="343" height="45.5"/>
+                                <rect key="frame" x="21" y="277" width="333" height="45.5"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
@@ -77,7 +77,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTv-bb-OVN">
-                                <rect key="frame" x="16" y="381.5" width="343" height="50"/>
+                                <rect key="frame" x="21" y="382.5" width="333" height="50"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="p5I-mq-bcn"/>
@@ -109,7 +109,7 @@
                                         </fragment>
                                         <fragment content=" ">
                                             <attributes>
-                                                <color key="NSColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="13" name="SFProText-Regular"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -119,10 +119,14 @@
                                                 <color key="NSColor" red="0.12549019610000001" green="0.77647058820000003" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="13" name="SFProText-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                <color key="NSUnderlineColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <segue destination="D9f-Iz-9ie" kind="show" id="w5q-ur-HST"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -132,9 +136,9 @@
                             <constraint firstItem="W6s-OX-nch" firstAttribute="centerX" secondItem="DQo-hv-6f3" secondAttribute="centerX" id="8Ev-9l-XkD"/>
                             <constraint firstItem="W6s-OX-nch" firstAttribute="top" secondItem="DQo-hv-6f3" secondAttribute="bottom" constant="16" id="9n5-Zi-lHq"/>
                             <constraint firstItem="W6s-OX-nch" firstAttribute="trailing" secondItem="DQo-hv-6f3" secondAttribute="trailing" id="AgD-iz-OqF"/>
-                            <constraint firstItem="eTv-bb-OVN" firstAttribute="top" secondItem="W6s-OX-nch" secondAttribute="bottom" constant="59" id="Bq9-gg-JK6"/>
+                            <constraint firstItem="eTv-bb-OVN" firstAttribute="top" secondItem="W6s-OX-nch" secondAttribute="bottom" constant="60" id="Bq9-gg-JK6"/>
                             <constraint firstItem="eTv-bb-OVN" firstAttribute="centerX" secondItem="W6s-OX-nch" secondAttribute="centerX" id="FSo-RB-ecJ"/>
-                            <constraint firstItem="DQo-hv-6f3" firstAttribute="leading" secondItem="BGO-kb-hum" secondAttribute="leading" constant="16" id="Ll8-OK-GMk"/>
+                            <constraint firstItem="DQo-hv-6f3" firstAttribute="leading" secondItem="BGO-kb-hum" secondAttribute="leading" constant="21" id="Ll8-OK-GMk"/>
                             <constraint firstItem="eTv-bb-OVN" firstAttribute="trailing" secondItem="W6s-OX-nch" secondAttribute="trailing" id="NFw-sk-aJo"/>
                             <constraint firstItem="BGO-kb-hum" firstAttribute="trailing" secondItem="tF4-xJ-buL" secondAttribute="trailing" constant="16" id="P40-Gk-V4F"/>
                             <constraint firstItem="eTv-bb-OVN" firstAttribute="leading" secondItem="W6s-OX-nch" secondAttribute="leading" id="P4U-qz-8GY"/>
@@ -144,7 +148,7 @@
                             <constraint firstItem="Bue-ip-Y7c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BGO-kb-hum" secondAttribute="leading" constant="16" id="Vpl-Sg-Wr7"/>
                             <constraint firstItem="tF4-xJ-buL" firstAttribute="leading" secondItem="BGO-kb-hum" secondAttribute="leading" constant="16" id="cBy-rd-u88"/>
                             <constraint firstItem="Bue-ip-Y7c" firstAttribute="centerX" secondItem="BGO-kb-hum" secondAttribute="centerX" id="dSD-Bo-wW9"/>
-                            <constraint firstItem="BGO-kb-hum" firstAttribute="trailing" secondItem="DQo-hv-6f3" secondAttribute="trailing" constant="16" id="ijK-ho-6yB"/>
+                            <constraint firstItem="BGO-kb-hum" firstAttribute="trailing" secondItem="DQo-hv-6f3" secondAttribute="trailing" constant="21" id="ijK-ho-6yB"/>
                             <constraint firstItem="BGO-kb-hum" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Bue-ip-Y7c" secondAttribute="trailing" constant="16" id="nMh-75-By2"/>
                             <constraint firstItem="tF4-xJ-buL" firstAttribute="centerX" secondItem="BGO-kb-hum" secondAttribute="centerX" id="u4i-Yh-C2C"/>
                         </constraints>
@@ -160,6 +164,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tg1-r4-SkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="m6C-bk-BzP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="54" y="18"/>
+        </scene>
+        <!--SignUp-->
+        <scene sceneID="L0K-oX-Qip">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" id="D9f-Iz-9ie" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d6P-zp-JEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="458"/>
         </scene>
     </scenes>
 </document>
