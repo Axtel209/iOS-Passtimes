@@ -14,6 +14,7 @@ class Event: Codable {
     let id: String
     let eventHost: DocumentReference
     let sport: String
+    var sportThumbnail: String
     var title: String
     var latitude: Double
     var longitude: Double
@@ -23,10 +24,11 @@ class Event: Codable {
     var maxAttendees: Int
     var attendees: [DocumentReference]
 
-    init(eventHost: DocumentReference, sport: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxAttendees: Int, attendees: [DocumentReference]) {
+    init(eventHost: DocumentReference, sport: String, sportThumbnail: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxAttendees: Int, attendees: [DocumentReference]) {
         self.id = UUID.init().uuidString
         self.eventHost = eventHost
         self.sport = sport
+        self.sportThumbnail = sportThumbnail
         self.title = title
         self.latitude = latitude
         self.longitude = longitude

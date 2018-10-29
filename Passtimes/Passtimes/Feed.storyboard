@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Going" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wd-dI-Tbr">
-                                <rect key="frame" x="16" y="16" width="343" height="36"/>
+                                <rect key="frame" x="16" y="194" width="343" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JXT-PB-QSq">
-                                <rect key="frame" x="10" y="62" width="355" height="541"/>
+                                <rect key="frame" x="10" y="240" width="355" height="363"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="10" id="KWs-IV-5dJ">
                                     <size key="itemSize" width="341" height="92"/>
@@ -44,16 +44,51 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1w1-4z-Cds">
+                                <rect key="frame" x="16" y="16" width="343" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qb5-s9-DBt">
+                                <rect key="frame" x="10" y="68" width="355" height="110"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="lWg-gG-PCZ"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IJp-BT-mbr">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YJC-Di-FNb">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="1wd-dI-Tbr" secondAttribute="trailing" constant="16" id="3HV-JP-2Y1"/>
+                            <constraint firstItem="qb5-s9-DBt" firstAttribute="leading" secondItem="JXT-PB-QSq" secondAttribute="leading" id="88v-sn-NnE"/>
+                            <constraint firstItem="1wd-dI-Tbr" firstAttribute="top" secondItem="qb5-s9-DBt" secondAttribute="bottom" constant="16" id="BqD-bg-Bmf"/>
                             <constraint firstItem="JXT-PB-QSq" firstAttribute="top" secondItem="1wd-dI-Tbr" secondAttribute="bottom" constant="10" id="EEV-1G-trT"/>
+                            <constraint firstItem="qb5-s9-DBt" firstAttribute="top" secondItem="1w1-4z-Cds" secondAttribute="bottom" constant="16" id="I5U-HV-1uL"/>
+                            <constraint firstItem="1wd-dI-Tbr" firstAttribute="leading" secondItem="1w1-4z-Cds" secondAttribute="leading" id="LH5-ed-RzI"/>
+                            <constraint firstItem="1w1-4z-Cds" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="16" id="P69-XK-r2n"/>
+                            <constraint firstItem="qb5-s9-DBt" firstAttribute="trailing" secondItem="JXT-PB-QSq" secondAttribute="trailing" id="QXG-3z-c1g"/>
                             <constraint firstItem="JXT-PB-QSq" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="10" id="QeF-5e-46e"/>
+                            <constraint firstItem="1wd-dI-Tbr" firstAttribute="trailing" secondItem="1w1-4z-Cds" secondAttribute="trailing" id="X9R-eb-CgD"/>
+                            <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="1w1-4z-Cds" secondAttribute="trailing" constant="16" id="Xoh-Ih-xXK"/>
                             <constraint firstItem="9TM-US-UEG" firstAttribute="bottom" secondItem="JXT-PB-QSq" secondAttribute="bottom" id="h3k-6l-KSj"/>
-                            <constraint firstItem="1wd-dI-Tbr" firstAttribute="top" secondItem="9TM-US-UEG" secondAttribute="top" constant="16" id="mby-7E-szI"/>
+                            <constraint firstItem="1w1-4z-Cds" firstAttribute="top" secondItem="9TM-US-UEG" secondAttribute="top" constant="16" id="lVf-Zv-zff"/>
                             <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="JXT-PB-QSq" secondAttribute="trailing" constant="10" id="qYo-XG-YQ0"/>
-                            <constraint firstItem="1wd-dI-Tbr" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="16" id="uV6-oT-dMw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9TM-US-UEG"/>
                     </view>

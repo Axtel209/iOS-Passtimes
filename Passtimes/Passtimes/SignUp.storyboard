@@ -39,10 +39,10 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="tan-8J-ZCD" kind="show" id="5zi-fk-KCt"/>
+                                    <segue destination="tan-8J-ZCD" kind="show" identifier="" id="5zi-fk-KCt"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pm8-tr-TCE" userLabel="Photo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avatar2" translatesAutoresizingMaskIntoConstraints="NO" id="pm8-tr-TCE" userLabel="Photo">
                                 <rect key="frame" x="132.5" y="50" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="9Ja-xE-iHa"/>
@@ -224,9 +224,11 @@
                         <outlet property="password" destination="EDm-lH-SgU" id="FrD-wX-PiX"/>
                         <outlet property="photo" destination="pm8-tr-TCE" id="huV-qo-9or"/>
                         <outlet property="signUp" destination="ybt-in-agW" id="utn-pB-69u"/>
+                        <segue destination="z7A-R8-fG8" kind="unwind" identifier="unwindToNavigation" unwindAction="unwindToNavigationWithSegue:" id="HTc-3t-LjR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IO-rr-iwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="z7A-R8-fG8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="433" y="-114"/>
         </scene>
@@ -239,4 +241,7 @@
             <point key="canvasLocation" x="433" y="291"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_avatar2" width="800" height="600"/>
+    </resources>
 </document>

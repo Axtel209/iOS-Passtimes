@@ -11,7 +11,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Aqf-zf-CMY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h15-XY-yvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="kRi-LV-afK" customClass="NavigationController" customModule="Passtimes" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="UAU-yg-ur7"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Qsu-Mv-CZq">
@@ -22,8 +21,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="baa-d4-fBd" kind="relationship" relationship="viewControllers" id="b5O-Yq-nee"/>
+                        <segue destination="tvf-cb-hem" kind="relationship" relationship="viewControllers" id="LcG-gL-EIe"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h15-XY-yvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-918" y="-240"/>
         </scene>
@@ -36,6 +37,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3A-b4-URb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="-241.52923538230885"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="wTB-wI-c5j">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="tvf-cb-hem" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Foi-lG-Pzt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RgU-jl-Qcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="83" y="-113"/>
         </scene>
     </scenes>
 </document>

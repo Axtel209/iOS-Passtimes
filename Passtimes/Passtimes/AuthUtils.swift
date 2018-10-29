@@ -29,6 +29,7 @@ class AuthUtils {
 
     public static func currentUser() -> Player? {
         if let user = auth.currentUser, let name = user.displayName, let thumbnail = user.photoURL {
+            print(thumbnail.absoluteString)
             return Player(id: user.uid, name: name, thumbnail: thumbnail.absoluteString)
         }
 
@@ -63,7 +64,7 @@ class AuthUtils {
         }
     }
 
-    public static func signUpwithEmailAndPassword(email: String, password: String, name: String, photo: Data) {
+    public static func signUpwithEmailAndPassword(email: String, password: String, name: String, photo: Data, completion: ((Bool) -> Void)?) {
         auth.createUser(withEmail: email, password: password) { (authData, error) in
             if error != nil {
                 print("Something went wrong ERROR - " + error!.localizedDescription)
@@ -71,8 +72,14 @@ class AuthUtils {
 
             guard let data = authData else { return }
 
-            StorageUtils.uploadImage(into: .profiles, withPath: data.user.uid, image: photo, completion: { (imageURL) in
-                self.insertUserIntoDatabase(uid: data.user.uid, name: name, thumbnail: imageURL)
+            //StorageUtils.uploadImage(into: .profiles, withPath: data.user.uid, image: photo,
+            StorageUtils.uploadImage(into: .profiles, withPath: data.user.uid, image: photo, completion: { (thumbnail) in
+                let player = Player(id: data.user.uid, name: name, thumbnail: thumbnail)
+                let db = DatabaseUtils.sharedInstance
+                db.addDocument(withId: player.id, object: player, to: .players, complition: { (success) in
+                    updateUserInfo(name: player.name, photo: player.thumbnail)
+                    completion?(success)
+                })
             })
         }
     }
@@ -81,11 +88,13 @@ class AuthUtils {
         let player = Player(id: uid, name: name, thumbnail: thumbnail)
         let db = DatabaseUtils.sharedInstance
         db.addDocument(withId: uid, object: player, to: .players, complition: nil)
+        updateUserInfo(name: name, photo: thumbnail)
     }
 
-    private static func updateUserInfo() {
+    private static func updateUserInfo(name: String, photo: String) {
         guard let changeRequest = auth.currentUser?.createProfileChangeRequest() else { return }
-        //changeRequest.displayName = name
+        changeRequest.displayName = name
+        changeRequest.photoURL = URL(string: photo)
 
         changeRequest.commitChanges(completion: { (error) in
             if error != nil {

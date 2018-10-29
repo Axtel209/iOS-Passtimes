@@ -39,9 +39,20 @@ class SignUpViewController: UIViewController {
             if !ValidationUtils.isValid(password: password, confirm: confirmPassword) { return }
 
             //guard let imageData = photo.image?.pngData() else { return }
-            guard let data = photo.image?.jpegData(compressionQuality: 0.5) else { return }
-            AuthUtils.signUpwithEmailAndPassword(email: email, password: password, name: name, photo: data)
-            dismiss(animated: true, completion: nil)
+            guard let data = photo.image?.jpegData(compressionQuality: 1) else { return }
+
+            // Start a loading indicator
+            let activityIndicator = ActivityIndicatorUtils.activityIndicatorMake(view: self.view)
+            activityIndicator.startAnimating()
+
+            // SignUp user and perform segue after completion
+            AuthUtils.signUpwithEmailAndPassword(email: email, password: password, name: name, photo: data) { (success) in
+                if success {
+                    activityIndicator.stopAnimating()
+                    self.performSegue(withIdentifier: "unwindToNavigation", sender: nil)
+                }
+            }
+
         } else {
             // TODO: Toast for empty fields
             SnackbarUtils.snackbarMake(message: "One or more fields are empty", title: nil)

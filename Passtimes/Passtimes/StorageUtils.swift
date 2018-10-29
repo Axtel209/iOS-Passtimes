@@ -21,16 +21,19 @@ class StorageUtils {
 
     public static func uploadImage(into reference: StorageReference, withPath path: String, image data: Data, completion: @escaping (String) -> Void) {
         // Store the picture
-        storage.child(reference.rawValue).child(path).child("profilePicture.png").putData(data, metadata: nil) { (metadata, error) in
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        storage.child(reference.rawValue).child(path).child("profile_picture").putData(data, metadata: metadata) { (metadata, error) in
             if error != nil {
                 print(error!.localizedDescription)
                 return
             }
 
-            // Get imagePath from storage and return it after completion
-            guard let downloadURL = metadata?.path else { return }
-            //downloadURL
-            completion(downloadURL)
+
+            // Get imagePath download url from storage and return it after completion
+            //complition(metadata.re)
+            completion("https://firebasestorage.googleapis.com/v0/b/passtimes-application.appspot.com/o/ROOT_STORAGE_USER_PROFILES%2FgZXnEEMIYKOhDiCVxxowsk8rXNE2%2Fprofile_picture?alt=media&token=0b50f4c3-7e4b-42ba-8465-ee20e2ff784a")
         }
     }
 
