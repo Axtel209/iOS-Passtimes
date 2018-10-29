@@ -30,9 +30,10 @@ class StorageUtils {
                 return
             }
 
+            //metadata?.storageReference?.downloadURL(completion: <#T##(URL?, Error?) -> Void#>)
+
 
             // Get imagePath download url from storage and return it after completion
-            //complition(metadata.re)
             completion("https://firebasestorage.googleapis.com/v0/b/passtimes-application.appspot.com/o/ROOT_STORAGE_USER_PROFILES%2FgZXnEEMIYKOhDiCVxxowsk8rXNE2%2Fprofile_picture?alt=media&token=0b50f4c3-7e4b-42ba-8465-ee20e2ff784a")
         }
     }

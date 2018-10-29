@@ -60,7 +60,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gba-rv-rC9" userLabel="Email" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="21" y="210" width="333" height="30"/>
+                                <rect key="frame" x="21" y="210" width="333" height="39"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -87,7 +87,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xed-0C-bvU" userLabel="Full Name" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="21" y="256" width="333" height="30"/>
+                                <rect key="frame" x="21" y="265" width="333" height="39.5"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -114,7 +114,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EDm-lH-SgU" userLabel="Password" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="21" y="302" width="333" height="30"/>
+                                <rect key="frame" x="21" y="320.5" width="333" height="39"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -141,7 +141,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dbZ-wX-a9P" userLabel="Confirm Password" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="21" y="348" width="333" height="30"/>
+                                <rect key="frame" x="21" y="375.5" width="333" height="39.5"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -168,7 +168,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybt-in-agW">
-                                <rect key="frame" x="21" y="438" width="333" height="50"/>
+                                <rect key="frame" x="21" y="475" width="333" height="50"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Any-c0-3aa"/>
@@ -225,12 +225,21 @@
                         <outlet property="photo" destination="pm8-tr-TCE" id="huV-qo-9or"/>
                         <outlet property="signUp" destination="ybt-in-agW" id="utn-pB-69u"/>
                         <segue destination="z7A-R8-fG8" kind="unwind" identifier="unwindToNavigation" unwindAction="unwindToNavigationWithSegue:" id="HTc-3t-LjR"/>
+                        <segue destination="FJH-sT-cub" kind="show" identifier="toFavorite" id="4tJ-ad-fZ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IO-rr-iwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="z7A-R8-fG8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="433" y="-114"/>
+        </scene>
+        <!--PickFavorite-->
+        <scene sceneID="7A2-gW-RC5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PickFavorite" id="FJH-sT-cub" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZ4-4K-pzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1183" y="-115"/>
         </scene>
         <!--Login-->
         <scene sceneID="7Fy-Ph-tqI">

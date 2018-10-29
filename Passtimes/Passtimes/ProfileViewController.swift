@@ -26,8 +26,9 @@ class ProfileViewController: UIViewController {
     }
 
     func viewSetUp() {
+        //profilePhoto.backgroundColor = UIColor.clear
+        profilePhoto.drawShadow(offset: CGSize(width: 0, height: 2), radius: profilePhoto.frame.height / 2, opacity: 0.2)
         profilePhoto.roundedCorners(radius: profilePhoto.frame.height / 2)
-        //profilePhoto.drawShadow(offset: CGSize(width: 0, height: 2), radius: 4.0, opacity: 0.2)
         profilePhoto.kf.setImage(with: URL(string: player.thumbnail))
 
         name.text = player.name

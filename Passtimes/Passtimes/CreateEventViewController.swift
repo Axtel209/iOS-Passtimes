@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import FSCalendar
 
 class CreateEventViewController: UIViewController {
@@ -28,12 +29,6 @@ class CreateEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mDb = DatabaseUtils.sharedInstance
-        mDb.readDecuments(from: .sports, returning: Sport.self) { (objectArray) in
-            self.sportsArray = objectArray
-            self.sportCollection.reloadData()
-        }
-
         // CollectionView Setup
         sportCollection.register(UINib.init(nibName: "PickSport", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         sportCollection.delegate = self
@@ -41,6 +36,12 @@ class CreateEventViewController: UIViewController {
         sportCollection.backgroundColor = UIColor.clear
 
         calendarSetUp()
+
+        mDb = DatabaseUtils.sharedInstance
+        mDb.readDecuments(from: .sports, returning: Sport.self) { (objectArray) in
+            self.sportsArray = objectArray
+            self.sportCollection.reloadData()
+        }
 
         startTime.addTarget(self, action: #selector(timeSelector(textField:)), for: UIControl.Event.touchDown)
 
@@ -77,8 +78,16 @@ class CreateEventViewController: UIViewController {
 
             mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
                 if(success) {
-                    // Event added to Firestore
-                    self.dismiss(animated: true, completion: nil)
+                    // Add EventRef to player attending
+                    let eventRef = self.mDb.documentReference(docRef: event.id, from: .events)
+                    self.mDb.updateDocument(withReference: player.id, from: .players, data: ["attending": FieldValue.arrayUnion([eventRef])], completion: { (success) in
+                        if success {
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            // Error trying to add Eventref to player attending
+                            SnackbarUtils.snackbarMake(message: "Something went wront", title: nil)
+                        }
+                    })
                 } else {
                     // There was an error adding the event to Firestore
                     SnackbarUtils.snackbarMake(message: "Something went wront", title: nil)

@@ -45,18 +45,19 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         if let email = email.text, !email.isEmpty, let password = password.text, !password.isEmpty {
             self.activityIndicator.startAnimating()
+            self.loginButton.isEnabled = false
 
             AuthUtils.signInWithEmailAndPassword(email: email, password: password) { (success) in
                 // Dismiss activityIndicator
                 self.activityIndicator.stopAnimating()
-
-                print("LOGIN SUCCESS - \(success)")
 
                 if(success) {
                    self.performSegue(withIdentifier: "unwindToNavigation", sender: nil)
                 } else {
                     SnackbarUtils.snackbarMake(message: "Please make sure to enter correct email and password", title: nil)
                 }
+
+                self.loginButton.isEnabled = true
             }
         }
     }

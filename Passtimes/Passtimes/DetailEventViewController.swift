@@ -104,10 +104,11 @@ class DetailEventViewController: UIViewController {
 
     @IBAction func joinEvent(_ sender: Any) {
         addPlayerToAttendees()
+        addEventToAttending()
     }
 
     // Returns true if the user was succesfully added to attendees
-    func addPlayerToAttendees() {
+    private func addPlayerToAttendees() {
         guard let event = event else { return }
         guard let player = AuthUtils.currentUser() else { return }
 
@@ -123,7 +124,14 @@ class DetailEventViewController: UIViewController {
                 SnackbarUtils.snackbarMake(message: "Could't join event", title: nil)
             }
         }
-        // Update 
+    }
+
+    private func addEventToAttending() {
+        guard let event = event else { return }
+        guard let player = AuthUtils.currentUser() else { return }
+
+        let eventRef = mDb.documentReference(docRef: event.id, from: .events)
+        mDb.updateDocument(withReference: player.id, from: .players, data: ["attending": FieldValue.arrayUnion([eventRef])], completion: nil)
     }
 
     // Check if player is attending

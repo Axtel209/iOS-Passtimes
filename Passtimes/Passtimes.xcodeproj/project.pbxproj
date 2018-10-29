@@ -31,7 +31,9 @@
 		FBCEE70721863A8C00ED9C9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE70621863A8C00ED9C9C /* ProfileViewController.swift */; };
 		FBCEE70D21863D6900ED9C9C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE70C21863D6900ED9C9C /* Profile.storyboard */; };
 		FBCEE710218689C800ED9C9C /* AttendingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE70F218689C800ED9C9C /* AttendingCollectionViewCell.swift */; };
-		FBCEE712218689ED00ED9C9C /* AttendingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE711218689ED00ED9C9C /* AttendingCollectionCell.xib */; };
+		FBCEE7142186AFC100ED9C9C /* AttendingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE7132186AFC100ED9C9C /* AttendingCollectionCell.xib */; };
+		FBCEE7162186D0D200ED9C9C /* PickFavorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE7152186D0D200ED9C9C /* PickFavorite.storyboard */; };
+		FBCEE7182186D5D900ED9C9C /* PickFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE7172186D5D900ED9C9C /* PickFavoriteViewController.swift */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */; };
 		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
@@ -76,7 +78,9 @@
 		FBCEE70621863A8C00ED9C9C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FBCEE70C21863D6900ED9C9C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		FBCEE70F218689C800ED9C9C /* AttendingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingCollectionViewCell.swift; sourceTree = "<group>"; };
-		FBCEE711218689ED00ED9C9C /* AttendingCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendingCollectionCell.xib; sourceTree = "<group>"; };
+		FBCEE7132186AFC100ED9C9C /* AttendingCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendingCollectionCell.xib; sourceTree = "<group>"; };
+		FBCEE7152186D0D200ED9C9C /* PickFavorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PickFavorite.storyboard; sourceTree = "<group>"; };
+		FBCEE7172186D5D900ED9C9C /* PickFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickFavoriteViewController.swift; sourceTree = "<group>"; };
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		FBAC820A21815ABA003546D5 /* PickSport */ = {
 			isa = PBXGroup;
 			children = (
+				FBCEE7152186D0D200ED9C9C /* PickFavorite.storyboard */,
+				FBCEE7172186D5D900ED9C9C /* PickFavoriteViewController.swift */,
 				FBAC820821815AAE003546D5 /* PickSport.xib */,
 				FBAC820B21815AE8003546D5 /* PickSportCollectionViewCell.swift */,
 			);
@@ -174,7 +180,7 @@
 		FBCEE70E218689B000ED9C9C /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				FBCEE711218689ED00ED9C9C /* AttendingCollectionCell.xib */,
+				FBCEE7132186AFC100ED9C9C /* AttendingCollectionCell.xib */,
 				FBCEE70F218689C800ED9C9C /* AttendingCollectionViewCell.swift */,
 			);
 			name = "New Group";
@@ -359,8 +365,9 @@
 				FBCEE6FF2183D0C600ED9C9C /* SignUp.storyboard in Resources */,
 				FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */,
 				FBF223D42180DF9D00F570D6 /* LaunchScreen.storyboard in Resources */,
+				FBCEE7162186D0D200ED9C9C /* PickFavorite.storyboard in Resources */,
 				FBAC82072181569F003546D5 /* CreateEvent.storyboard in Resources */,
-				FBCEE712218689ED00ED9C9C /* AttendingCollectionCell.xib in Resources */,
+				FBCEE7142186AFC100ED9C9C /* AttendingCollectionCell.xib in Resources */,
 				FBCEE70D21863D6900ED9C9C /* Profile.storyboard in Resources */,
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
 				FBF223F921812D8A00F570D6 /* DetailEvent.storyboard in Resources */,
@@ -457,6 +464,7 @@
 			files = (
 				FBCEE70521852B5D00ED9C9C /* StorageUtils.swift in Sources */,
 				FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */,
+				FBCEE7182186D5D900ED9C9C /* PickFavoriteViewController.swift in Sources */,
 				FBCEE7012183D9AD00ED9C9C /* ValidationUtils.swift in Sources */,
 				FBAC820C21815AE8003546D5 /* PickSportCollectionViewCell.swift in Sources */,
 				FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */,

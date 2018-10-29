@@ -15,8 +15,16 @@ class NavigationController: UITabBarController {
 
         //auth.signOut()
         //AuthUtils.signOut()
-        if (!AuthUtils.isUserCurrentlySignedIn()){
-            perform(#selector(showOnBoardingController), with: nil, afterDelay: 0.01)
+//        if (!AuthUtils.isUserCurrentlySignedIn()){
+//            perform(#selector(showOnBoardingController), with: nil, afterDelay: 0.01)
+//        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        if !AuthUtils.isUserCurrentlySignedIn() {
+            if let loginVC = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as? OnBoardingViewController {
+                present(loginVC, animated: true, completion: nil)
+            }
         }
     }
 
@@ -24,9 +32,6 @@ class NavigationController: UITabBarController {
         if let loginVC = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as? OnBoardingViewController {
             present(loginVC, animated: true, completion: nil)
         }
-//        if let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-//            present(loginVC, animated: true, completion: nil)
-//        }
     }
 
     @IBAction func unwindToNavigation(segue:UIStoryboardSegue) { }

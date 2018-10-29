@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvP-9f-Dsm">
-                                <rect key="frame" x="16" y="384" width="343" height="39.5"/>
+                                <rect key="frame" x="16" y="353.5" width="343" height="39.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -72,7 +72,7 @@
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8iY-hN-tNS" userLabel="Event Title" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="30" y="261.5" width="315" height="45"/>
+                                <rect key="frame" x="30" y="261.5" width="315" height="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -99,7 +99,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fvx-wN-v6I" userLabel="Start Time" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="30" y="585.5" width="155.5" height="45"/>
+                                <rect key="frame" x="30" y="555" width="155.5" height="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -126,7 +126,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uQU-t6-Goo" userLabel="End Time" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="189.5" y="585.5" width="155.5" height="45"/>
+                                <rect key="frame" x="189.5" y="555" width="155.5" height="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -153,7 +153,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJT-HV-1ms" userLabel="Event Location" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="30" y="322.5" width="315" height="45.5"/>
+                                <rect key="frame" x="30" y="307.5" width="315" height="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" textContentType="street-address"/>
@@ -180,7 +180,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="UMz-jp-CuQ" customClass="FSCalendar">
-                                <rect key="frame" x="16" y="439.5" width="343" height="130"/>
+                                <rect key="frame" x="16" y="409" width="343" height="130"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="xvs-zZ-WhV"/>

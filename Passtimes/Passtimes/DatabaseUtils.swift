@@ -84,12 +84,13 @@ class DatabaseUtils {
                 var objectsArray: [T] = []
 
                 for document in snapshot.documents {
-                    print(document.data())
-                    // Decode document to object
-                    let object = try FirestoreDecoder().decode(objectType, from: document.data())
+                    if document.exists {
+                        // Decode document to object
+                        let object = try FirestoreDecoder().decode(objectType, from: document.data())
 
-                    // Add object to array
-                    objectsArray.append(object)
+                        // Add object to array
+                        objectsArray.append(object)
+                    }
                 }
 
                 // Return objectsArray after complition
@@ -111,15 +112,21 @@ class DatabaseUtils {
             }
 
             // Validate DocumentSnapshot and data
-            guard let documentSnapshot = documentSnapshot else { return }
-            guard let data = documentSnapshot.data() else { return }
+            guard let document = documentSnapshot else { return }
+            guard let data = document.data() else { return }
 
             do {
-                // Decode document to object
-                let object = try FirestoreDecoder().decode(objectType, from: data)
+                if document.exists {
+                    // Decode document to object
+                    let object = try FirestoreDecoder().decode(objectType, from: data)
 
-                // Return object after complition
-                completion(object)
+                    // Return object after complition
+                    completion(object)
+                } else {
+                    print(document.documentID)
+                    let documentRef = self.reference(to: collectionReference).document(document.documentID)
+                    self.updateDocument(withReference: documentReference, from: collectionReference, data: ["attending": FieldValue.arrayRemove([documentRef])], completion: nil)
+                }
             } catch {
                 print("Decoding Document Error - " + error.localizedDescription)
             }
@@ -138,9 +145,16 @@ class DatabaseUtils {
         }
     }
 
-    public func updateDocument(withReference documentReference: String, from collectionReference: DatabaseReferences, data: [String: Any], completiomn: @escaping (Bool) -> Void) {
+    public func updateDocument(withReference documentReference: String, from collectionReference: DatabaseReferences, data: [String: Any], completion: ((Bool) -> ())?) {
         // Update Document
-        reference(to: collectionReference).document(documentReference).updateData(data)
+        reference(to: collectionReference).document(documentReference).updateData(data) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+
+            completion?(true)
+        }
     }
 
 }

@@ -11,25 +11,50 @@ import UIKit
 class FeedViewController: UIViewController {
 
     /* Outlets */
+    @IBOutlet var attendingCollection: UICollectionView!
     @IBOutlet var onGoingCollection: UICollectionView!
 
     /* Member Variables */
     var mDb: DatabaseUtils!
+    var player: Player!
     var eventsArray: [Event] = []
+    var attendingEvents: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mDb = DatabaseUtils.sharedInstance
-        mDb.readDecuments(from: .events, returning: Event.self) { (objectsArray) in
-            self.eventsArray = objectsArray
-            self.onGoingCollection.reloadData()
-        }
-
         // CollectionView Setup
+        attendingCollection.register(UINib.init(nibName: "AttendingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
+        attendingCollection.delegate = self
+        attendingCollection.dataSource = self
+
         onGoingCollection.register(UINib.init(nibName: "onGoingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         onGoingCollection.delegate = self
         onGoingCollection.dataSource = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if player == nil {
+            if let player = AuthUtils.currentUser() {
+                mDb = DatabaseUtils.sharedInstance
+                // Read Attending events
+                mDb.readDocument(from: .players, reference: player.id, returning: Player.self) { (playerObject) in
+                    self.attendingEvents.removeAll()
+                    for attending in playerObject.attending {
+                        self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self, completion: { (eventObject) in
+                            self.attendingEvents.append(eventObject)
+                            self.attendingCollection.reloadData()
+                        })
+                    }
+                }
+
+                // Read OnGoing events
+                mDb.readDecuments(from: .events, returning: Event.self) { (objectsArray) in
+                    self.eventsArray = objectsArray
+                    self.onGoingCollection.reloadData()
+                }
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,23 +78,50 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventsArray.count
+        if collectionView == self.onGoingCollection {
+            return eventsArray.count
+        }
+        if collectionView == self.attendingCollection {
+            return attendingEvents.count
+        }
+
+        return 0
     }
 
     // Set CollectionViewCell dimentions
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 341, height: 122)
+        if collectionView == self.onGoingCollection {
+            return CGSize(width: 341, height: 122)
+        }
+        if collectionView == self.attendingCollection {
+            return CGSize(width: 165, height: 90)
+        }
+
+        return CGSize(width: 0, height: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! OnGoingCollectionViewCell
+        if collectionView == self.onGoingCollection {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! OnGoingCollectionViewCell
 
-        let event = eventsArray[indexPath.row]
+            let event = eventsArray[indexPath.row]
 
-        // Configure cell properties
-        cell.configureCell(with: event)
+            // Configure cell properties
+            cell.configureCell(with: event)
 
-        return cell
+            return cell
+        }
+        if collectionView == self.attendingCollection {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! AttendingCollectionViewCell
+
+            let event = attendingEvents[indexPath.row]
+
+            cell.configureCell(with: event)
+
+            return cell
+        }
+
+        return UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -44,13 +44,16 @@ class SignUpViewController: UIViewController {
             // Start a loading indicator
             let activityIndicator = ActivityIndicatorUtils.activityIndicatorMake(view: self.view)
             activityIndicator.startAnimating()
-
+            self.signUp.isEnabled = false
             // SignUp user and perform segue after completion
             AuthUtils.signUpwithEmailAndPassword(email: email, password: password, name: name, photo: data) { (success) in
+                activityIndicator.stopAnimating()
+
                 if success {
-                    activityIndicator.stopAnimating()
-                    self.performSegue(withIdentifier: "unwindToNavigation", sender: nil)
+                    self.performSegue(withIdentifier: "toFavorite", sender: nil)
                 }
+                
+                self.signUp.isEnabled = true
             }
 
         } else {

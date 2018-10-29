@@ -19,6 +19,7 @@ class ActivityIndicatorUtils {
         // Anchor to center
         activityIndicator.center = view.center
 
+        view.addSubview(activityIndicator)
         return activityIndicator
     }
 
