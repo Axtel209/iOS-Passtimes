@@ -100,20 +100,115 @@
         <!--Edit Profile-->
         <scene sceneID="nWK-0g-xgQ">
             <objects>
-                <viewController id="y1p-fn-Rb8" sceneMemberID="viewController">
+                <viewController id="y1p-fn-Rb8" customClass="EditProfileViewController" customModule="Passtimes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="99e-LA-X3g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_background" translatesAutoresizingMaskIntoConstraints="NO" id="eWI-B2-Kuw" userLabel="Background">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQo-B4-Djv" userLabel="Profile Photo">
+                                <rect key="frame" x="115" y="83.5" width="145" height="145"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="A16-Ev-wa6"/>
+                                    <constraint firstAttribute="width" constant="145" id="Rp6-sQ-I67"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUF-h0-HCn">
+                                <rect key="frame" x="172.5" y="230.5" width="30" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="edit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="editImage:" destination="y1p-fn-Rb8" eventType="touchUpInside" id="fGB-aL-Y1m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teX-sT-Aw9">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.12549019610000001" green="0.77647058820000003" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QIf-go-8io"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateProfile:" destination="y1p-fn-Rb8" eventType="touchUpInside" id="0MH-vw-NKU"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0kl-7R-Asc" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="21" y="341" width="333" height="39.5"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Full Name"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8p-Ld-64V">
+                                <rect key="frame" x="16" y="289" width="151" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0kl-7R-Asc" firstAttribute="top" secondItem="x8p-Ld-64V" secondAttribute="bottom" constant="16" id="AB1-9y-umB"/>
+                            <constraint firstItem="AUF-h0-HCn" firstAttribute="top" secondItem="xQo-B4-Djv" secondAttribute="bottom" constant="2" id="FFO-0D-Or5"/>
+                            <constraint firstItem="eWI-B2-Kuw" firstAttribute="height" secondItem="99e-LA-X3g" secondAttribute="height" multiplier="0.3" id="N5Q-su-6nf"/>
+                            <constraint firstItem="LKl-FR-m9w" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AUF-h0-HCn" secondAttribute="trailing" id="Ogi-AM-2A2"/>
+                            <constraint firstItem="LKl-FR-m9w" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="x8p-Ld-64V" secondAttribute="trailing" constant="16" id="PGL-v9-khZ"/>
+                            <constraint firstItem="LKl-FR-m9w" firstAttribute="trailing" secondItem="eWI-B2-Kuw" secondAttribute="trailing" id="QIS-Ps-qTS"/>
+                            <constraint firstItem="0kl-7R-Asc" firstAttribute="leading" secondItem="LKl-FR-m9w" secondAttribute="leading" constant="21" id="Uoy-Hv-mGv"/>
+                            <constraint firstItem="LKl-FR-m9w" firstAttribute="trailing" secondItem="teX-sT-Aw9" secondAttribute="trailing" id="Vh5-Rf-h9F"/>
+                            <constraint firstItem="AUF-h0-HCn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LKl-FR-m9w" secondAttribute="leading" id="bkg-Au-sKa"/>
+                            <constraint firstItem="xQo-B4-Djv" firstAttribute="centerX" secondItem="eWI-B2-Kuw" secondAttribute="centerX" id="ckm-VX-6OT"/>
+                            <constraint firstItem="eWI-B2-Kuw" firstAttribute="top" secondItem="LKl-FR-m9w" secondAttribute="top" id="e24-gf-3Qa"/>
+                            <constraint firstItem="LKl-FR-m9w" firstAttribute="trailing" secondItem="0kl-7R-Asc" secondAttribute="trailing" constant="21" id="iT5-Gc-vbX"/>
+                            <constraint firstItem="eWI-B2-Kuw" firstAttribute="leading" secondItem="LKl-FR-m9w" secondAttribute="leading" id="k2p-k8-p8e"/>
+                            <constraint firstItem="AUF-h0-HCn" firstAttribute="centerX" secondItem="xQo-B4-Djv" secondAttribute="centerX" id="knY-Xw-fk7"/>
+                            <constraint firstItem="0kl-7R-Asc" firstAttribute="centerX" secondItem="LKl-FR-m9w" secondAttribute="centerX" id="o4m-d1-MYF"/>
+                            <constraint firstItem="x8p-Ld-64V" firstAttribute="leading" secondItem="LKl-FR-m9w" secondAttribute="leading" constant="16" id="qBB-Iy-gBP"/>
+                            <constraint firstItem="teX-sT-Aw9" firstAttribute="leading" secondItem="LKl-FR-m9w" secondAttribute="leading" id="qX7-Aq-Q9Z"/>
+                            <constraint firstItem="LKl-FR-m9w" firstAttribute="bottom" secondItem="teX-sT-Aw9" secondAttribute="bottom" id="umj-zV-Uey"/>
+                            <constraint firstItem="xQo-B4-Djv" firstAttribute="centerY" secondItem="eWI-B2-Kuw" secondAttribute="centerY" multiplier="0.95" id="xKi-qD-2TQ"/>
+                            <constraint firstItem="x8p-Ld-64V" firstAttribute="top" secondItem="eWI-B2-Kuw" secondAttribute="bottom" constant="25" id="yhE-zH-2VQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LKl-FR-m9w"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="NbU-gD-tcR">
                         <barButtonItem key="backBarButtonItem" title="Back" id="vlW-Im-hUx"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="name" destination="0kl-7R-Asc" id="oWC-fU-gsk"/>
+                        <outlet property="profilePhoto" destination="xQo-B4-Djv" id="6QT-3I-Kr5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bho-HH-PiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2047.2" y="170.46476761619192"/>
+            <point key="canvasLocation" x="2015" y="171"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gJ7-9e-pXn">
@@ -138,5 +233,6 @@
         <image name="head_oval" width="512" height="270"/>
         <image name="ic_edit" width="16" height="16"/>
         <image name="ic_logout" width="18" height="18"/>
+        <image name="red_background" width="411" height="220"/>
     </resources>
 </document>

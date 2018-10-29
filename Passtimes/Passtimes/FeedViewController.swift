@@ -35,7 +35,8 @@ class FeedViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         if player == nil {
-            if let player = AuthUtils.currentUser() {
+            if let currentPlayer = AuthUtils.currentUser() {
+                player = currentPlayer
                 mDb = DatabaseUtils.sharedInstance
                 // Read Attending events
                 mDb.readDocument(from: .players, reference: player.id, returning: Player.self) { (playerObject) in
@@ -113,6 +114,13 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! OnGoingCollectionViewCell
 
             let event = eventsArray[indexPath.row]
+
+            let playerRef = mDb.documentReference(docRef: player.id, from: .players)
+            if event.attendees.contains(playerRef) {
+                cell.isAttending(true)
+            } else {
+                cell.isAttending(false)
+            }
 
             // Configure cell properties
             cell.configureCell(with: event)

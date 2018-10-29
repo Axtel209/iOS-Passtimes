@@ -91,7 +91,7 @@ class AuthUtils {
         updateUserInfo(name: name, photo: thumbnail)
     }
 
-    private static func updateUserInfo(name: String, photo: String) {
+    static func updateUserInfo(name: String, photo: String) {
         guard let changeRequest = auth.currentUser?.createProfileChangeRequest() else { return }
         changeRequest.displayName = name
         changeRequest.photoURL = URL(string: photo)

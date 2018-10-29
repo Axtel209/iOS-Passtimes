@@ -36,6 +36,7 @@
 		FBCEE7182186D5D900ED9C9C /* PickFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE7172186D5D900ED9C9C /* PickFavoriteViewController.swift */; };
 		FBCEE71B21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE71A21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift */; };
 		FBCEE71D21870D0700ED9C9C /* PlayerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE71C21870D0700ED9C9C /* PlayerList.xib */; };
+		FBCEE71F218718E100ED9C9C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE71E218718E100ED9C9C /* EditProfileViewController.swift */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */; };
 		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
@@ -85,6 +86,7 @@
 		FBCEE7172186D5D900ED9C9C /* PickFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickFavoriteViewController.swift; sourceTree = "<group>"; };
 		FBCEE71A21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBCEE71C21870D0700ED9C9C /* PlayerList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerList.xib; sourceTree = "<group>"; };
+		FBCEE71E218718E100ED9C9C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				FBCEE70C21863D6900ED9C9C /* Profile.storyboard */,
 				FBCEE70621863A8C00ED9C9C /* ProfileViewController.swift */,
+				FBCEE71E218718E100ED9C9C /* EditProfileViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */,
 				FBF223F1218122CC00F570D6 /* CalendarUtils.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
+				FBCEE71F218718E100ED9C9C /* EditProfileViewController.swift in Sources */,
 				FBCEE6FC2183D0AC00ED9C9C /* SignUpViewController.swift in Sources */,
 				FBAC82132182443D003546D5 /* PageContentViewController.swift in Sources */,
 				FBCEE71B21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift in Sources */,
