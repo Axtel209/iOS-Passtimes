@@ -14,7 +14,6 @@ class NavigationController: UITabBarController {
         super.viewDidLoad()
 
         //auth.signOut()
-        //AuthUtils.signOut()
 //        if (!AuthUtils.isUserCurrentlySignedIn()){
 //            perform(#selector(showOnBoardingController), with: nil, afterDelay: 0.01)
 //        }
@@ -29,8 +28,8 @@ class NavigationController: UITabBarController {
     }
 
     @objc func showOnBoardingController() {
-        if let loginVC = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as? OnBoardingViewController {
-            present(loginVC, animated: true, completion: nil)
+        if let onboarding = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as? OnBoardingViewController {
+            present(onboarding, animated: true, completion: nil)
         }
     }
 

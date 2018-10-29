@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayerListCollectionViewCell" customModule="Passtimes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="333" height="55"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0i-Wx-qWb" userLabel="Card">
+                    <rect key="frame" x="0.0" y="0.0" width="333" height="55"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="glO-HT-nzW" userLabel="Player Photo">
+                            <rect key="frame" x="12" y="5.5" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="ogA-gl-bsM"/>
+                                <constraint firstAttribute="height" constant="44" id="rmd-ek-TKn"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sT7-Yk-qzK" userLabel="Full Name">
+                            <rect key="frame" x="67" y="16.5" width="105" height="22"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="sT7-Yk-qzK" firstAttribute="centerY" secondItem="V0i-Wx-qWb" secondAttribute="centerY" id="DwA-gB-HAa"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sT7-Yk-qzK" secondAttribute="trailing" constant="16" id="EN8-rh-D9I"/>
+                        <constraint firstItem="sT7-Yk-qzK" firstAttribute="leading" secondItem="glO-HT-nzW" secondAttribute="trailing" constant="11" id="M6H-ea-fzg"/>
+                        <constraint firstAttribute="bottom" secondItem="glO-HT-nzW" secondAttribute="bottom" constant="5.5" id="PBS-cD-Aks"/>
+                        <constraint firstItem="glO-HT-nzW" firstAttribute="top" secondItem="V0i-Wx-qWb" secondAttribute="top" constant="5.5" id="UN2-rV-g3X"/>
+                        <constraint firstItem="glO-HT-nzW" firstAttribute="centerY" secondItem="V0i-Wx-qWb" secondAttribute="centerY" id="WNY-ph-SHP"/>
+                        <constraint firstItem="glO-HT-nzW" firstAttribute="leading" secondItem="V0i-Wx-qWb" secondAttribute="leading" constant="12" id="WdO-B1-afg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="V0i-Wx-qWb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="7PX-Wk-cR6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="V0i-Wx-qWb" secondAttribute="bottom" id="WbY-zh-3Qi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="V0i-Wx-qWb" secondAttribute="trailing" id="ZvT-bI-qnl"/>
+                <constraint firstItem="V0i-Wx-qWb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yul-Lz-yNw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="card" destination="V0i-Wx-qWb" id="Hw3-dH-Jzx"/>
+                <outlet property="name" destination="sT7-Yk-qzK" id="aJR-lB-GxN"/>
+                <outlet property="playerPhoto" destination="glO-HT-nzW" id="x8L-KK-lWh"/>
+            </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
+        </view>
+    </objects>
+</document>

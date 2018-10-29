@@ -123,9 +123,12 @@ class DatabaseUtils {
                     // Return object after complition
                     completion(object)
                 } else {
-                    print(document.documentID)
                     let documentRef = self.reference(to: collectionReference).document(document.documentID)
-                    self.updateDocument(withReference: documentReference, from: collectionReference, data: ["attending": FieldValue.arrayRemove([documentRef])], completion: nil)
+                    if objectType == Player.self {
+                        self.updateDocument(withReference: document.documentID, from: collectionReference, data: ["attending": FieldValue.arrayRemove([documentRef])], completion: nil)
+                    } else {
+                        self.updateDocument(withReference: document.documentID, from: collectionReference, data: ["attendees": FieldValue.arrayRemove([documentRef])], completion: nil)
+                    }
                 }
             } catch {
                 print("Decoding Document Error - " + error.localizedDescription)

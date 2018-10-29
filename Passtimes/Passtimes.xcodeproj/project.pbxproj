@@ -34,6 +34,8 @@
 		FBCEE7142186AFC100ED9C9C /* AttendingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE7132186AFC100ED9C9C /* AttendingCollectionCell.xib */; };
 		FBCEE7162186D0D200ED9C9C /* PickFavorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE7152186D0D200ED9C9C /* PickFavorite.storyboard */; };
 		FBCEE7182186D5D900ED9C9C /* PickFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE7172186D5D900ED9C9C /* PickFavoriteViewController.swift */; };
+		FBCEE71B21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCEE71A21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift */; };
+		FBCEE71D21870D0700ED9C9C /* PlayerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEE71C21870D0700ED9C9C /* PlayerList.xib */; };
 		FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223C92180DF9C00F570D6 /* AppDelegate.swift */; };
 		FBF223CC2180DF9C00F570D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */; };
 		FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */; };
@@ -81,6 +83,8 @@
 		FBCEE7132186AFC100ED9C9C /* AttendingCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendingCollectionCell.xib; sourceTree = "<group>"; };
 		FBCEE7152186D0D200ED9C9C /* PickFavorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PickFavorite.storyboard; sourceTree = "<group>"; };
 		FBCEE7172186D5D900ED9C9C /* PickFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickFavoriteViewController.swift; sourceTree = "<group>"; };
+		FBCEE71A21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBCEE71C21870D0700ED9C9C /* PlayerList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerList.xib; sourceTree = "<group>"; };
 		FBF223C62180DF9C00F570D6 /* Passtimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF223C92180DF9C00F570D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF223CB2180DF9C00F570D6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,15 @@
 			name = "New Group";
 			sourceTree = "<group>";
 		};
+		FBCEE71921870C6D00ED9C9C /* PlayerList */ = {
+			isa = PBXGroup;
+			children = (
+				FBCEE71C21870D0700ED9C9C /* PlayerList.xib */,
+				FBCEE71A21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift */,
+			);
+			name = PlayerList;
+			sourceTree = "<group>";
+		};
 		FBF223BD2180DF9C00F570D6 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +223,7 @@
 				FBF223C92180DF9C00F570D6 /* AppDelegate.swift */,
 				FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */,
 				FBAC821F21828323003546D5 /* NavigationController.swift */,
+				FBCEE71921870C6D00ED9C9C /* PlayerList */,
 				FBAC820F21823B11003546D5 /* OnBoarding */,
 				FBAC821621826435003546D5 /* Login */,
 				FBCEE6FD2183D0B000ED9C9C /* SignUp */,
@@ -368,6 +382,7 @@
 				FBCEE7162186D0D200ED9C9C /* PickFavorite.storyboard in Resources */,
 				FBAC82072181569F003546D5 /* CreateEvent.storyboard in Resources */,
 				FBCEE7142186AFC100ED9C9C /* AttendingCollectionCell.xib in Resources */,
+				FBCEE71D21870D0700ED9C9C /* PlayerList.xib in Resources */,
 				FBCEE70D21863D6900ED9C9C /* Profile.storyboard in Resources */,
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
 				FBF223F921812D8A00F570D6 /* DetailEvent.storyboard in Resources */,
@@ -484,6 +499,7 @@
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
 				FBCEE6FC2183D0AC00ED9C9C /* SignUpViewController.swift in Sources */,
 				FBAC82132182443D003546D5 /* PageContentViewController.swift in Sources */,
+				FBCEE71B21870CFC00ED9C9C /* PlayerListCollectionViewCell.swift in Sources */,
 				FBF223F521812A5600F570D6 /* DetailEventViewController.swift in Sources */,
 				FBAC821E21826BC8003546D5 /* AuthUtils.swift in Sources */,
 				FBAC821C21826B0A003546D5 /* Player.swift in Sources */,

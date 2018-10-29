@@ -34,6 +34,7 @@ class DetailEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        attendeesCollectionView.register(UINib(nibName: "PlayerList", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         attendeesCollectionView.delegate = self
         attendeesCollectionView.dataSource = self
 
@@ -146,7 +147,7 @@ class DetailEventViewController: UIViewController {
     }
 }
 
-extension DetailEventViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DetailEventViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -156,10 +157,16 @@ extension DetailEventViewController: UICollectionViewDelegate, UICollectionViewD
         return attendees.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 343, height: 55)
+    }
 
-        cell.backgroundColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! PlayerListCollectionViewCell
+
+        let player = attendees[indexPath.row]
+
+        cell.configureCell(with: player)
 
         return cell
     }

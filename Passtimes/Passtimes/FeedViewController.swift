@@ -57,10 +57,18 @@ class FeedViewController: UIViewController {
         }
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        // TODO: Unregister listeners
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = sender as? IndexPath, let destination = segue.destination as? DetailEventViewController {
+        if let tuple = sender as? (IndexPath, UICollectionView), let destination = segue.destination as? DetailEventViewController {
             // Pass eventId to DetailView
-            destination.eventId = eventsArray[indexPath.row].id
+            if tuple.1 == self.onGoingCollection {
+                destination.eventId = eventsArray[tuple.0.row].id
+            } else {
+                destination.eventId = attendingEvents[tuple.0.row].id
+            }
         }
     }
 
@@ -125,7 +133,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toDetailView", sender: indexPath)
+        performSegue(withIdentifier: "toDetailView", sender: (indexPath, collectionView))
     }
 
 }

@@ -18,8 +18,7 @@ class PickSportCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
         // Set cell cornerRadius and shadow
-        self.card.layer.cornerRadius = 10
-        self.card.layer.masksToBounds = true
+        self.card.roundedCorners(radius: 10)
 
         // Draw shadow to cell
         self.backgroundColor = UIColor.clear

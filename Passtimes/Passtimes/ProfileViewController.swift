@@ -38,4 +38,11 @@ class ProfileViewController: UIViewController {
         performSegue(withIdentifier: "toEditProfile", sender: nil)
     }
 
+    @IBAction func logout(_ sender: Any) {
+        AuthUtils.signOut()
+        if let onboarding = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as? OnBoardingViewController {
+            present(onboarding, animated: true, completion: nil)
+        }
+    }
+
 }
