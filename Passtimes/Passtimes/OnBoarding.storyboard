@@ -31,12 +31,6 @@
                                     <action selector="moveToNextViewController:" destination="vLK-Cn-xjd" eventType="touchUpInside" id="RF7-UA-b4W"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhY-AR-7NJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="440"/>
-                                <connections>
-                                    <segue destination="vf2-pb-ICC" kind="embed" id="EXQ-fe-9YZ"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEN-S7-Q0p">
                                 <rect key="frame" x="16" y="620" width="343" height="27"/>
                                 <state key="normal">
@@ -63,25 +57,29 @@
                                     <action selector="moveToNextViewController:" destination="vLK-Cn-xjd" eventType="touchUpInside" id="6QT-KH-NLR"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qy-Th-nI1" customClass="OnboardingPage" customModule="Passtimes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="467"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Wpm-bO-USG" firstAttribute="leading" secondItem="6hU-sM-Ijc" secondAttribute="leading" constant="16" id="2Ex-Mv-5Jy"/>
                             <constraint firstItem="6hU-sM-Ijc" firstAttribute="trailing" secondItem="wEN-S7-Q0p" secondAttribute="trailing" constant="16" id="3sS-Al-tR5"/>
-                            <constraint firstItem="Wpm-bO-USG" firstAttribute="top" secondItem="XhY-AR-7NJ" secondAttribute="bottom" constant="80" id="AfC-hT-NDx"/>
-                            <constraint firstItem="6hU-sM-Ijc" firstAttribute="trailing" secondItem="XhY-AR-7NJ" secondAttribute="trailing" id="B3a-8F-KWW"/>
+                            <constraint firstItem="9qy-Th-nI1" firstAttribute="height" secondItem="3kz-9w-wrv" secondAttribute="height" multiplier="0.7" id="9ai-KQ-rW0"/>
+                            <constraint firstItem="9qy-Th-nI1" firstAttribute="leading" secondItem="6hU-sM-Ijc" secondAttribute="leading" id="Amu-m0-dTv"/>
+                            <constraint firstItem="Wpm-bO-USG" firstAttribute="top" secondItem="9qy-Th-nI1" secondAttribute="bottom" constant="53" id="AwQ-zh-h00"/>
                             <constraint firstItem="wEN-S7-Q0p" firstAttribute="leading" secondItem="6hU-sM-Ijc" secondAttribute="leading" constant="16" id="Bjc-35-Szu"/>
-                            <constraint firstItem="XhY-AR-7NJ" firstAttribute="height" secondItem="3kz-9w-wrv" secondAttribute="height" multiplier="0.66" id="Deo-Pj-g2b"/>
-                            <constraint firstItem="XhY-AR-7NJ" firstAttribute="top" secondItem="6hU-sM-Ijc" secondAttribute="top" id="OCD-2n-IAp"/>
-                            <constraint firstItem="XhY-AR-7NJ" firstAttribute="leading" secondItem="6hU-sM-Ijc" secondAttribute="leading" id="Zsq-yZ-LPC"/>
+                            <constraint firstItem="6hU-sM-Ijc" firstAttribute="trailing" secondItem="9qy-Th-nI1" secondAttribute="trailing" id="Qto-JZ-xA0"/>
                             <constraint firstItem="6hU-sM-Ijc" firstAttribute="bottom" secondItem="wEN-S7-Q0p" secondAttribute="bottom" constant="20" id="h0U-8f-j4R"/>
                             <constraint firstItem="6hU-sM-Ijc" firstAttribute="trailing" secondItem="Wpm-bO-USG" secondAttribute="trailing" constant="16" id="j57-eo-Gf9"/>
+                            <constraint firstItem="9qy-Th-nI1" firstAttribute="top" secondItem="6hU-sM-Ijc" secondAttribute="top" id="zSi-mw-ChB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6hU-sM-Ijc"/>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="Wpm-bO-USG" id="bM2-Go-r4A"/>
-                        <outlet property="pageContainer" destination="XhY-AR-7NJ" id="rEi-yu-SlW"/>
+                        <outlet property="onboardingView" destination="9qy-Th-nI1" id="21U-4r-P4k"/>
                         <segue destination="XtF-2x-JgY" kind="showDetail" identifier="toLogin" id="T9c-fk-qOq"/>
                         <segue destination="e1i-Ay-lOW" kind="showDetail" identifier="toSignUp" id="8eN-aq-j31"/>
                     </connections>
@@ -105,50 +103,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5Q-50-8FZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="41" y="670"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="eQu-zi-f7e">
-            <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vf2-pb-ICC" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="Epr-EX-OL3" kind="show" id="eDF-57-SXK"/>
-                    </connections>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PNt-PA-2cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="874" y="213"/>
-        </scene>
-        <!--Page Content View Controller-->
-        <scene sceneID="ePt-AD-1qn">
-            <objects>
-                <viewController storyboardIdentifier="PageContentViewController" id="Epr-EX-OL3" customClass="PageContentViewController" customModule="Passtimes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XJD-uF-a0S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELLO WORLD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8E-Is-cJw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="q8E-Is-cJw" firstAttribute="top" secondItem="j6b-8I-IfF" secondAttribute="top" id="0I7-HE-tyt"/>
-                            <constraint firstItem="q8E-Is-cJw" firstAttribute="trailing" secondItem="j6b-8I-IfF" secondAttribute="trailing" id="21v-9h-bWp"/>
-                            <constraint firstItem="q8E-Is-cJw" firstAttribute="leading" secondItem="j6b-8I-IfF" secondAttribute="leading" id="5wD-mp-RIT"/>
-                            <constraint firstItem="q8E-Is-cJw" firstAttribute="bottom" secondItem="j6b-8I-IfF" secondAttribute="bottom" id="qIh-E3-xLN"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="j6b-8I-IfF"/>
-                    </view>
-                    <connections>
-                        <outlet property="message" destination="q8E-Is-cJw" id="9pJ-bp-frp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OwN-Lz-ZZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="873" y="778"/>
         </scene>
     </scenes>
 </document>

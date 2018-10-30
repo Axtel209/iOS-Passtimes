@@ -111,17 +111,22 @@
             </objects>
             <point key="canvasLocation" x="1008.8" y="-241.52923538230885"/>
         </scene>
-        <!--Item-->
+        <!--Feed-->
         <scene sceneID="aC9-5E-6Yj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YQ5-oB-4n4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="q6E-5Q-lIx"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="ic_feed" selectedImage="ic_feed" id="q6E-5Q-lIx">
+                        <color key="badgeColor" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="XRu-VN-Ijw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kEt-c6-avi">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="9Ws-5t-fJj" kind="relationship" relationship="rootViewController" id="kaI-pT-T7l"/>
                     </connections>
@@ -147,4 +152,7 @@
             <point key="canvasLocation" x="1864" y="-242"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_feed" width="17" height="16"/>
+    </resources>
 </document>

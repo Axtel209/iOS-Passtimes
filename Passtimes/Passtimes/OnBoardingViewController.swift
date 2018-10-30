@@ -7,55 +7,75 @@
 //
 
 import UIKit
+import paper_onboarding
 
-class OnBoardingViewController: UIViewController {
+class OnBoardingViewController: UIViewController, PaperOnboardingDelegate, PaperOnboardingDataSource {
 
     /* IBOlets */
-    @IBOutlet weak var pageContainer: UIView!
+    @IBOutlet var onboardingView: OnboardingPage!
     @IBOutlet var loginButton: UIButton!
 
     /* Member Variables */
-    var pageViewController: UIPageViewController!
-    var messages = ["Hello world", "Ciao"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        onboardingView.delegate = self
+        onboardingView.dataSource = self
+
         loginButton.roundedCorners(radius: 10)
         loginButton.drawShadow(offset: CGSize(width: 0, height: 2), radius: 4.0, opacity: 0.2)
-
-        pageViewControllerSetup()
     }
 
-    func pageViewControllerSetup() {
-        self.pageViewController = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
-        self.pageViewController.dataSource = self
-
-        // Start from the first page
-        let pageContentViewController = viewController(at: 0)
-        self.pageViewController.setViewControllers([pageContentViewController!], direction: .forward, animated: true, completion: nil)
-
-
-        /* We are substracting 30 because we have a start again button whose height is 30*/
-        //self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - 30)
-        //self.addChildViewController(pageViewController)
-        //self.view.addSubview(pageViewController.view)
-        self.pageContainer.addSubview(pageViewController.view)
-        //self.pageViewController.didMoveToParentViewController(self)
+    func onboardingItemsCount() -> Int {
+        return 3
     }
 
-    func viewController(at index : Int) -> UIViewController? {
-        if((self.messages.count == 0) || (index >= self.messages.count)) {
-            return nil
-        }
+    func onboardingItem(at index: Int) -> OnboardingItemInfo {
 
-        // Get pageContentViewController
-        let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
+        let redColor = UIColor.init(red: 217.0/255.0, green: 61.0/255.0, blue: 90.0/255.0, alpha: 1.0)
 
-        // Set pageContent
-        pageContentViewController.contentMessage = self.messages[index]
+        let font = UIFont(name: "AvenirNext-Bold", size: 18)
 
-        return pageContentViewController
+        return [
+            OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "onboarding_one"),
+                               title: "Connect with the Community",
+                               description: "Meet up with new people or friends by attending or creating events.",
+                               pageIcon: UIImage(),
+                               color: UIColor.clear,
+                               titleColor: redColor,
+                               descriptionColor: UIColor.black,
+                               titleFont: font!,
+                               descriptionFont: font!),
+
+            OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "onboarding_two"),
+                               title: "Earn achivements and points",
+                               description: "Receive points and compete with other players and friends.",
+                               pageIcon: UIImage(),
+                               color: UIColor.clear,
+                               titleColor: redColor,
+                               descriptionColor: UIColor.black,
+                               titleFont: font!,
+                               descriptionFont: font!),
+
+            OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "onboarding_three"),
+                               title: "Build your own profile",
+                               description: "Have your own player card with your achiviements, points and past events.",
+                               pageIcon: UIImage(),
+                               color: UIColor.clear,
+                               titleColor: redColor,
+                               descriptionColor: UIColor.black,
+                               titleFont: font!,
+                               descriptionFont: font!)
+            ][index]
+    }
+
+    func onboardingWillTransitonToIndex(_: Int) {
+        
+    }
+
+    func onboardingDidTransitonToIndex(_: Int) {
+
     }
 
     @IBAction func moveToNextViewController(_ sender: Any) {
@@ -66,35 +86,6 @@ class OnBoardingViewController: UIViewController {
                 performSegue(withIdentifier: "toSignUp", sender: nil)
             }
         }
-    }
-
-}
-
-extension OnBoardingViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        // Get current pageIndex and add one
-        var index = (viewController as! PageContentViewController).pageIndex!
-        index += 1
-
-        // If pageIndex is last don't change
-        if(index >= self.messages.count){
-            return nil
-        }
-
-        return self.viewController(at: index)
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        // Get current pageIndex and substract one
-        var index = (viewController as! PageContentViewController).pageIndex!
-        index -= 1
-
-        if(index < 0){
-            return nil
-        }
-
-        return self.viewController(at: index)
     }
 
 }

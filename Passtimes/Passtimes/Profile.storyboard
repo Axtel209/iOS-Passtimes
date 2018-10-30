@@ -9,7 +9,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--PickFavorite-->
+        <scene sceneID="OUr-ub-eLx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PickFavorite" id="GjT-Pc-dg0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5HP-zI-izE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="-284"/>
+        </scene>
+        <!--Profile-->
         <scene sceneID="q2t-s4-OGA">
             <objects>
                 <viewController id="zMb-9W-YHX" customClass="ProfileViewController" customModule="Passtimes" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,12 +49,23 @@
                                             <action selector="editProfile:" destination="zMb-9W-YHX" eventType="touchUpInside" id="wgn-Wf-xK0"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fev-8j-4wp">
+                                        <rect key="frame" x="255" y="10" width="24" height="24"/>
+                                        <state key="normal" image="ic_favorite"/>
+                                        <connections>
+                                            <segue destination="GjT-Pc-dg0" kind="showDetail" id="EMY-6u-EQn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1FP-u2-B5v"/>
                                     <constraint firstItem="zft-hV-f3G" firstAttribute="centerY" secondItem="MqE-Rb-2kr" secondAttribute="centerY" id="7QO-ML-seS"/>
+                                    <constraint firstItem="fev-8j-4wp" firstAttribute="width" secondItem="7Kc-uO-wqn" secondAttribute="width" id="IZN-TF-ejj"/>
+                                    <constraint firstItem="7Kc-uO-wqn" firstAttribute="leading" secondItem="fev-8j-4wp" secondAttribute="trailing" constant="16" id="L57-d3-MMJ"/>
+                                    <constraint firstItem="fev-8j-4wp" firstAttribute="height" secondItem="7Kc-uO-wqn" secondAttribute="height" id="YuE-1g-mMP"/>
                                     <constraint firstItem="7Kc-uO-wqn" firstAttribute="width" secondItem="zft-hV-f3G" secondAttribute="width" id="ZSU-oh-as0"/>
+                                    <constraint firstItem="fev-8j-4wp" firstAttribute="centerY" secondItem="7Kc-uO-wqn" secondAttribute="centerY" id="dXi-sJ-ORh"/>
                                     <constraint firstItem="7Kc-uO-wqn" firstAttribute="height" secondItem="zft-hV-f3G" secondAttribute="height" id="pFV-aq-b0n"/>
                                     <constraint firstAttribute="trailing" secondItem="zft-hV-f3G" secondAttribute="trailing" constant="16" id="psw-hD-YND"/>
                                     <constraint firstItem="7Kc-uO-wqn" firstAttribute="centerY" secondItem="zft-hV-f3G" secondAttribute="centerY" id="vTv-ag-i35"/>
@@ -66,28 +85,64 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmH-Jp-edD">
+                                <rect key="frame" x="16" y="254" width="239.5" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o09-Kz-3Rg">
+                                <rect key="frame" x="0.0" y="300" width="375" height="133.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kk8-KT-z7U">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="21" minY="6" maxX="21" maxY="6"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellIdentifier" id="zFh-ZY-PG8">
+                                        <rect key="frame" x="21" y="6" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MqE-Rb-2kr" firstAttribute="top" secondItem="seb-OJ-YMM" secondAttribute="top" id="8lU-H5-7fT"/>
                             <constraint firstItem="seb-OJ-YMM" firstAttribute="trailing" secondItem="MqE-Rb-2kr" secondAttribute="trailing" id="DCS-q9-4WH"/>
+                            <constraint firstItem="seb-OJ-YMM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HmH-Jp-edD" secondAttribute="trailing" constant="16" id="LKz-6z-r9t"/>
+                            <constraint firstItem="o09-Kz-3Rg" firstAttribute="top" secondItem="HmH-Jp-edD" secondAttribute="bottom" constant="10" id="OO3-aG-EkS"/>
+                            <constraint firstItem="seb-OJ-YMM" firstAttribute="trailing" secondItem="o09-Kz-3Rg" secondAttribute="trailing" id="QDV-eh-Yk9"/>
                             <constraint firstItem="CTg-f6-suL" firstAttribute="leading" secondItem="seb-OJ-YMM" secondAttribute="leading" id="QsL-TH-V7S"/>
                             <constraint firstItem="GJW-Rk-VvY" firstAttribute="height" secondItem="TiW-C1-DS9" secondAttribute="height" multiplier="0.8" id="Tn5-lZ-a72"/>
                             <constraint firstItem="seb-OJ-YMM" firstAttribute="trailing" secondItem="CTg-f6-suL" secondAttribute="trailing" id="UUc-a5-Klr"/>
                             <constraint firstItem="TiW-C1-DS9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GJW-Rk-VvY" secondAttribute="trailing" constant="16" id="WCR-tw-yBy"/>
                             <constraint firstItem="seb-OJ-YMM" firstAttribute="trailing" secondItem="TiW-C1-DS9" secondAttribute="trailing" constant="16" id="Wh3-Ak-3Xu"/>
                             <constraint firstItem="TiW-C1-DS9" firstAttribute="top" secondItem="MqE-Rb-2kr" secondAttribute="bottom" constant="20" id="bhv-tj-LzR"/>
+                            <constraint firstItem="HmH-Jp-edD" firstAttribute="top" secondItem="TiW-C1-DS9" secondAttribute="bottom" constant="25" id="ccK-Ri-Wl0"/>
                             <constraint firstItem="GJW-Rk-VvY" firstAttribute="top" secondItem="TiW-C1-DS9" secondAttribute="top" id="e1c-If-aZ6"/>
                             <constraint firstItem="CTg-f6-suL" firstAttribute="top" secondItem="seb-OJ-YMM" secondAttribute="top" id="e1t-zh-oJq"/>
                             <constraint firstItem="CTg-f6-suL" firstAttribute="centerX" secondItem="seb-OJ-YMM" secondAttribute="centerX" id="jKh-AG-WWA"/>
                             <constraint firstItem="GJW-Rk-VvY" firstAttribute="leading" secondItem="seb-OJ-YMM" secondAttribute="leading" constant="16" id="oFm-a5-nK1"/>
+                            <constraint firstItem="o09-Kz-3Rg" firstAttribute="height" secondItem="Svr-eS-QHI" secondAttribute="height" multiplier="0.2" id="oSd-DV-Nfk"/>
                             <constraint firstItem="CTg-f6-suL" firstAttribute="height" secondItem="Svr-eS-QHI" secondAttribute="height" multiplier="0.3" id="qsr-2W-PXy"/>
+                            <constraint firstItem="HmH-Jp-edD" firstAttribute="leading" secondItem="seb-OJ-YMM" secondAttribute="leading" constant="16" id="s0x-79-NRZ"/>
+                            <constraint firstItem="o09-Kz-3Rg" firstAttribute="leading" secondItem="seb-OJ-YMM" secondAttribute="leading" id="sBY-kk-Fvf"/>
                             <constraint firstItem="MqE-Rb-2kr" firstAttribute="leading" secondItem="seb-OJ-YMM" secondAttribute="leading" id="yOh-BV-AQL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="seb-OJ-YMM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="pS2-zg-EgP"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="ic_profile" selectedImage="ic_profile" id="pS2-zg-EgP">
+                        <color key="badgeColor" red="0.85098039219999999" green="0.23921568630000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <connections>
+                        <outlet property="attendingCollection" destination="o09-Kz-3Rg" id="3ia-R6-T7F"/>
                         <outlet property="name" destination="GJW-Rk-VvY" id="BmU-Ww-Plu"/>
                         <outlet property="profilePhoto" destination="TiW-C1-DS9" id="fjB-WM-JYF"/>
                         <segue destination="uZo-ac-lVv" kind="show" identifier="toEditProfile" id="DeQ-ne-zhB"/>
@@ -226,13 +281,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OvC-xV-zqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="170"/>
+            <point key="canvasLocation" x="1146" y="171"/>
         </scene>
     </scenes>
     <resources>
         <image name="head_oval" width="512" height="270"/>
         <image name="ic_edit" width="16" height="16"/>
+        <image name="ic_favorite" width="18" height="15"/>
         <image name="ic_logout" width="18" height="18"/>
+        <image name="ic_profile" width="24" height="24"/>
         <image name="red_background" width="411" height="220"/>
     </resources>
 </document>
