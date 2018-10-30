@@ -129,18 +129,7 @@ class DatabaseUtils {
                             objectsArray.removeValue(forKey: object.id)
                         }
                     }
-
-//                    for documentIndex in 0..<snapshot.documents.count {
-//                        // Decode document to object
-//                        if snapshot.documents[documentIndex].exists {
-//                            let object = try FirestoreDecoder().decode(Event.self, from: snapshot.documents[documentIndex].data())
-//
-//                        // Add object to array
-//                            objectsArray.insert(object, at: documentIndex)
-//                        }
-//                    }
                     completion(Array(objectsArray.values))
-                    //completion(objectsArray)
                 } catch {
                     print(error.localizedDescription)
                 }

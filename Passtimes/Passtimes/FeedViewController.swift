@@ -44,6 +44,7 @@ class FeedViewController: UIViewController {
                     for attending in playerObject.attending {
                         self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self, completion: { (eventObject) in
                             self.attendingEvents.append(eventObject)
+                            self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
                             self.attendingCollection.reloadData()
                         })
                     }
@@ -52,6 +53,8 @@ class FeedViewController: UIViewController {
                 //player.favorites
                 mDb.readFilteredDocument(from: .events, field: "sport", favorites: ["Basketball", "Tennis", "Soccer", "Football"]) { (objectArray) in
                     self.eventsArray = objectArray
+                    // sort Array by date
+                    self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
                     self.onGoingCollection.reloadData()
                 }
             }

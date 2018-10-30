@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController {
             for attending in playerObject.attending {
                 self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self, completion: { (eventObject) in
                     self.attendingEvents.append(eventObject)
+                    self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
                     self.attendingCollection.reloadData()
                 })
             }
