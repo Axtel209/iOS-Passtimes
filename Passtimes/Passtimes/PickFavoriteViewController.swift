@@ -100,6 +100,7 @@ extension PickFavoriteViewController: UICollectionViewDelegate, UICollectionView
         let cell = collectionView.cellForItem(at: indexPath) as! PickSportCollectionViewCell
 
         if selectedSports.contains(indexPath) {
+            selectedSports.remove(at: indexPath.row)
             cell.configureCell(with: sportsArray[indexPath.row], isActive: false)
         } else {
             selectedSports.append(indexPath)

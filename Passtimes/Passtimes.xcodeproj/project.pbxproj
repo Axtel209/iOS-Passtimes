@@ -60,6 +60,7 @@
 		67FAF05D4AAD6BFD1D5CC84F /* Pods-Passtimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Passtimes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes.debug.xcconfig"; sourceTree = "<group>"; };
 		B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Passtimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB49A5D3218749070089E7DF /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		FB60096021880FDD00DCC481 /* kitten_swash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kitten_swash.ttf; sourceTree = "<group>"; };
 		FBAC8203218149BC003546D5 /* CustomViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewExtension.swift; sourceTree = "<group>"; };
 		FBAC82062181569E003546D5 /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		FBAC820821815AAE003546D5 /* PickSport.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickSport.xib; sourceTree = "<group>"; };
@@ -229,6 +230,7 @@
 				FBF223C92180DF9C00F570D6 /* AppDelegate.swift */,
 				FBF223CD2180DF9C00F570D6 /* Navigation.storyboard */,
 				FBAC821F21828323003546D5 /* NavigationController.swift */,
+				FB60096021880FDD00DCC481 /* kitten_swash.ttf */,
 				FBCEE71921870C6D00ED9C9C /* PlayerList */,
 				FBAC820A21815ABA003546D5 /* PickSport */,
 				FBAC820F21823B11003546D5 /* OnBoarding */,
