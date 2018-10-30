@@ -49,9 +49,9 @@ class FeedViewController: UIViewController {
                     }
                 }
 
-                // Read OnGoing events
-                mDb.readDecuments(from: .events, returning: Event.self) { (objectsArray) in
-                    self.eventsArray = objectsArray
+                //player.favorites
+                mDb.readFilteredDocument(from: .events, field: "sport", favorites: ["Basketball", "Tennis", "Soccer", "Football"]) { (objectArray) in
+                    self.eventsArray = objectArray
                     self.onGoingCollection.reloadData()
                 }
             }

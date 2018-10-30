@@ -102,6 +102,52 @@ class DatabaseUtils {
         }
     }
 
+    public func readFilteredDocument(from collectionReference: DatabaseReferences, field: String, favorites: [String], completion: @escaping ([Event]) -> Void) {
+        var objectsArray: [String: Event] = [:]
+        for sport in favorites {
+            reference(to: collectionReference).whereField(field, isEqualTo: sport).addSnapshotListener { (querySnapshot, error) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    return
+                }
+
+                guard let snapshot = querySnapshot else { return }
+
+                do {
+                    try snapshot.documentChanges.forEach { diff in
+                        let object = try FirestoreDecoder().decode(Event.self, from: diff.document.data())
+
+                        if (diff.type == .added) {
+                            //objectsArray.append(object)
+                            objectsArray[object.id] = object
+                        }
+                        if (diff.type == .modified) {
+                            objectsArray[object.id] = object
+                        }
+                        if (diff.type == .removed) {
+                            //print("Removed city: \(diff.document.data())")
+                            objectsArray.removeValue(forKey: object.id)
+                        }
+                    }
+
+//                    for documentIndex in 0..<snapshot.documents.count {
+//                        // Decode document to object
+//                        if snapshot.documents[documentIndex].exists {
+//                            let object = try FirestoreDecoder().decode(Event.self, from: snapshot.documents[documentIndex].data())
+//
+//                        // Add object to array
+//                            objectsArray.insert(object, at: documentIndex)
+//                        }
+//                    }
+                    completion(Array(objectsArray.values))
+                    //completion(objectsArray)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+
     // Retrive Document from Firestore
     public func readDocument<T: Codable>(from collectionReference: DatabaseReferences, reference documentReference: String, returning objectType: T.Type, completion: @escaping (T) -> Void) {
         reference(to: collectionReference).document(documentReference).addSnapshotListener { (documentSnapshot, error) in
