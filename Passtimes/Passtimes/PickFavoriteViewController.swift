@@ -18,7 +18,7 @@ class PickFavoriteViewController: UIViewController {
     /* Member Variables */
     var mDb: DatabaseUtils!
     var sportsArray: [Sport]!
-    var selectedSports: [IndexPath] = []
+    var selectedIndex: [Int] = [-1, -1, -1, -1, -1]
     var sportRefs: [DocumentReference] = []
 
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class PickFavoriteViewController: UIViewController {
 
     @IBAction func pickFavoriteSportSubmit(_ sender: Any) {
         // If ther is a sport selected continue
-        if !selectedSports.isEmpty {
+        if !selectedIndex.isEmpty {
             let activityIndicator = ActivityIndicatorUtils.activityIndicatorMake(view: self.view)
             activityIndicator.startAnimating()
             self.submit.isEnabled = false
@@ -48,9 +48,11 @@ class PickFavoriteViewController: UIViewController {
                     return
             }
 
-            for indexPath in selectedSports {
-                let sportRef = self.mDb.documentReference(docRef: sportsArray[indexPath.row].id, from: .sports)
-                sportRefs.append(sportRef)
+            for index in selectedIndex {
+                if(index != -1) {
+                    let sportRef = self.mDb.documentReference(docRef: sportsArray[index].id, from: .sports)
+                    sportRefs.append(sportRef)
+                }
             }
 
             self.mDb.updateDocument(withReference: player.id, from: .players, data: ["favorites": FieldValue.arrayUnion(sportRefs)], completion: { (success) in
@@ -91,7 +93,7 @@ extension PickFavoriteViewController: UICollectionViewDelegate, UICollectionView
 
         let sport = sportsArray[indexPath.row]
 
-        cell.configureCell(with: sport, isActive: false)
+        cell.configureCell(with: sport)
 
         return cell
     }
@@ -99,12 +101,17 @@ extension PickFavoriteViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! PickSportCollectionViewCell
 
-        if selectedSports.contains(indexPath) {
-            selectedSports.remove(at: indexPath.row)
-            cell.configureCell(with: sportsArray[indexPath.row], isActive: false)
+        let sport = sportsArray[indexPath.row]
+
+        if selectedIndex.contains(indexPath.row) {
+            cell.isActive = false
+            cell.configureCell(with: sport)
+            selectedIndex[indexPath.row] = -1
         } else {
-            selectedSports.append(indexPath)
-            cell.configureCell(with: sportsArray[indexPath.row], isActive: true)
+            //selectedIndex.append(indexPath.row)
+            selectedIndex[indexPath.row] = indexPath.row
+            cell.isActive = true
+            cell.configureCell(with: sport)
         }
     }
 

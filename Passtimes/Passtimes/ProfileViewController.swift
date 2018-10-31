@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ProfileViewController: UIViewController {
 
@@ -16,33 +17,44 @@ class ProfileViewController: UIViewController {
     @IBOutlet var name: UILabel!
 
     /* Member Variables */
+    var queue: DispatchGroup!
     var mDb: DatabaseUtils!
     var player: Player!
     var attendingEvents: [Event] = []
+    var listeners: [ListenerRegistration] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
+        //queue = DispatchGroup()
 
-    override func viewWillAppear(_ animated: Bool) {
         attendingCollection.register(UINib(nibName: "AttendingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         attendingCollection.delegate = self
         attendingCollection.dataSource = self
 
-        player = AuthUtils.currentUser()
-        viewSetUp()
-
         mDb = DatabaseUtils.sharedInstance
-        mDb.readDocument(from: .players, reference: player.id, returning: Player.self) { (playerObject) in
+        listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
+            self.player = playerObject
+            self.viewSetUp()
             self.attendingEvents.removeAll()
-            for attending in playerObject.attending {
-                self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self, completion: { (eventObject) in
+            for attending in self.player.attending {
+                self.listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
                     self.attendingEvents.append(eventObject)
                     self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
                     self.attendingCollection.reloadData()
                 })
             }
+        })
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        for listener in listeners {
+            listener.remove()
         }
+        print("Listener Removed")
     }
 
     func viewSetUp() {
@@ -89,6 +101,33 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.configureCell(with: event)
 
         return cell
+    }
+
+}
+
+extension ProfileViewController {
+
+    func downloadPlayer() {
+        // Add to DispathGroup
+        queue.enter()
+        listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
+            self.player = playerObject
+            self.queue.leave()
+        })
+        //queue.wait()
+    }
+
+    func downloadAttending() {
+        self.attendingEvents.removeAll()
+        for attending in self.player.attending {
+            // Add to DispathGroup
+            self.queue.enter()
+            listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
+                self.attendingEvents.append(eventObject)
+                self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
+                self.queue.leave()
+            })
+        }
     }
 
 }

@@ -14,6 +14,8 @@ class PickSportCollectionViewCell: UICollectionViewCell {
     @IBOutlet var sportIcon: UIImageView!
     @IBOutlet var category: UILabel!
 
+    var isActive: Bool = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -26,8 +28,8 @@ class PickSportCollectionViewCell: UICollectionViewCell {
     }
 
     // Populate cell data
-    public func configureCell(with sport: Sport, isActive: Bool) {
-        if(isActive) {
+    public func configureCell(with sport: Sport) {
+        if(self.isActive) {
             sportActive(url: sport.active)
         } else {
             sportIdle(url: sport.idle)

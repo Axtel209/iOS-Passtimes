@@ -120,7 +120,7 @@ extension CreateEventViewController: UICollectionViewDelegate, UICollectionViewD
 
         let sport = sportsArray[indexPath.row]
 
-        cell.configureCell(with: sport, isActive: false)
+        cell.configureCell(with: sport)
 
         return cell
     }
@@ -134,12 +134,14 @@ extension CreateEventViewController: UICollectionViewDelegate, UICollectionViewD
         // If there is a sport selected change back to idle
         if(!selectedIndexPath.isEmpty) {
             if let selectedSport = collectionView.cellForItem(at: selectedIndexPath) as? PickSportCollectionViewCell {
-                selectedSport.configureCell(with: sportsArray[selectedIndexPath.row], isActive: false)
+                selectedSport.isActive = false
+                selectedSport.configureCell(with: sportsArray[selectedIndexPath.row])
             }
         }
 
         let cell = collectionView.cellForItem(at: indexPath) as! PickSportCollectionViewCell
-        cell.configureCell(with: sportsArray[indexPath.row], isActive: true)
+        cell.isActive = true
+        cell.configureCell(with: sportsArray[indexPath.row])
 
         // Set the currently selected to be the already selected
         selectedIndexPath = indexPath

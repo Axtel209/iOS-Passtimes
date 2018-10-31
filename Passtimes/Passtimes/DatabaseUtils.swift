@@ -69,8 +69,8 @@ class DatabaseUtils {
     }
 
     // Retrieve Documents from Firestore
-    public func readDecuments<T: Codable>(from collectionReference: DatabaseReferences, returning objectType: T.Type, completion: @escaping ([T]) -> Void) {
-        reference(to: collectionReference).addSnapshotListener { (snapshot, error) in
+    public func readDecuments<T: Codable>(from collectionReference: DatabaseReferences, returning objectType: T.Type, completion: @escaping ([T]) -> Void) -> ListenerRegistration {
+        return reference(to: collectionReference).addSnapshotListener { (snapshot, error) in
             // if there is an error return
             if error != nil {
                 print(error!.localizedDescription)
@@ -98,14 +98,13 @@ class DatabaseUtils {
             } catch {
                 print("Decoding ERROR - " + error.localizedDescription)
             }
-
         }
     }
 
-    public func readFilteredDocument(from collectionReference: DatabaseReferences, field: String, favorites: [String], completion: @escaping ([Event]) -> Void) {
+    public func readFilteredDocument(from collectionReference: DatabaseReferences, field: String, values: [String], completion: @escaping ([Event]) -> Void) {
         var objectsArray: [String: Event] = [:]
-        for sport in favorites {
-            reference(to: collectionReference).whereField(field, isEqualTo: sport).addSnapshotListener { (querySnapshot, error) in
+        for value in values {
+            reference(to: collectionReference).whereField(field, isEqualTo: value).addSnapshotListener { (querySnapshot, error) in
                 if error != nil {
                     print(error!.localizedDescription)
                     return
@@ -138,8 +137,8 @@ class DatabaseUtils {
     }
 
     // Retrive Document from Firestore
-    public func readDocument<T: Codable>(from collectionReference: DatabaseReferences, reference documentReference: String, returning objectType: T.Type, completion: @escaping (T) -> Void) {
-        reference(to: collectionReference).document(documentReference).addSnapshotListener { (documentSnapshot, error) in
+    public func readDocument<T: Codable>(from collectionReference: DatabaseReferences, reference documentReference: String, returning objectType: T.Type, completion: @escaping (T) -> Void) -> ListenerRegistration {
+        return reference(to: collectionReference).document(documentReference).addSnapshotListener { (documentSnapshot, error) in
             // if there is an error return
             if error != nil {
                 print(error!.localizedDescription)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class FeedViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class FeedViewController: UIViewController {
     var player: Player!
     var eventsArray: [Event] = []
     var attendingEvents: [Event] = []
+    var listeners: [ListenerRegistration] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,19 +41,18 @@ class FeedViewController: UIViewController {
                 player = currentPlayer
                 mDb = DatabaseUtils.sharedInstance
                 // Read Attending events
-                mDb.readDocument(from: .players, reference: player.id, returning: Player.self) { (playerObject) in
+                listeners.append(mDb.readDocument(from: .players, reference: player.id, returning: Player.self) { (playerObject) in
                     self.attendingEvents.removeAll()
                     for attending in playerObject.attending {
-                        self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self, completion: { (eventObject) in
+                        self.listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
                             self.attendingEvents.append(eventObject)
                             self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
                             self.attendingCollection.reloadData()
                         })
                     }
-                }
+                })
 
-                //player.favorites
-                mDb.readFilteredDocument(from: .events, field: "sport", favorites: ["Basketball", "Tennis", "Soccer", "Football"]) { (objectArray) in
+                mDb.readFilteredDocument(from: .events, field: "sport", values: ["Basketball", "Tennis", "Soccer", "Football", "Baseball"]) { (objectArray) in
                     self.eventsArray = objectArray
                     // sort Array by date
                     self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
@@ -62,7 +63,9 @@ class FeedViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        // TODO: Unregister listeners
+        for listener in listeners {
+            listener.remove()
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
