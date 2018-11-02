@@ -24,17 +24,29 @@ class StorageUtils {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
 
-        storage.child(reference.rawValue).child(path).child("profile_picture").putData(data, metadata: metadata) { (metadata, error) in
+        
+        let ref = storage.child(reference.rawValue).child(path).child("profile_picture")
+        ref.putData(data, metadata: metadata) { (data, error) in
             if error != nil {
                 print(error!.localizedDescription)
                 return
             }
 
-            //metadata?.storageReference?.downloadURL(completion: <#T##(URL?, Error?) -> Void#>)
+            print("HELLO")
+            print("PASSED")
+            ref.downloadURL(completion: { (url, error) in
+                print("NO ERROR YET")
+                if error != nil {
+                    print(error!.localizedDescription)
+                    return
+                }
 
+                print("SHOULD COMPLETE")
+                completion((url?.absoluteString)!)
+            })
 
             // Get imagePath download url from storage and return it after completion
-            completion("https://firebasestorage.googleapis.com/v0/b/passtimes-application.appspot.com/o/ROOT_STORAGE_USER_PROFILES%2FgZXnEEMIYKOhDiCVxxowsk8rXNE2%2Fprofile_picture?alt=media&token=0b50f4c3-7e4b-42ba-8465-ee20e2ff784a")
+            //completion("https://firebasestorage.googleapis.com/v0/b/passtimes-application.appspot.com/o/ROOT_STORAGE_USER_PROFILES%2F6S8tBQpfU4SrWsxOZvU38w4ZEHK2%2Fprofile_picture?alt=media&token=4bf04a64-a806-4e21-a90a-4adb2d1c1453")
         }
     }
 

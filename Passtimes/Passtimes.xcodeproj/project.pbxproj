@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		54FCAFBA229587A7E2703F00 /* Pods_Passtimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */; };
 		FB49A5D4218749070089E7DF /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49A5D3218749070089E7DF /* OnboardingPage.swift */; };
+		FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */; };
 		FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8203218149BC003546D5 /* CustomViewExtension.swift */; };
 		FBAC82072181569F003546D5 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBAC82062181569E003546D5 /* CreateEvent.storyboard */; };
 		FBAC820921815AAE003546D5 /* PickSport.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAC820821815AAE003546D5 /* PickSport.xib */; };
@@ -61,6 +62,7 @@
 		B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Passtimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB49A5D3218749070089E7DF /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		FB60096021880FDD00DCC481 /* kitten_swash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kitten_swash.ttf; sourceTree = "<group>"; };
+		FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FBAC8203218149BC003546D5 /* CustomViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewExtension.swift; sourceTree = "<group>"; };
 		FBAC82062181569E003546D5 /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		FBAC820821815AAE003546D5 /* PickSport.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickSport.xib; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				FBAC8203218149BC003546D5 /* CustomViewExtension.swift */,
+				FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
 				FBF223F321812A4400F570D6 /* CreateEventViewController.swift in Sources */,
 				FBAC82152182450D003546D5 /* OnBoardingViewController.swift in Sources */,
+				FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */,
 				FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */,
 				FBF223F1218122CC00F570D6 /* CalendarUtils.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,

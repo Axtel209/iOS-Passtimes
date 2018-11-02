@@ -44,7 +44,6 @@ class CreateEventViewController: UIViewController {
         }
 
         startTime.addTarget(self, action: #selector(timeSelector(textField:)), for: UIControl.Event.touchDown)
-
     }
 
     func calendarSetUp() {

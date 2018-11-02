@@ -14,6 +14,7 @@ class Player: Codable {
     let id: String
     var name: String
     var thumbnail: String
+    var overallXP: Int = 0
     var favorites: [DocumentReference] = []
     var attending: [DocumentReference] = []
 
@@ -23,8 +24,9 @@ class Player: Codable {
         self.thumbnail = thumbnail
     }
 
-    convenience init(id: String, name: String, thumbnail: String, favorites: [DocumentReference], attending: [DocumentReference]) {
+    convenience init(id: String, name: String, thumbnail: String, overallXP: Int, favorites: [DocumentReference], attending: [DocumentReference]) {
         self.init(id: id, name: name, thumbnail: thumbnail)
+        self.overallXP = overallXP
         self.favorites = favorites
         self.attending = attending
     }

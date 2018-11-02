@@ -75,6 +75,7 @@ class AuthUtils {
             //StorageUtils.uploadImage(into: .profiles, withPath: data.user.uid, image: photo,
             StorageUtils.uploadImage(into: .profiles, withPath: data.user.uid, image: photo, completion: { (thumbnail) in
                 let player = Player(id: data.user.uid, name: name, thumbnail: thumbnail)
+
                 let db = DatabaseUtils.sharedInstance
                 db.addDocument(withId: player.id, object: player, to: .players, complition: { (success) in
                     updateUserInfo(name: player.name, photo: player.thumbnail)

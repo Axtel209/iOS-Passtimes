@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var attendingCollection: UICollectionView!
     @IBOutlet var profilePhoto: UIImageView!
     @IBOutlet var name: UILabel!
+    @IBOutlet var overallXP: UILabel!
 
     /* Member Variables */
     var queue: DispatchGroup!
@@ -25,12 +26,14 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //queue = DispatchGroup()
+        queue = DispatchGroup()
 
         attendingCollection.register(UINib(nibName: "AttendingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         attendingCollection.delegate = self
         attendingCollection.dataSource = self
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
         mDb = DatabaseUtils.sharedInstance
         listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
             self.player = playerObject
@@ -44,10 +47,6 @@ class ProfileViewController: UIViewController {
                 })
             }
         })
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,6 +63,8 @@ class ProfileViewController: UIViewController {
         profilePhoto.kf.setImage(with: URL(string: player.thumbnail))
 
         name.text = player.name
+
+        overallXP.text = String(player.overallXP)
     }
 
     @IBAction func editProfile(_ sender: Any) {
@@ -102,32 +103,4 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 
         return cell
     }
-
-}
-
-extension ProfileViewController {
-
-    func downloadPlayer() {
-        // Add to DispathGroup
-        queue.enter()
-        listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
-            self.player = playerObject
-            self.queue.leave()
-        })
-        //queue.wait()
-    }
-
-    func downloadAttending() {
-        self.attendingEvents.removeAll()
-        for attending in self.player.attending {
-            // Add to DispathGroup
-            self.queue.enter()
-            listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
-                self.attendingEvents.append(eventObject)
-                self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
-                self.queue.leave()
-            })
-        }
-    }
-
 }

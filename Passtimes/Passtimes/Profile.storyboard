@@ -56,18 +56,36 @@
                                             <segue destination="GjT-Pc-dg0" kind="showDetail" id="EMY-6u-EQn"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_XP" translatesAutoresizingMaskIntoConstraints="NO" id="b3P-RS-Q4G">
+                                        <rect key="frame" x="16" y="15.5" width="20" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="8sp-FV-4lj"/>
+                                            <constraint firstAttribute="width" constant="20" id="uVP-cd-Zer"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db0-JA-dMM">
+                                        <rect key="frame" x="44" y="10" width="40.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1FP-u2-B5v"/>
+                                    <constraint firstItem="fev-8j-4wp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="db0-JA-dMM" secondAttribute="trailing" id="5WI-nN-IrI"/>
                                     <constraint firstItem="zft-hV-f3G" firstAttribute="centerY" secondItem="MqE-Rb-2kr" secondAttribute="centerY" id="7QO-ML-seS"/>
+                                    <constraint firstItem="db0-JA-dMM" firstAttribute="leading" secondItem="b3P-RS-Q4G" secondAttribute="trailing" constant="8" id="DP8-Kr-Pw7"/>
+                                    <constraint firstItem="b3P-RS-Q4G" firstAttribute="centerY" secondItem="MqE-Rb-2kr" secondAttribute="centerY" id="Fjd-tR-jP6"/>
                                     <constraint firstItem="fev-8j-4wp" firstAttribute="width" secondItem="7Kc-uO-wqn" secondAttribute="width" id="IZN-TF-ejj"/>
                                     <constraint firstItem="7Kc-uO-wqn" firstAttribute="leading" secondItem="fev-8j-4wp" secondAttribute="trailing" constant="16" id="L57-d3-MMJ"/>
                                     <constraint firstItem="fev-8j-4wp" firstAttribute="height" secondItem="7Kc-uO-wqn" secondAttribute="height" id="YuE-1g-mMP"/>
                                     <constraint firstItem="7Kc-uO-wqn" firstAttribute="width" secondItem="zft-hV-f3G" secondAttribute="width" id="ZSU-oh-as0"/>
                                     <constraint firstItem="fev-8j-4wp" firstAttribute="centerY" secondItem="7Kc-uO-wqn" secondAttribute="centerY" id="dXi-sJ-ORh"/>
+                                    <constraint firstItem="b3P-RS-Q4G" firstAttribute="leading" secondItem="MqE-Rb-2kr" secondAttribute="leading" constant="16" id="mJn-BT-XIP"/>
                                     <constraint firstItem="7Kc-uO-wqn" firstAttribute="height" secondItem="zft-hV-f3G" secondAttribute="height" id="pFV-aq-b0n"/>
                                     <constraint firstAttribute="trailing" secondItem="zft-hV-f3G" secondAttribute="trailing" constant="16" id="psw-hD-YND"/>
+                                    <constraint firstItem="db0-JA-dMM" firstAttribute="centerY" secondItem="MqE-Rb-2kr" secondAttribute="centerY" id="u9R-7V-sUI"/>
                                     <constraint firstItem="7Kc-uO-wqn" firstAttribute="centerY" secondItem="zft-hV-f3G" secondAttribute="centerY" id="vTv-ag-i35"/>
                                     <constraint firstItem="zft-hV-f3G" firstAttribute="leading" secondItem="7Kc-uO-wqn" secondAttribute="trailing" constant="16" id="z1u-a4-YOk"/>
                                 </constraints>
@@ -144,6 +162,7 @@
                     <connections>
                         <outlet property="attendingCollection" destination="o09-Kz-3Rg" id="3ia-R6-T7F"/>
                         <outlet property="name" destination="GJW-Rk-VvY" id="BmU-Ww-Plu"/>
+                        <outlet property="overallXP" destination="db0-JA-dMM" id="x7d-Du-75g"/>
                         <outlet property="profilePhoto" destination="TiW-C1-DS9" id="fjB-WM-JYF"/>
                         <segue destination="uZo-ac-lVv" kind="show" identifier="toEditProfile" id="DeQ-ne-zhB"/>
                     </connections>
@@ -286,6 +305,7 @@
     </scenes>
     <resources>
         <image name="head_oval" width="512" height="270"/>
+        <image name="ic_XP" width="512" height="333"/>
         <image name="ic_edit" width="16" height="16"/>
         <image name="ic_favorite" width="18" height="15"/>
         <image name="ic_logout" width="18" height="18"/>

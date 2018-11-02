@@ -38,7 +38,12 @@ class EditProfileViewController: UIViewController {
             guard let data = profilePhoto.image?.jpegData(compressionQuality: 1) else { return }
             StorageUtils.uploadImage(into: .profiles, withPath: player.id, image: data) { (imageURL) in
                 AuthUtils.updateUserInfo(name: name, photo: imageURL)
-                self.dismiss(animated: true, completion: nil)
+                let db = DatabaseUtils.sharedInstance
+                db.updateDocument(withReference: self.player.id, from: .players, data: ["name": name, "thumbnail": imageURL], completion: { (success) in
+                    if success {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
             }
         }
     }

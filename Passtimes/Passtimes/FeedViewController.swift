@@ -22,6 +22,8 @@ class FeedViewController: UIViewController {
     var attendingEvents: [Event] = []
     var listeners: [ListenerRegistration] = []
 
+    var serialQueue = DispatchQueue(label: "SerialQueue")
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,9 +43,10 @@ class FeedViewController: UIViewController {
                 player = currentPlayer
                 mDb = DatabaseUtils.sharedInstance
                 // Read Attending events
-                listeners.append(mDb.readDocument(from: .players, reference: player.id, returning: Player.self) { (playerObject) in
+                self.listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
+                    self.player = playerObject
                     self.attendingEvents.removeAll()
-                    for attending in playerObject.attending {
+                    for attending in self.player.attending {
                         self.listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
                             self.attendingEvents.append(eventObject)
                             self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
@@ -54,7 +57,7 @@ class FeedViewController: UIViewController {
 
                 mDb.readFilteredDocument(from: .events, field: "sport", values: ["Basketball", "Tennis", "Soccer", "Football", "Baseball"]) { (objectArray) in
                     self.eventsArray = objectArray
-                    // sort Array by date
+                    // sort Array by desc date
                     self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
                     self.onGoingCollection.reloadData()
                 }

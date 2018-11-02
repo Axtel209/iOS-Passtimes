@@ -124,7 +124,6 @@ class DatabaseUtils {
                             objectsArray[object.id] = object
                         }
                         if (diff.type == .removed) {
-                            //print("Removed city: \(diff.document.data())")
                             objectsArray.removeValue(forKey: object.id)
                         }
                     }
