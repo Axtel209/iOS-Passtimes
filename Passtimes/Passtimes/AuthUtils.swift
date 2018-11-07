@@ -29,7 +29,6 @@ class AuthUtils {
 
     public static func currentUser() -> Player? {
         if let user = auth.currentUser, let name = user.displayName, let thumbnail = user.photoURL {
-            print(thumbnail.absoluteString)
             return Player(id: user.uid, name: name, thumbnail: thumbnail.absoluteString)
         }
 

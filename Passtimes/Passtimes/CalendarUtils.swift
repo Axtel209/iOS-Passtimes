@@ -34,6 +34,13 @@ class CalendarUtils {
         return dateFormatter.string(from: date)
     }
 
+    public static func getHoursFromDateTimestamo(_ millis: Int) -> String {
+        let date = Date(timeIntervalSince1970: (Double)(millis / 1000))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm aa"
+        return dateFormatter.string(from: date)
+    }
+
     // Returns Starting HoursMinutes and Ending HoursMinutes as String from a timestamp
     public static func getStartEndTimefromDateTimestamp(startTime startMillis: Int, endTime endMillis: Int) -> String {
         let dateFormatter = DateFormatter()

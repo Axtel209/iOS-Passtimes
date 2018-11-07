@@ -40,6 +40,23 @@ class LoginViewController: UIViewController {
         activityIndicator.center = view.center
         // Add activityIndicator to view
         self.view.addSubview(activityIndicator)
+
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
+
+        toolbar.setItems([flexSpace, doneButton], animated: false)
+        toolbar.sizeToFit()
+
+        email.inputAccessoryView = toolbar
+        password.inputAccessoryView = toolbar
+        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("endEditing:")))
+
+    }
+
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 
     @IBAction func login(_ sender: Any) {

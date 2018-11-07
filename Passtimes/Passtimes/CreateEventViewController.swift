@@ -19,12 +19,21 @@ class CreateEventViewController: UIViewController {
     @IBOutlet var eventLocation: UITextField!
     @IBOutlet var startTime: UITextField!
     @IBOutlet var endTime: UITextField!
+    @IBOutlet var titleCount: UILabel!
 
     /* Member Variables */
     var mDb: DatabaseUtils!
     var sportsArray: [Sport] = []
     var isSelected: Bool = false
     var selectedIndexPath: IndexPath = []
+    var listeners: [ListenerRegistration] = []
+    let timePicker = UIDatePicker()
+
+    var startDate = Date()
+    var endDate = Date()
+    var startTimeInMillis: Int = 0
+    var endTimeInMillis: Int = 0
+    var date = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,19 +52,38 @@ class CreateEventViewController: UIViewController {
             self.sportCollection.reloadData()
         }
 
-        startTime.addTarget(self, action: #selector(timeSelector(textField:)), for: UIControl.Event.touchDown)
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard(_:)))
+
+        toolbar.setItems([flexSpace, doneButton], animated: false)
+        toolbar.sizeToFit()
+
+        timePicker.datePickerMode = .time
+        timePicker.frame = CGRect(x: 0.0, y: self.view.frame.height - 150.0, width: self.view.frame.width, height: 150.0)
+        timePicker.backgroundColor = UIColor.white
+
+        startTime.inputView = timePicker
+        startTime.inputAccessoryView = toolbar
+
+        endTime.inputView = timePicker
+        endTime.inputAccessoryView = toolbar
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        for listener in listeners {
+            listener.remove()
+        }
     }
 
     func calendarSetUp() {
-        //calendar.layer.borderColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
-        //calendar.layer.borderWidth = 1
-        //calendar.scrollEnabled = false
         calendar.setScope(.week, animated: false)
         calendar.firstWeekday = CalendarUtils.getFirstWeekday()
     }
 
-    @objc func timeSelector(textField: UITextField) {
-        
+    @objc func dismissKeyboard(_ sender: Any) {
+        self.view.endEditing(true)
     }
 
     @IBAction func closeCreateView(_ sender: Any) {
@@ -72,8 +100,19 @@ class CreateEventViewController: UIViewController {
         // Validate empty form
         if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
 
+            if startTimeInMillis > endTimeInMillis {
+                SnackbarUtils.snackbarMake(message: "Please enter a start time later than the end time", title: nil)
+                return
+            } else if startTimeInMillis == endTimeInMillis {
+                SnackbarUtils.snackbarMake(message: "Please enter an end time greater than the strat time", title: nil)
+                return
+            } else if Int(date.timeIntervalSince1970 * 1000) > startTimeInMillis {
+                SnackbarUtils.snackbarMake(message: "Plase enter a strat time later than the current time", title: nil)
+                return
+            }
+
             let playerRef = mDb.documentReference(docRef: player.id, from: .players)
-            let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: 1, endDate: 1, maxAttendees: 5, attendees: [playerRef])
+            let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: 5, attendees: [playerRef])
 
             mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
                 if(success) {
@@ -92,6 +131,7 @@ class CreateEventViewController: UIViewController {
                     SnackbarUtils.snackbarMake(message: "Something went wront", title: nil)
                 }
             }
+
         } else {
             SnackbarUtils.snackbarMake(message: "Please make sure eveything is filled", title: nil)
         }
@@ -144,6 +184,60 @@ extension CreateEventViewController: UICollectionViewDelegate, UICollectionViewD
 
         // Set the currently selected to be the already selected
         selectedIndexPath = indexPath
+    }
+
+}
+
+extension CreateEventViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let timePickerDate = timePicker.date
+        let components = Calendar.current.dateComponents([.hour, .minute], from: timePickerDate)
+//        date = Calendar.current.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: date)!
+
+        if textField == startTime {
+            startDate = Calendar.current.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: startDate)!
+            startTimeInMillis = Int(startDate.timeIntervalSince1970 * 1000)
+            startTime.text = CalendarUtils.getHoursFromDateTimestamo(startTimeInMillis)
+        } else if textField == endTime {
+            endDate = Calendar.current.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: endDate)!
+            endTimeInMillis = Int(endDate.timeIntervalSince1970 * 1000)
+            endTime.text = CalendarUtils.getHoursFromDateTimestamo(endTimeInMillis)
+        }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let title = eventTitle.text else { return true }
+        let count = title.count + string.count - range.length
+
+        if count <= 20 {
+            titleCount.text = "\(count)/20"
+        }
+
+        return count <= 20
+    }
+
+}
+
+extension CreateEventViewController: FSCalendarDelegate, FSCalendarDataSource {
+
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let components = Calendar.current.dateComponents([.day], from: date)
+        print(components.day!)
+        //self.startDate = Calendar.current.date(bySetting: .day, value: components.day!, of: self.startDate)!
+        //self.date = Calendar.current.date(from: components)!
+        var startDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDate)
+        startDateComponents.day = components.day
+        self.startDate = Calendar.current.date(from: startDateComponents)!
+
+        var endDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: endDate)
+        endDateComponents.day = components.day
+        self.endDate = Calendar.current.date(from: endDateComponents)!
     }
 
 }

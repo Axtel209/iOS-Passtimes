@@ -69,8 +69,8 @@ class DatabaseUtils {
     }
 
     // Retrieve Documents from Firestore
-    public func readDecuments<T: Codable>(from collectionReference: DatabaseReferences, returning objectType: T.Type, completion: @escaping ([T]) -> Void) -> ListenerRegistration {
-        return reference(to: collectionReference).addSnapshotListener { (snapshot, error) in
+    public func readDecuments<T: Codable>(from collectionReference: DatabaseReferences, returning objectType: T.Type, completion: @escaping ([T]) -> Void) {
+        reference(to: collectionReference).addSnapshotListener { (snapshot, error) in
             // if there is an error return
             if error != nil {
                 print(error!.localizedDescription)
@@ -92,7 +92,6 @@ class DatabaseUtils {
                         objectsArray.append(object)
                     }
                 }
-
                 // Return objectsArray after complition
                 completion(objectsArray)
             } catch {

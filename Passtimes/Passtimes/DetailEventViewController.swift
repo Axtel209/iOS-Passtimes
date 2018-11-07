@@ -30,6 +30,7 @@ class DetailEventViewController: UIViewController {
     var host: Player?
     var attendees: [Player] = []
     var mDb: DatabaseUtils!
+    var listeners: [ListenerRegistration] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,29 +43,35 @@ class DetailEventViewController: UIViewController {
         if let eventId = eventId {
             // Read event document from Firestore
             mDb = DatabaseUtils.sharedInstance
-            mDb.readDocument(from: .events, reference: eventId, returning: Event.self) { (eventObject) in
+            listeners.append(mDb.readDocument(from: .events, reference: eventId, returning: Event.self) { (eventObject) in
                 self.event = eventObject
                 // Get player DocumentReference
-                self.mDb.readDocument(from: .players, reference: eventObject.eventHost.documentID, returning: Player.self, completion: { (hostObject) in
+                self.listeners.append(self.mDb.readDocument(from: .players, reference: self.event!.eventHost.documentID, returning: Player.self, completion: { (hostObject) in
                     self.host = hostObject
                     self.populateDetailView(with: self.event!, host: self.host!)
-                })
+                }))
 
                 /* NEEDS REFACTOR TO READ ONCE */
                 // Get each player from the attendee list
                 self.attendees.removeAll()
                 for attendee in eventObject.attendees {
-                    self.mDb.readDocument(from: .players, reference: attendee.documentID, returning: Player.self, completion: { (playerObject) in
+                    self.listeners.append(self.mDb.readDocument(from: .players, reference: attendee.documentID, returning: Player.self, completion: { (playerObject) in
                         self.attendees.append(playerObject)
                         self.attendeesCollectionView.reloadData()
-                    })
+                    }))
                 }
-            }
+            })
         } else {
             // TODO: Chould not load event
         }
 
         //self.populateDetailView(with: object)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        for listener in listeners {
+            listener.remove()
+        }
     }
 
     func populateDetailView(with event: Event, host: Player) {

@@ -17,7 +17,7 @@ class PickFavoriteViewController: UIViewController {
 
     /* Member Variables */
     var mDb: DatabaseUtils!
-    var sportsArray: [Sport]!
+    var sportsArray: [Sport] = []
     var selectedIndex: [Int] = [-1, -1, -1, -1, -1]
     var sportRefs: [DocumentReference] = []
 

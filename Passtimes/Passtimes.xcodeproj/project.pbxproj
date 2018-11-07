@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54FCAFBA229587A7E2703F00 /* Pods_Passtimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */; };
+		FB1F5EA72192236D003A5206 /* DynamicKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F5EA62192236D003A5206 /* DynamicKeyboard.swift */; };
 		FB49A5D4218749070089E7DF /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49A5D3218749070089E7DF /* OnboardingPage.swift */; };
 		FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */; };
 		FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8203218149BC003546D5 /* CustomViewExtension.swift */; };
@@ -60,6 +61,7 @@
 		07E8BBDF4C0B680962BFE6AA /* Pods-Passtimes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Passtimes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes.release.xcconfig"; sourceTree = "<group>"; };
 		67FAF05D4AAD6BFD1D5CC84F /* Pods-Passtimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Passtimes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes.debug.xcconfig"; sourceTree = "<group>"; };
 		B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Passtimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB1F5EA62192236D003A5206 /* DynamicKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicKeyboard.swift; sourceTree = "<group>"; };
 		FB49A5D3218749070089E7DF /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		FB60096021880FDD00DCC481 /* kitten_swash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kitten_swash.ttf; sourceTree = "<group>"; };
 		FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				FBCEE7002183D9AD00ED9C9C /* ValidationUtils.swift */,
 				FBCEE7022185084300ED9C9C /* ImagePickerUtils.swift */,
 				FBCEE70421852B5D00ED9C9C /* StorageUtils.swift */,
+				FB1F5EA62192236D003A5206 /* DynamicKeyboard.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				FBCEE70521852B5D00ED9C9C /* StorageUtils.swift in Sources */,
 				FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */,
 				FBCEE7182186D5D900ED9C9C /* PickFavoriteViewController.swift in Sources */,
+				FB1F5EA72192236D003A5206 /* DynamicKeyboard.swift in Sources */,
 				FBCEE7012183D9AD00ED9C9C /* ValidationUtils.swift in Sources */,
 				FBAC820C21815AE8003546D5 /* PickSportCollectionViewCell.swift in Sources */,
 				FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */,

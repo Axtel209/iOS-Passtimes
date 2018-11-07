@@ -22,6 +22,23 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // Set Up view
         viewSetUp()
+
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
+
+        toolbar.setItems([flexSpace, doneButton], animated: false)
+        toolbar.sizeToFit()
+
+        name.inputAccessoryView = toolbar
+        email.inputAccessoryView = toolbar
+        password.inputAccessoryView = toolbar
+        confirmPassword.inputAccessoryView = toolbar
+    }
+
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 
     func viewSetUp() {
