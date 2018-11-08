@@ -34,7 +34,7 @@ class CalendarUtils {
         return dateFormatter.string(from: date)
     }
 
-    public static func getHoursFromDateTimestamo(_ millis: Int) -> String {
+    public static func getHoursFromDateTimestamp(_ millis: Int) -> String {
         let date = Date(timeIntervalSince1970: (Double)(millis / 1000))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm aa"

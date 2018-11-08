@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import CodableFirebase
 import FSCalendar
 
 class CreateEventViewController: UIViewController {
@@ -35,6 +36,9 @@ class CreateEventViewController: UIViewController {
     var endTimeInMillis: Int = 0
     var date = Date()
 
+    var isEditingEvent: Bool = false
+    var editingEvent: Event!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,6 +47,10 @@ class CreateEventViewController: UIViewController {
         sportCollection.delegate = self
         sportCollection.dataSource = self
         sportCollection.backgroundColor = UIColor.clear
+
+        if isEditingEvent {
+            populateEditingEvent()
+        }
 
         calendarSetUp()
 
@@ -77,6 +85,14 @@ class CreateEventViewController: UIViewController {
         }
     }
 
+    func populateEditingEvent() {
+        self.eventTitle.text = editingEvent.title
+        self.eventLocation.text = editingEvent.location
+        self.startTime.text = CalendarUtils.getHoursFromDateTimestamp(editingEvent.startDate)
+        self.endTime.text = CalendarUtils.getHoursFromDateTimestamp(editingEvent.endDate)
+        self.calendar.today = Date(timeIntervalSince1970: Double(editingEvent.startDate / 1000))
+    }
+
     func calendarSetUp() {
         calendar.setScope(.week, animated: false)
         calendar.firstWeekday = CalendarUtils.getFirstWeekday()
@@ -97,6 +113,30 @@ class CreateEventViewController: UIViewController {
                 return
         }
 
+        self.view.isUserInteractionEnabled = false
+        let activityIndicator = ActivityIndicatorUtils.activityIndicatorMake(view: self.view)
+
+        if isEditingEvent {
+            activityIndicator.startAnimating()
+
+            self.editingEvent.title = self.eventTitle.text!
+            self.editingEvent.location = self.eventLocation.text!
+            self.editingEvent.startDate = startTimeInMillis
+            self.editingEvent.endDate = endTimeInMillis
+
+            let updatedEvent = try? FirestoreEncoder().encode(editingEvent)
+
+            mDb.updateDocument(withReference: editingEvent.id, from: .events, data: updatedEvent!) { (success) in
+                if success {
+                    activityIndicator.stopAnimating()
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    SnackbarUtils.snackbarMake(message: "Please check your internet connection", title: nil)
+                }
+            }
+            //self.mDb.updateDocument(withReference: player.id, from: .players, data: ["favorites": FieldValue.arrayUnion(sportRefs)], completion: { (success) in
+        }
+
         // Validate empty form
         if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
 
@@ -114,16 +154,18 @@ class CreateEventViewController: UIViewController {
             let playerRef = mDb.documentReference(docRef: player.id, from: .players)
             let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: 5, attendees: [playerRef])
 
+            activityIndicator.startAnimating()
             mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
                 if(success) {
                     // Add EventRef to player attending
                     let eventRef = self.mDb.documentReference(docRef: event.id, from: .events)
                     self.mDb.updateDocument(withReference: player.id, from: .players, data: ["attending": FieldValue.arrayUnion([eventRef])], completion: { (success) in
                         if success {
+                            activityIndicator.stopAnimating()
                             self.dismiss(animated: true, completion: nil)
                         } else {
                             // Error trying to add Eventref to player attending
-                            SnackbarUtils.snackbarMake(message: "Something went wront", title: nil)
+                            SnackbarUtils.snackbarMake(message: "Please check your internet connection", title: nil)
                         }
                     })
                 } else {
@@ -159,12 +201,24 @@ extension CreateEventViewController: UICollectionViewDelegate, UICollectionViewD
 
         let sport = sportsArray[indexPath.row]
 
+        if let editEvent = editingEvent {
+            if editingEvent.sport == sport.category {
+                cell.isActive = true
+            }
+        }
+
         cell.configureCell(with: sport)
+
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isEditingEvent {
+            SnackbarUtils.snackbarMake(message: "Can't change sport when editing", title: nil)
+            return
+        }
+
         // Toggle selected sport
         if(!isSelected) {
             isSelected = true
@@ -203,11 +257,11 @@ extension CreateEventViewController: UITextFieldDelegate {
         if textField == startTime {
             startDate = Calendar.current.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: startDate)!
             startTimeInMillis = Int(startDate.timeIntervalSince1970 * 1000)
-            startTime.text = CalendarUtils.getHoursFromDateTimestamo(startTimeInMillis)
+            startTime.text = CalendarUtils.getHoursFromDateTimestamp(startTimeInMillis)
         } else if textField == endTime {
             endDate = Calendar.current.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: endDate)!
             endTimeInMillis = Int(endDate.timeIntervalSince1970 * 1000)
-            endTime.text = CalendarUtils.getHoursFromDateTimestamo(endTimeInMillis)
+            endTime.text = CalendarUtils.getHoursFromDateTimestamp(endTimeInMillis)
         }
     }
 
@@ -227,6 +281,8 @@ extension CreateEventViewController: UITextFieldDelegate {
 extension CreateEventViewController: FSCalendarDelegate, FSCalendarDataSource {
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        calendar.today = date
+
         let components = Calendar.current.dateComponents([.day], from: date)
         print(components.day!)
         //self.startDate = Calendar.current.date(bySetting: .day, value: components.day!, of: self.startDate)!

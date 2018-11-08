@@ -38,29 +38,29 @@ class FeedViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if player == nil {
-            if let currentPlayer = AuthUtils.currentUser() {
-                player = currentPlayer
-                mDb = DatabaseUtils.sharedInstance
-                // Read Attending events
-                self.listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
-                    self.player = playerObject
-                    self.attendingEvents.removeAll()
-                    for attending in self.player.attending {
-                        self.listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
-                            self.attendingEvents.append(eventObject)
-                            self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
-                            self.attendingCollection.reloadData()
-                        })
-                    }
-                })
-
-                mDb.readFilteredDocument(from: .events, field: "sport", values: ["Basketball", "Tennis", "Soccer", "Football", "Baseball"]) { (objectArray) in
-                    self.eventsArray = objectArray
-                    // sort Array by desc date
-                    self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
-                    self.onGoingCollection.reloadData()
+        if let currentPlayer = AuthUtils.currentUser() {
+            player = currentPlayer
+            mDb = DatabaseUtils.sharedInstance
+            // Read Attending events
+            self.listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
+                self.player = playerObject
+                self.attendingEvents.removeAll()
+                print(self.player.attending.count)
+                for attending in self.player.attending {
+                    self.listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
+                        self.attendingEvents.append(eventObject)
+                        self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
+                        self.attendingCollection.reloadData()
+                    })
                 }
+                self.attendingCollection.reloadData()
+            })
+
+            mDb.readFilteredDocument(from: .events, field: "sport", values: ["Basketball", "Tennis", "Soccer", "Football", "Baseball"]) { (objectArray) in
+                self.eventsArray = objectArray
+                // sort Array by desc date
+                self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
+                self.onGoingCollection.reloadData()
             }
         }
     }

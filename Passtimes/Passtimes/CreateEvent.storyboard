@@ -22,6 +22,7 @@
                                 <items>
                                     <navigationItem title="Create Event" id="YBX-dU-58g">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="ic_close" width="24" style="done" id="bl2-gY-88f">
+                                            <inset key="largeContentSizeImageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
                                             <color key="tintColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="closeCreateView:" destination="htw-fA-4Yq" id="Ieh-UF-u2a"/>

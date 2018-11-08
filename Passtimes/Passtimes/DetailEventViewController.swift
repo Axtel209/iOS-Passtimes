@@ -14,6 +14,7 @@ class DetailEventViewController: UIViewController {
 
     /* Outlets */
     @IBOutlet var delete: UIButton!
+    @IBOutlet var edit: UIButton!
     @IBOutlet var join: UIButton!
     @IBOutlet var hostImage: UIImageView!
     @IBOutlet var month: UILabel!
@@ -27,8 +28,10 @@ class DetailEventViewController: UIViewController {
     /* Member Variables */
     var eventId: String?
     var event: Event?
+    var player: Player?
     var host: Player?
-    var attendees: [Player] = []
+    var attendees: [String: Player] = [:]
+    var attendeesList: [Player] = []
     var mDb: DatabaseUtils!
     var listeners: [ListenerRegistration] = []
 
@@ -40,6 +43,11 @@ class DetailEventViewController: UIViewController {
         attendeesCollectionView.dataSource = self
 
         // Validate for eventId
+
+        //self.populateDetailView(with: object)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         if let eventId = eventId {
             // Read event document from Firestore
             mDb = DatabaseUtils.sharedInstance
@@ -56,16 +64,16 @@ class DetailEventViewController: UIViewController {
                 self.attendees.removeAll()
                 for attendee in eventObject.attendees {
                     self.listeners.append(self.mDb.readDocument(from: .players, reference: attendee.documentID, returning: Player.self, completion: { (playerObject) in
-                        self.attendees.append(playerObject)
+                        self.attendees[playerObject.id] = playerObject
+                        self.attendeesList.removeAll()
+                        self.attendeesList = Array(self.attendees.values)
                         self.attendeesCollectionView.reloadData()
                     }))
                 }
             })
         } else {
-            // TODO: Chould not load event
+            SnackbarUtils.snackbarMake(message: "Could not load the event details, please check internet connection", title: nil)
         }
-
-        //self.populateDetailView(with: object)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,7 +91,13 @@ class DetailEventViewController: UIViewController {
         if (player.id == host.id) {
             join.isHidden = true
             delete.isHidden = false
+            delete.setImage(#imageLiteral(resourceName: "ic_delete"), for: .normal)
+            delete.tag = 0
+            edit.isHidden = false
         } else if (isPlayerAttending(attendees: attendees, playerRef: playerRef)) {
+            delete.setImage(#imageLiteral(resourceName: "ic_logout_black"), for: .normal)
+            delete.isHidden = false
+            delete.tag = 1
             join.isHidden = true
         }
 
@@ -101,13 +115,44 @@ class DetailEventViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func deleteEvent(_ sender: Any) {
+    @IBAction func deleteEvent(_ sender: UIButton) {
         guard let event = event else { return }
+        guard let player = AuthUtils.currentUser() else { return }
+        let eventRef = mDb.documentReference(docRef: event.id, from: .events)
+        let playerRef = mDb.documentReference(docRef: player.id, from: .players)
 
-        //SnackbarUtils.snackbarMake(message: "Are you sure you want to delete the event?", snackbarAction: nil, title: nil)
-        mDb.deleteDocument(withReference: event.id, from: .events) { (_) in
-            self.dismiss(animated: true, completion: nil)
+        if sender.tag == 0 {
+            AlertUtils.AlertMake(view: self, title: "", message: "Are you sure you want to delete this event?", style: .alert) { (success) in
+                if success {
+                    self.mDb.updateDocument(withReference: player.id, from: .players, data: ["attending": FieldValue.arrayRemove([eventRef])], completion: nil)
+                    self.mDb.updateDocument(withReference: event.id, from: .events, data: ["attendees": FieldValue.arrayRemove([playerRef])], completion: nil)
+                    self.mDb.deleteDocument(withReference: event.id, from: .events) { (_) in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+        } else {
+            AlertUtils.AlertMake(view: self, title: "", message: "Are you sure you want to leave this event?", style: .alert) { (success) in
+                if success {
+                    self.mDb.updateDocument(withReference: player.id, from: .players, data: ["attending": FieldValue.arrayRemove([eventRef])]) { (success) in
+                        self.mDb.updateDocument(withReference: event.id, from: .events, data: ["attendees": FieldValue.arrayRemove([playerRef])], completion: nil)
+                        sender.isHidden = true
+                        self.join.isHidden = false
+                    }
+                }
+            }
         }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let edit = sender as? Bool, let destination = segue.destination as? CreateEventViewController {
+            destination.isEditingEvent = edit
+            destination.editingEvent = event
+        }
+    }
+
+    @IBAction func editEvent(_ sender: Any) {
+        performSegue(withIdentifier: "toCreateView", sender: true)
     }
 
     @IBAction func joinEvent(_ sender: Any) {
@@ -171,7 +216,7 @@ extension DetailEventViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! PlayerListCollectionViewCell
 
-        let player = attendees[indexPath.row]
+        let player = attendeesList[indexPath.row]
 
         cell.configureCell(with: player)
 
