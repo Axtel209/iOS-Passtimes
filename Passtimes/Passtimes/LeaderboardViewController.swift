@@ -22,11 +22,12 @@ class LeaderboardViewController: UIViewController {
     var mDb: DatabaseUtils!
     var listeners: [ListenerRegistration] = []
     var player: Player!
+    var players: [Player] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        rankingList.register(UINib(nibName: "PlayerList", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
+        rankingList.register(UINib(nibName: "RankingList", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         rankingList.delegate = self
         rankingList.dataSource = self
     }
@@ -37,6 +38,12 @@ class LeaderboardViewController: UIViewController {
             self.player = playerObject
             self.viewSetUp()
         })
+
+        mDb.readDecuments(from: .players, returning: Player.self) { (players) in
+            self.players.removeAll()
+            self.players = players.sorted(by: { $0.overallXP > $1.overallXP })
+            self.rankingList.reloadData()
+        }
     }
     
     func viewSetUp() {
@@ -59,20 +66,30 @@ class LeaderboardViewController: UIViewController {
 
 }
 
-extension LeaderboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension LeaderboardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return players.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width - 16, height: 65)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! PlayerListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! RankingListCollectionViewCell
 
+        let player = players[indexPath.row]
 
+        if player.id == self.player.id {
+            self.playerRank.text = String(indexPath.row + 1)
+        }
+
+        cell.configure(player: player, rank: indexPath.row + 1)
 
         return cell
     }

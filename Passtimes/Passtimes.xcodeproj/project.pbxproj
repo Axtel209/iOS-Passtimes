@@ -12,6 +12,8 @@
 		FB1F5EAC21936570003A5206 /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1F5EAB2193656F003A5206 /* Leaderboard.storyboard */; };
 		FB1F5EAE21936684003A5206 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F5EAD21936684003A5206 /* LeaderboardViewController.swift */; };
 		FB1F5EB02193B674003A5206 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F5EAF2193B674003A5206 /* AlertUtils.swift */; };
+		FB1F5EB22193C13F003A5206 /* RankingList.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1F5EB12193C13F003A5206 /* RankingList.xib */; };
+		FB1F5EB42193C159003A5206 /* RankingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F5EB32193C159003A5206 /* RankingListCollectionViewCell.swift */; };
 		FB49A5D4218749070089E7DF /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49A5D3218749070089E7DF /* OnboardingPage.swift */; };
 		FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */; };
 		FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8203218149BC003546D5 /* CustomViewExtension.swift */; };
@@ -68,6 +70,8 @@
 		FB1F5EAB2193656F003A5206 /* Leaderboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
 		FB1F5EAD21936684003A5206 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		FB1F5EAF2193B674003A5206 /* AlertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
+		FB1F5EB12193C13F003A5206 /* RankingList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingList.xib; sourceTree = "<group>"; };
+		FB1F5EB32193C159003A5206 /* RankingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB49A5D3218749070089E7DF /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		FB60096021880FDD00DCC481 /* kitten_swash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kitten_swash.ttf; sourceTree = "<group>"; };
 		FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 			children = (
 				FB1F5EAB2193656F003A5206 /* Leaderboard.storyboard */,
 				FB1F5EAD21936684003A5206 /* LeaderboardViewController.swift */,
+				FB1F5EB12193C13F003A5206 /* RankingList.xib */,
+				FB1F5EB32193C159003A5206 /* RankingListCollectionViewCell.swift */,
 			);
 			name = Leaderboard;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				FBCEE70D21863D6900ED9C9C /* Profile.storyboard in Resources */,
 				FB1F5EAC21936570003A5206 /* Leaderboard.storyboard in Resources */,
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
+				FB1F5EB22193C13F003A5206 /* RankingList.xib in Resources */,
 				FBF223F921812D8A00F570D6 /* DetailEvent.storyboard in Resources */,
 				FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */,
 				FBF223DE2180E26800F570D6 /* GoogleService-Info.plist in Resources */,
@@ -532,6 +539,7 @@
 				FBF223F321812A4400F570D6 /* CreateEventViewController.swift in Sources */,
 				FBAC82152182450D003546D5 /* OnBoardingViewController.swift in Sources */,
 				FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */,
+				FB1F5EB42193C159003A5206 /* RankingListCollectionViewCell.swift in Sources */,
 				FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */,
 				FBF223F1218122CC00F570D6 /* CalendarUtils.swift in Sources */,
 				FBF223E32180E58A00F570D6 /* DatabaseUtils.swift in Sources */,
