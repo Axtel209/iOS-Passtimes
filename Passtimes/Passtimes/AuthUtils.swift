@@ -53,7 +53,8 @@ class AuthUtils {
     public static func signInWithEmailAndPassword(email: String, password: String, completion: @escaping (Bool) -> Void) {
         auth.signIn(withEmail: email, password: password) { (_, error) in
             if error != nil {
-                print("Login ERROR - " + error!.localizedDescription)
+                print(error!.localizedDescription)
+                //SnackbarUtils.snackbarMake(message: error!.localizedDescription, title: nil)
                 completion(false)
                 return
             }

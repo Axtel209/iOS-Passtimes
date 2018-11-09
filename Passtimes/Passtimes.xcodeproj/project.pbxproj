@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		54FCAFBA229587A7E2703F00 /* Pods_Passtimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */; };
-		FB1F5EA72192236D003A5206 /* DynamicKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F5EA62192236D003A5206 /* DynamicKeyboard.swift */; };
 		FB1F5EAC21936570003A5206 /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1F5EAB2193656F003A5206 /* Leaderboard.storyboard */; };
 		FB1F5EAE21936684003A5206 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F5EAD21936684003A5206 /* LeaderboardViewController.swift */; };
 		FB1F5EB02193B674003A5206 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F5EAF2193B674003A5206 /* AlertUtils.swift */; };
@@ -17,6 +16,9 @@
 		FB2BD7AB21954266009F0173 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BD7AA21954266009F0173 /* UIViewControllerExtension.swift */; };
 		FB2BD7AD21954BE3009F0173 /* ReachabilityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BD7AC21954BE3009F0173 /* ReachabilityUtils.swift */; };
 		FB2BD7AF219559AF009F0173 /* AnimationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BD7AE219559AF009F0173 /* AnimationUtils.swift */; };
+		FB2BD7B021960F3A009F0173 /* kitten_swash.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB60096021880FDD00DCC481 /* kitten_swash.ttf */; };
+		FB2BD7B2219611D0009F0173 /* CompleteEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2BD7B1219611D0009F0173 /* CompleteEvent.storyboard */; };
+		FB2BD7B5219612B5009F0173 /* CompleteEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BD7B4219612B5009F0173 /* CompleteEventViewController.swift */; };
 		FB49A5D4218749070089E7DF /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49A5D3218749070089E7DF /* OnboardingPage.swift */; };
 		FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */; };
 		FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8203218149BC003546D5 /* CustomViewExtension.swift */; };
@@ -69,7 +71,6 @@
 		07E8BBDF4C0B680962BFE6AA /* Pods-Passtimes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Passtimes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes.release.xcconfig"; sourceTree = "<group>"; };
 		67FAF05D4AAD6BFD1D5CC84F /* Pods-Passtimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Passtimes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes.debug.xcconfig"; sourceTree = "<group>"; };
 		B973579F588A048A2E0BD953 /* Pods_Passtimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Passtimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB1F5EA62192236D003A5206 /* DynamicKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicKeyboard.swift; sourceTree = "<group>"; };
 		FB1F5EAB2193656F003A5206 /* Leaderboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
 		FB1F5EAD21936684003A5206 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		FB1F5EAF2193B674003A5206 /* AlertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
@@ -78,6 +79,8 @@
 		FB2BD7AA21954266009F0173 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		FB2BD7AC21954BE3009F0173 /* ReachabilityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityUtils.swift; sourceTree = "<group>"; };
 		FB2BD7AE219559AF009F0173 /* AnimationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtils.swift; sourceTree = "<group>"; };
+		FB2BD7B1219611D0009F0173 /* CompleteEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompleteEvent.storyboard; sourceTree = "<group>"; };
+		FB2BD7B4219612B5009F0173 /* CompleteEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteEventViewController.swift; sourceTree = "<group>"; };
 		FB49A5D3218749070089E7DF /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		FB60096021880FDD00DCC481 /* kitten_swash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kitten_swash.ttf; sourceTree = "<group>"; };
 		FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -167,6 +170,15 @@
 				FB1F5EB32193C159003A5206 /* RankingListCollectionViewCell.swift */,
 			);
 			name = Leaderboard;
+			sourceTree = "<group>";
+		};
+		FB2BD7B3219611D7009F0173 /* CompleteEvent */ = {
+			isa = PBXGroup;
+			children = (
+				FB2BD7B1219611D0009F0173 /* CompleteEvent.storyboard */,
+				FB2BD7B4219612B5009F0173 /* CompleteEventViewController.swift */,
+			);
+			name = CompleteEvent;
 			sourceTree = "<group>";
 		};
 		FBAC820A21815ABA003546D5 /* PickSport */ = {
@@ -269,6 +281,7 @@
 				FBCEE6FD2183D0B000ED9C9C /* SignUp */,
 				FBF223F621812A7100F570D6 /* CreateEvent */,
 				FBF223F721812A7D00F570D6 /* DetailEvent */,
+				FB2BD7B3219611D7009F0173 /* CompleteEvent */,
 				FBF223DB2180E0EC00F570D6 /* Feed */,
 				FB1F5EA82193653C003A5206 /* Leaderboard */,
 				FBCEE70821863A9200ED9C9C /* Profile */,
@@ -305,7 +318,6 @@
 				FBCEE7002183D9AD00ED9C9C /* ValidationUtils.swift */,
 				FBCEE7022185084300ED9C9C /* ImagePickerUtils.swift */,
 				FBCEE70421852B5D00ED9C9C /* StorageUtils.swift */,
-				FB1F5EA62192236D003A5206 /* DynamicKeyboard.swift */,
 				FB1F5EAF2193B674003A5206 /* AlertUtils.swift */,
 				FB2BD7AC21954BE3009F0173 /* ReachabilityUtils.swift */,
 				FB2BD7AE219559AF009F0173 /* AnimationUtils.swift */,
@@ -434,7 +446,9 @@
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
 				FB1F5EB22193C13F003A5206 /* RankingList.xib in Resources */,
 				FBF223F921812D8A00F570D6 /* DetailEvent.storyboard in Resources */,
+				FB2BD7B2219611D0009F0173 /* CompleteEvent.storyboard in Resources */,
 				FBF223CF2180DF9C00F570D6 /* Navigation.storyboard in Resources */,
+				FB2BD7B021960F3A009F0173 /* kitten_swash.ttf in Resources */,
 				FBF223DE2180E26800F570D6 /* GoogleService-Info.plist in Resources */,
 				FBAC821121823C4D003546D5 /* OnBoarding.storyboard in Resources */,
 				FBAC821821826451003546D5 /* Login.storyboard in Resources */,
@@ -535,7 +549,6 @@
 				FBCEE70521852B5D00ED9C9C /* StorageUtils.swift in Sources */,
 				FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */,
 				FBCEE7182186D5D900ED9C9C /* PickFavoriteViewController.swift in Sources */,
-				FB1F5EA72192236D003A5206 /* DynamicKeyboard.swift in Sources */,
 				FBCEE7012183D9AD00ED9C9C /* ValidationUtils.swift in Sources */,
 				FBAC820C21815AE8003546D5 /* PickSportCollectionViewCell.swift in Sources */,
 				FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */,
@@ -550,6 +563,7 @@
 				FBF223CA2180DF9C00F570D6 /* AppDelegate.swift in Sources */,
 				FB1F5EAE21936684003A5206 /* LeaderboardViewController.swift in Sources */,
 				FBAC822021828323003546D5 /* NavigationController.swift in Sources */,
+				FB2BD7B5219612B5009F0173 /* CompleteEventViewController.swift in Sources */,
 				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
 				FBF223F321812A4400F570D6 /* CreateEventViewController.swift in Sources */,
 				FBAC82152182450D003546D5 /* OnBoardingViewController.swift in Sources */,

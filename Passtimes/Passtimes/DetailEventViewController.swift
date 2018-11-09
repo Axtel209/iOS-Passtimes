@@ -20,6 +20,7 @@ class DetailEventViewController: UIViewController {
     @IBOutlet var hostImage: UIImageView!
     @IBOutlet var month: UILabel!
     @IBOutlet var day: UILabel!
+    @IBOutlet var sport: UILabel!
     @IBOutlet var eventTitle: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var location: UILabel!
@@ -131,6 +132,7 @@ class DetailEventViewController: UIViewController {
         hostImage.kf.setImage(with: URL(string: host.thumbnail))
         month.text = CalendarUtils.getMonthFromDateTimestamp(event.startDate)
         day.text = CalendarUtils.getDayFromDateTimestamp(event.startDate)
+        sport.text = event.sport
         eventTitle.text = event.title
         time.text = CalendarUtils.getStartEndTimefromDateTimestamp(startTime: event.startDate, endTime: event.endDate)
         location.text = event.location
@@ -194,6 +196,10 @@ class DetailEventViewController: UIViewController {
             destination.isEditingEvent = edit
             destination.editingEvent = event
         }
+        if let nav = segue.destination as? UINavigationController, let destination = nav.viewControllers.first as? CompleteEventViewController {
+            //destination.event = event!
+            destination.event = event!
+        }
     }
 
     @IBAction func editEvent(_ sender: Any) {
@@ -205,11 +211,11 @@ class DetailEventViewController: UIViewController {
             addPlayerToAttendees()
             addEventToAttending()
         } else {
+            // If tag == 1 it is setting the event to complete and
             AlertUtils.AlertMake(view: self, title: "", message: "Are you sure you want to close this event? This action can not be undone.", style: .alert, complition: { (success) in
                 if success {
                     self.mDb.updateDocument(withReference: self.event!.id, from: .events, data: ["isClosed": true]) { (_) in
-                        //self.performSegue(withIdentifier: "toAttendance", sender: nil)
-                        self.dismiss(animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "toAttendance", sender: nil)
                     }
                 }
             })

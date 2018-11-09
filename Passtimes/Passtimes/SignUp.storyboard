@@ -181,18 +181,26 @@
                                     <action selector="signUp:" destination="Z80-kR-49c" eventType="touchUpInside" id="hro-V2-qW0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password format: 1 upper case, 1 lower case, 1 number, 1 special character and longer than 8 characters" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kf-TB-co7">
+                                <rect key="frame" x="21" y="386" width="333" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EDm-lH-SgU" firstAttribute="trailing" secondItem="xed-0C-bvU" secondAttribute="trailing" id="0H0-z2-mng"/>
                             <constraint firstItem="dbZ-wX-a9P" firstAttribute="centerX" secondItem="EDm-lH-SgU" secondAttribute="centerX" id="17E-5a-k2A"/>
                             <constraint firstItem="D8L-gU-DQO" firstAttribute="centerX" secondItem="IeF-nG-hZe" secondAttribute="centerX" id="4AV-Va-EFO"/>
+                            <constraint firstItem="6kf-TB-co7" firstAttribute="trailing" secondItem="dbZ-wX-a9P" secondAttribute="trailing" id="4vn-mV-7yL"/>
+                            <constraint firstItem="ybt-in-agW" firstAttribute="top" secondItem="6kf-TB-co7" secondAttribute="bottom" constant="16" id="5E5-2T-4cS"/>
                             <constraint firstItem="D8L-gU-DQO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IeF-nG-hZe" secondAttribute="leading" constant="16" id="5lQ-LG-BDY"/>
                             <constraint firstItem="EDm-lH-SgU" firstAttribute="leading" secondItem="xed-0C-bvU" secondAttribute="leading" id="8Vp-IQ-lKP"/>
                             <constraint firstItem="xed-0C-bvU" firstAttribute="leading" secondItem="gba-rv-rC9" secondAttribute="leading" id="ADF-m1-tXw"/>
                             <constraint firstItem="gba-rv-rC9" firstAttribute="top" secondItem="Mi7-gm-fGp" secondAttribute="bottom" constant="16" id="AFL-LL-zZ3"/>
-                            <constraint firstItem="ybt-in-agW" firstAttribute="top" secondItem="dbZ-wX-a9P" secondAttribute="bottom" constant="60" id="Adq-xe-YrT"/>
                             <constraint firstItem="dbZ-wX-a9P" firstAttribute="leading" secondItem="EDm-lH-SgU" secondAttribute="leading" id="BDe-S6-Ohs"/>
+                            <constraint firstItem="6kf-TB-co7" firstAttribute="top" secondItem="dbZ-wX-a9P" secondAttribute="bottom" constant="8" id="D8d-eQ-Dnw"/>
                             <constraint firstItem="IeF-nG-hZe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Mi7-gm-fGp" secondAttribute="trailing" constant="16" id="Hq6-iJ-VYo"/>
                             <constraint firstItem="xed-0C-bvU" firstAttribute="top" secondItem="gba-rv-rC9" secondAttribute="bottom" constant="16" id="N0H-Gi-gsl"/>
                             <constraint firstItem="xed-0C-bvU" firstAttribute="trailing" secondItem="gba-rv-rC9" secondAttribute="trailing" id="NGr-yP-AI1"/>
@@ -203,11 +211,13 @@
                             <constraint firstItem="IeF-nG-hZe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="D8L-gU-DQO" secondAttribute="trailing" constant="16" id="PvH-2P-zyZ"/>
                             <constraint firstItem="ybt-in-agW" firstAttribute="trailing" secondItem="gba-rv-rC9" secondAttribute="trailing" id="QsK-LQ-OV5"/>
                             <constraint firstItem="ybt-in-agW" firstAttribute="leading" secondItem="gba-rv-rC9" secondAttribute="leading" id="UYV-bX-Dpi"/>
+                            <constraint firstItem="6kf-TB-co7" firstAttribute="centerX" secondItem="dbZ-wX-a9P" secondAttribute="centerX" id="YYx-JO-fCH"/>
                             <constraint firstItem="IeF-nG-hZe" firstAttribute="trailing" secondItem="gba-rv-rC9" secondAttribute="trailing" constant="21" id="bCR-4f-wOg"/>
                             <constraint firstItem="xed-0C-bvU" firstAttribute="centerX" secondItem="gba-rv-rC9" secondAttribute="centerX" id="c5B-f7-gXB"/>
                             <constraint firstItem="gba-rv-rC9" firstAttribute="centerX" secondItem="IeF-nG-hZe" secondAttribute="centerX" id="fLJ-FD-dFj"/>
                             <constraint firstItem="EDm-lH-SgU" firstAttribute="top" secondItem="xed-0C-bvU" secondAttribute="bottom" constant="16" id="faT-va-Xxh"/>
                             <constraint firstItem="pm8-tr-TCE" firstAttribute="top" secondItem="IeF-nG-hZe" secondAttribute="top" constant="30" id="g21-LS-lFN"/>
+                            <constraint firstItem="6kf-TB-co7" firstAttribute="leading" secondItem="dbZ-wX-a9P" secondAttribute="leading" id="ghR-Ny-yU6"/>
                             <constraint firstItem="IeF-nG-hZe" firstAttribute="bottom" secondItem="D8L-gU-DQO" secondAttribute="bottom" constant="20" id="j90-Af-Ybc"/>
                             <constraint firstItem="EDm-lH-SgU" firstAttribute="centerX" secondItem="xed-0C-bvU" secondAttribute="centerX" id="nO7-kI-m0t"/>
                             <constraint firstItem="Mi7-gm-fGp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IeF-nG-hZe" secondAttribute="leading" constant="16" id="paI-CS-Jpe"/>
@@ -231,7 +241,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IO-rr-iwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="z7A-R8-fG8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="433" y="-114"/>
+            <point key="canvasLocation" x="432.80000000000001" y="-114.69265367316342"/>
         </scene>
         <!--PickFavorite-->
         <scene sceneID="7A2-gW-RC5">

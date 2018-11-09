@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
                     SnackbarUtils.snackbarMake(message: "Please make sure to enter correct email and password", title: nil)
                 }
 
-                self.view.isUserInteractionEnabled = false
+                self.view.isUserInteractionEnabled = true
             }
         }
     }
