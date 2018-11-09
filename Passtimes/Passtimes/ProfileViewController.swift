@@ -84,6 +84,12 @@ class ProfileViewController: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let index = sender as? Int, let destination = segue.destination as? DetailEventViewController {
+            destination.eventId = attendingEventsArray[index].id
+        }
+    }
+
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -97,7 +103,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 165, height: 100)
+        return CGSize(width: 165, height: 90)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,6 +114,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.configureCell(with: event)
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetailView", sender: indexPath.row)
     }
     
 }

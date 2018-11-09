@@ -159,7 +159,6 @@ class DatabaseUtils {
                     // Return object after complition
                     completion(object)
                 } else {
-                    print("EVENT DOES NOT EXISTS")
                     let documentRef = self.reference(to: collectionReference).document(document.documentID)
                     if objectType == Event.self {
                         self.updateDocument(withReference: AuthUtils.currentUser()!.id, from: .players, data: ["attending": FieldValue.arrayRemove([documentRef])], completion: nil)

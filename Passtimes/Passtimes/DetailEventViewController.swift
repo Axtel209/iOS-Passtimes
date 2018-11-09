@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import MaterialComponents.MaterialSnackbar
+import MapKit
 
 class DetailEventViewController: UIViewController {
 
@@ -23,6 +24,9 @@ class DetailEventViewController: UIViewController {
     @IBOutlet var time: UILabel!
     @IBOutlet var location: UILabel!
 
+    @IBOutlet var mapCard: UIView!
+    @IBOutlet weak var map: MKMapView!
+    
     @IBOutlet var attendeesCollectionView: UICollectionView!
 
     /* Member Variables */
@@ -42,9 +46,9 @@ class DetailEventViewController: UIViewController {
         attendeesCollectionView.delegate = self
         attendeesCollectionView.dataSource = self
 
-        // Validate for eventId
-
-        //self.populateDetailView(with: object)
+        map.roundedCorners(radius: 10)
+        mapCard.backgroundColor = UIColor.clear
+        mapCard.drawShadow(offset: CGSize(width: 0, height: 2), radius: 4.0, opacity: 0.2)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +108,7 @@ class DetailEventViewController: UIViewController {
             delete.setImage(#imageLiteral(resourceName: "ic_delete"), for: .normal)
             delete.tag = 0
         } else if (isPlayerAttending(attendees: attendees, playerRef: playerRef)) {
-            if !event.isClosed {
+            if event.isClosed {
                 delete.isHidden = true
             } else {
                 delete.isHidden = false
@@ -131,6 +135,15 @@ class DetailEventViewController: UIViewController {
         eventTitle.text = event.title
         time.text = CalendarUtils.getStartEndTimefromDateTimestamp(startTime: event.startDate, endTime: event.endDate)
         location.text = event.location
+
+        // Set map location
+        let coordinates = CLLocationCoordinate2D(latitude: event.latitude, longitude: event.longitude)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinates
+        let region = MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
+        self.map.addAnnotation(annotation)
+        self.map.setRegion(region, animated: false)
+        self.map.isUserInteractionEnabled = false
     }
 
     @IBAction func closeDetailView(_ sender: Any) {
@@ -166,6 +179,17 @@ class DetailEventViewController: UIViewController {
         }
     }
 
+    @IBAction func directions(_ sender: Any) {
+        let coordinates = CLLocationCoordinate2D(latitude: event!.latitude, longitude: event!.longitude)
+        let region = MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)]
+        let destination = MKMapItem(placemark: MKPlacemark(coordinate: coordinates))
+        destination.name = event!.title
+        MKMapItem.openMaps(with: [destination], launchOptions: options)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let edit = sender as? Bool, let destination = segue.destination as? CreateEventViewController {
             destination.isEditingEvent = edit
@@ -183,9 +207,13 @@ class DetailEventViewController: UIViewController {
             addEventToAttending()
         } else {
             self.mDb.updateDocument(withReference: event!.id, from: .events, data: ["isClosed": true]) { (_) in
-                self.dismiss(animated: true, completion: nil)
-
-                // TODO: Go to view that select people attended
+                //AlertUtils.AlertMake(view: self.view, title: "", message: "Are you sure you want to close this event? This action can not be undone", style: .alert, complition: nil)
+                AlertUtils.AlertMake(view: self, title: "", message: "Are you sure you want to close this event? This action can not be undone.", style: .alert, complition: { (success) in
+                    if success {
+                        self.performSegue(withIdentifier: "toAttendance", sender: nil)
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
             }
         }
     }
