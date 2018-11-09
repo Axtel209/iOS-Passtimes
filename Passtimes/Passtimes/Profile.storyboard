@@ -214,7 +214,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0kl-7R-Asc" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="21" y="341" width="333" height="39.5"/>
+                                <rect key="frame" x="21" y="341" width="333" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -274,6 +274,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="NbU-gD-tcR">
                         <barButtonItem key="backBarButtonItem" title="Back" id="vlW-Im-hUx"/>
+                        <barButtonItem key="leftBarButtonItem" title="cancel" image="ic_close" id="zpO-FL-dc8">
+                            <color key="tintColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="closeEditView:" destination="y1p-fn-Rb8" id="RAS-V0-pBk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="name" destination="0kl-7R-Asc" id="oWC-fU-gsk"/>
@@ -282,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bho-HH-PiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015" y="171"/>
+            <point key="canvasLocation" x="1959" y="170"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gJ7-9e-pXn">
@@ -306,6 +312,7 @@
     <resources>
         <image name="head_oval" width="512" height="270"/>
         <image name="ic_XP" width="512" height="333"/>
+        <image name="ic_close" width="24" height="24"/>
         <image name="ic_edit" width="16" height="16"/>
         <image name="ic_favorite" width="18" height="15"/>
         <image name="ic_logout" width="18" height="18"/>

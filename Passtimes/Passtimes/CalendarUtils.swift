@@ -10,6 +10,10 @@ import Foundation
 
 class CalendarUtils {
 
+    public static func dateToMillis(_ date: Date) -> Int {
+        return Int(date.timeIntervalSince1970 * 1000)
+    }
+
     // Returns Month as String from a timestamp
     public static func getMonthFromDateTimestamp(_ millis: Int) -> String {
         let date = Date(timeIntervalSince1970: (Double)(millis / 1000))

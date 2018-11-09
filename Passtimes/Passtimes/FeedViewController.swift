@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import DropDown
 
 class FeedViewController: UIViewController {
 
@@ -16,11 +17,15 @@ class FeedViewController: UIViewController {
     @IBOutlet var onGoingCollection: UICollectionView!
 
     /* Member Variables */
+    let dropDown = DropDown()
     var mDb: DatabaseUtils!
     var player: Player!
     var eventsArray: [Event] = []
-    var attendingEvents: [Event] = []
+    var attendingEvents: [String: Event] = [:]
+    var attendingEventsArray: [Event] = []
     var listeners: [ListenerRegistration] = []
+    var favoriteSports: [Sport] = []
+    var dropDownMenuFilter: [String] = []
 
     var serialQueue = DispatchQueue(label: "SerialQueue")
 
@@ -44,24 +49,43 @@ class FeedViewController: UIViewController {
             // Read Attending events
             self.listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
                 self.player = playerObject
+                self.favoriteSports.removeAll()
+                self.dropDownMenuFilter.removeAll()
+                self.dropDownMenuFilter.append("All")
                 self.attendingEvents.removeAll()
-                print(self.player.attending.count)
+                self.attendingEventsArray.removeAll()
                 for attending in self.player.attending {
                     self.listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
-                        self.attendingEvents.append(eventObject)
-                        self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
+                        if eventObject.endDate > CalendarUtils.dateToMillis(Date()) && !eventObject.isClosed {
+                            self.attendingEvents[eventObject.id] = eventObject
+                        } else {
+                            self.attendingEvents.removeValue(forKey: eventObject.id)
+                        }
+                        self.attendingEventsArray = self.attendingEvents.values.sorted(by: { $0.startDate < $1.startDate })
                         self.attendingCollection.reloadData()
                     })
+                    self.attendingCollection.reloadData()
                 }
+                for (index, sport) in self.player!.favorites.enumerated() {
+                    self.listeners.append(self.mDb.readDocument(from: .sports, reference: sport.documentID, returning: Sport.self, completion: { (sportObject) in
+                        self.favoriteSports.append(sportObject)
+                        self.dropDownMenuFilter.append(sportObject.category)
+                        self.onGoingCollection.reloadData()
+                        if index == self.player.favorites.count - 1 {
+                            self.dropDown.dataSource = self.dropDownMenuFilter
+                            self.mDb.readFilteredDocument(from: .events, field: "sport", values: self.favoriteSports) { (objectArray) in
+                                self.eventsArray = objectArray
+                                // sort Array by desc date
+                                self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
+                                self.onGoingCollection.reloadData()
+                            }
+                        }
+                    }))
+                }
+
+
                 self.attendingCollection.reloadData()
             })
-
-            mDb.readFilteredDocument(from: .events, field: "sport", values: ["Basketball", "Tennis", "Soccer", "Football", "Baseball"]) { (objectArray) in
-                self.eventsArray = objectArray
-                // sort Array by desc date
-                self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
-                self.onGoingCollection.reloadData()
-            }
         }
     }
 
@@ -77,13 +101,21 @@ class FeedViewController: UIViewController {
             if tuple.1 == self.onGoingCollection {
                 destination.eventId = eventsArray[tuple.0.row].id
             } else {
-                destination.eventId = attendingEvents[tuple.0.row].id
+                destination.eventId = attendingEventsArray[tuple.0.row].id
             }
         }
     }
 
     @IBAction func createEvent(_ sender: Any) {
         performSegue(withIdentifier: "toCreateView", sender: nil)
+    }
+
+    @IBAction func filterEvents(_ sender: UIButton) {
+        dropDown.anchorView = sender
+        dropDown.width = self.view.frame.width / 3
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)! + 5)
+
+        dropDown.show()
     }
 
 }
@@ -100,7 +132,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return eventsArray.count
         }
         if collectionView == self.attendingCollection {
-            return attendingEvents.count
+            return attendingEventsArray.count
         }
 
         return 0
@@ -139,7 +171,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.attendingCollection {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! AttendingCollectionViewCell
 
-            let event = attendingEvents[indexPath.row]
+            let event = attendingEventsArray[indexPath.row]
 
             cell.configureCell(with: event)
 

@@ -89,16 +89,38 @@ class DetailEventViewController: UIViewController {
         let playerRef = mDb.documentReference(docRef: player.id, from: .players)
 
         if (player.id == host.id) {
-            join.isHidden = true
-            delete.isHidden = false
+            if !event.isClosed {
+                join.isHidden = false
+                delete.isHidden = false
+                edit.isHidden = false
+            } else {
+                join.isHidden = true
+                delete.isHidden = true
+                edit.isHidden = true
+            }
+            join.setTitle("Close Event", for: .normal)
+            join.backgroundColor = #colorLiteral(red: 0.9257785678, green: 0.1494095027, blue: 0.3405916691, alpha: 1)
+            join.tag = 1
             delete.setImage(#imageLiteral(resourceName: "ic_delete"), for: .normal)
             delete.tag = 0
-            edit.isHidden = false
         } else if (isPlayerAttending(attendees: attendees, playerRef: playerRef)) {
+            if !event.isClosed {
+                delete.isHidden = true
+            } else {
+                delete.isHidden = false
+            }
             delete.setImage(#imageLiteral(resourceName: "ic_logout_black"), for: .normal)
-            delete.isHidden = false
             delete.tag = 1
             join.isHidden = true
+        } else {
+            if !event.isClosed {
+                join.isHidden = false
+            } else {
+                join.isHidden = true
+            }
+            join.setTitle("Join Event", for: .normal)
+            join.backgroundColor = #colorLiteral(red: 0.08800473064, green: 0.808358252, blue: 0.7374972701, alpha: 1)
+            join.tag = 0
         }
 
         // Set imageView round and Download image and
@@ -155,9 +177,17 @@ class DetailEventViewController: UIViewController {
         performSegue(withIdentifier: "toCreateView", sender: true)
     }
 
-    @IBAction func joinEvent(_ sender: Any) {
-        addPlayerToAttendees()
-        addEventToAttending()
+    @IBAction func joinEvent(_ sender: UIButton) {
+        if sender.tag == 0 {
+            addPlayerToAttendees()
+            addEventToAttending()
+        } else {
+            self.mDb.updateDocument(withReference: event!.id, from: .events, data: ["isClosed": true]) { (_) in
+                self.dismiss(animated: true, completion: nil)
+
+                // TODO: Go to view that select people attended
+            }
+        }
     }
 
     // Returns true if the user was succesfully added to attendees

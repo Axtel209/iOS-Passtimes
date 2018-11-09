@@ -64,28 +64,28 @@
                                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCO-Tc-cQ6" userLabel="Clock Icon">
-                                                <rect key="frame" x="0.5" y="42.5" width="24" height="24"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time" translatesAutoresizingMaskIntoConstraints="NO" id="wCO-Tc-cQ6" userLabel="Clock Icon">
+                                                <rect key="frame" x="2.5" y="42.5" width="20" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="24" id="LDR-3N-MuX"/>
-                                                    <constraint firstAttribute="height" constant="24" id="cZb-6D-5B7"/>
+                                                    <constraint firstAttribute="width" constant="20" id="LDR-3N-MuX"/>
+                                                    <constraint firstAttribute="height" constant="20" id="cZb-6D-5B7"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jco-ar-xIQ" userLabel="Pin Icon">
-                                                <rect key="frame" x="0.5" y="71.5" width="24" height="24"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="Jco-ar-xIQ" userLabel="Pin Icon">
+                                                <rect key="frame" x="2.5" y="67.5" width="20" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="24" id="UhW-Of-rbi"/>
-                                                    <constraint firstAttribute="height" constant="24" id="cHf-i4-LeV"/>
+                                                    <constraint firstAttribute="width" constant="20" id="UhW-Of-rbi"/>
+                                                    <constraint firstAttribute="height" constant="20" id="cHf-i4-LeV"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:45 PM - 5:30 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-ZC-kVZ">
-                                                <rect key="frame" x="33" y="42.5" width="143.5" height="24"/>
+                                                <rect key="frame" x="33" y="42.5" width="143.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XL Soccer World" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfS-9C-hh0">
-                                                <rect key="frame" x="33" y="71.5" width="126.5" height="24"/>
+                                                <rect key="frame" x="33" y="67.5" width="126.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -245,5 +245,7 @@
         <image name="ic_close" width="24" height="24"/>
         <image name="ic_delete" width="24" height="24"/>
         <image name="ic_edit_black" width="16" height="16"/>
+        <image name="ic_location" width="12" height="18"/>
+        <image name="ic_time" width="18" height="18"/>
     </resources>
 </document>

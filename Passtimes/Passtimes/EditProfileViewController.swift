@@ -28,19 +28,12 @@ class EditProfileViewController: UIViewController {
         self.profilePhoto.roundedCorners(radius: self.profilePhoto.frame.height / 2)
         self.profilePhoto.kf.setImage(with: URL(string: player.thumbnail))
 
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
-
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
-
-        toolbar.setItems([flexSpace, doneButton], animated: false)
-        toolbar.sizeToFit()
-
-        name.inputAccessoryView = toolbar
+        hideKeyboardWhenTappedAround()
+        name.inputAccessoryView = toolbarAccessoryView()
     }
 
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
+    @IBAction func closeEditView(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func editImage(_ sender: Any) {

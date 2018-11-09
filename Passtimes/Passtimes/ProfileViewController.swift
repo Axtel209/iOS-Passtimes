@@ -21,7 +21,8 @@ class ProfileViewController: UIViewController {
     var queue: DispatchGroup!
     var mDb: DatabaseUtils!
     var player: Player!
-    var attendingEvents: [Event] = []
+    var attendingEvents: [String: Event] = [:]
+    var attendingEventsArray: [Event] = []
     var listeners: [ListenerRegistration] = []
 
     override func viewDidLoad() {
@@ -39,10 +40,15 @@ class ProfileViewController: UIViewController {
             self.player = playerObject
             self.viewSetUp()
             self.attendingEvents.removeAll()
+            self.attendingEventsArray.removeAll()
             for attending in self.player.attending {
                 self.listeners.append(self.mDb.readDocument(from: .events, reference: attending.documentID, returning: Event.self) { (eventObject) in
-                    self.attendingEvents.append(eventObject)
-                    self.attendingEvents = self.attendingEvents.sorted(by: { $0.startDate < $1.startDate })
+                    if eventObject.endDate < CalendarUtils.dateToMillis(Date()) || eventObject.isClosed {
+                        self.attendingEvents[eventObject.id] = eventObject
+                    } else {
+                        self.attendingEvents.removeValue(forKey: eventObject.id)
+                    }
+                    self.attendingEventsArray = self.attendingEvents.values.sorted(by: { $0.startDate < $1.startDate })
                     self.attendingCollection.reloadData()
                 })
             }
@@ -87,7 +93,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return attendingEvents.count
+        return attendingEventsArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -97,10 +103,11 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! AttendingCollectionViewCell
 
-        let event = attendingEvents[indexPath.row]
+        let event = attendingEventsArray[indexPath.row]
 
         cell.configureCell(with: event)
 
         return cell
     }
+    
 }

@@ -21,7 +21,8 @@ class ValidationUtils {
     }
 
     public static func isValid(password: String) -> Bool {
-        let predicate = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}")
+        let passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         if !predicate.evaluate(with: password) {
             SnackbarUtils.snackbarMake(message: "Password badly formatted", title: nil)
         }

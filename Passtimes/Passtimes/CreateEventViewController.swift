@@ -60,23 +60,20 @@ class CreateEventViewController: UIViewController {
             self.sportCollection.reloadData()
         }
 
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        hideKeyboardWhenTappedAround()
 
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard(_:)))
-
-        toolbar.setItems([flexSpace, doneButton], animated: false)
-        toolbar.sizeToFit()
+        eventTitle.inputAccessoryView = toolbarAccessoryView()
+        eventLocation.inputAccessoryView = toolbarAccessoryView()
 
         timePicker.datePickerMode = .time
         timePicker.frame = CGRect(x: 0.0, y: self.view.frame.height - 150.0, width: self.view.frame.width, height: 150.0)
         timePicker.backgroundColor = UIColor.white
 
         startTime.inputView = timePicker
-        startTime.inputAccessoryView = toolbar
+        startTime.inputAccessoryView = toolbarAccessoryView()
 
         endTime.inputView = timePicker
-        endTime.inputAccessoryView = toolbar
+        endTime.inputAccessoryView = toolbarAccessoryView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,6 +88,9 @@ class CreateEventViewController: UIViewController {
         self.startTime.text = CalendarUtils.getHoursFromDateTimestamp(editingEvent.startDate)
         self.endTime.text = CalendarUtils.getHoursFromDateTimestamp(editingEvent.endDate)
         self.calendar.today = Date(timeIntervalSince1970: Double(editingEvent.startDate / 1000))
+
+        startTimeInMillis = self.editingEvent.startDate
+        endTimeInMillis = self.editingEvent.endDate
     }
 
     func calendarSetUp() {
@@ -113,10 +113,21 @@ class CreateEventViewController: UIViewController {
                 return
         }
 
-        self.view.isUserInteractionEnabled = false
+        //self.view.isUserInteractionEnabled = false
         let activityIndicator = ActivityIndicatorUtils.activityIndicatorMake(view: self.view)
 
         if isEditingEvent {
+            if startTimeInMillis > endTimeInMillis {
+                SnackbarUtils.snackbarMake(message: "Please enter a end time later than the end time", title: nil)
+                return
+            } else if startTimeInMillis == endTimeInMillis {
+                SnackbarUtils.snackbarMake(message: "Please enter an end time greater than the strat time", title: nil)
+                return
+            } else if CalendarUtils.dateToMillis(date) > startTimeInMillis {
+                SnackbarUtils.snackbarMake(message: "Plase enter a strat time later than the current time", title: nil)
+                return
+            }
+
             activityIndicator.startAnimating()
 
             self.editingEvent.title = self.eventTitle.text!
@@ -135,47 +146,47 @@ class CreateEventViewController: UIViewController {
                 }
             }
             //self.mDb.updateDocument(withReference: player.id, from: .players, data: ["favorites": FieldValue.arrayUnion(sportRefs)], completion: { (success) in
-        }
-
-        // Validate empty form
-        if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
-
-            if startTimeInMillis > endTimeInMillis {
-                SnackbarUtils.snackbarMake(message: "Please enter a start time later than the end time", title: nil)
-                return
-            } else if startTimeInMillis == endTimeInMillis {
-                SnackbarUtils.snackbarMake(message: "Please enter an end time greater than the strat time", title: nil)
-                return
-            } else if Int(date.timeIntervalSince1970 * 1000) > startTimeInMillis {
-                SnackbarUtils.snackbarMake(message: "Plase enter a strat time later than the current time", title: nil)
-                return
-            }
-
-            let playerRef = mDb.documentReference(docRef: player.id, from: .players)
-            let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: 5, attendees: [playerRef])
-
-            activityIndicator.startAnimating()
-            mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
-                if(success) {
-                    // Add EventRef to player attending
-                    let eventRef = self.mDb.documentReference(docRef: event.id, from: .events)
-                    self.mDb.updateDocument(withReference: player.id, from: .players, data: ["attending": FieldValue.arrayUnion([eventRef])], completion: { (success) in
-                        if success {
-                            activityIndicator.stopAnimating()
-                            self.dismiss(animated: true, completion: nil)
-                        } else {
-                            // Error trying to add Eventref to player attending
-                            SnackbarUtils.snackbarMake(message: "Please check your internet connection", title: nil)
-                        }
-                    })
-                } else {
-                    // There was an error adding the event to Firestore
-                    SnackbarUtils.snackbarMake(message: "Something went wront", title: nil)
-                }
-            }
-
         } else {
-            SnackbarUtils.snackbarMake(message: "Please make sure eveything is filled", title: nil)
+            // Validate empty form
+            if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
+
+                if startTimeInMillis > endTimeInMillis {
+                    SnackbarUtils.snackbarMake(message: "Please enter a start time later than the end time", title: nil)
+                    return
+                } else if startTimeInMillis == endTimeInMillis {
+                    SnackbarUtils.snackbarMake(message: "Please enter an end time greater than the strat time", title: nil)
+                    return
+                } else if CalendarUtils.dateToMillis(date) > startTimeInMillis {
+                    SnackbarUtils.snackbarMake(message: "Plase enter a strat time later than the current time", title: nil)
+                    return
+                }
+
+                let playerRef = mDb.documentReference(docRef: player.id, from: .players)
+                let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: 5, attendees: [playerRef])
+
+                activityIndicator.startAnimating()
+                mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
+                    if(success) {
+                        // Add EventRef to player attending
+                        let eventRef = self.mDb.documentReference(docRef: event.id, from: .events)
+                        self.mDb.updateDocument(withReference: player.id, from: .players, data: ["attending": FieldValue.arrayUnion([eventRef])], completion: { (success) in
+                            if success {
+                                activityIndicator.stopAnimating()
+                                self.dismiss(animated: true, completion: nil)
+                            } else {
+                                // Error trying to add Eventref to player attending
+                                SnackbarUtils.snackbarMake(message: "Please check your internet connection", title: nil)
+                            }
+                        })
+                    } else {
+                        // There was an error adding the event to Firestore
+                        SnackbarUtils.snackbarMake(message: "Something went wront", title: nil)
+                    }
+                }
+
+            } else {
+                SnackbarUtils.snackbarMake(message: "Please make sure eveything is filled", title: nil)
+            }
         }
     }
 
@@ -249,6 +260,20 @@ extension CreateEventViewController: UITextFieldDelegate {
         return false
     }
 
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Make endtime 1 hour after start time
+        if textField == startTime {
+            if startTimeInMillis > 0 {
+                timePicker.date = Date(timeIntervalSince1970: Double(startTimeInMillis) / 1000)
+            }
+        } else if textField == endTime {
+            if startTimeInMillis > 0 {
+                // Add one hour to startTime
+                timePicker.date = Date(timeIntervalSince1970: Double((startTimeInMillis + 3600000) / 1000))
+            }
+        }
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         let timePickerDate = timePicker.date
         let components = Calendar.current.dateComponents([.hour, .minute], from: timePickerDate)
@@ -256,11 +281,11 @@ extension CreateEventViewController: UITextFieldDelegate {
 
         if textField == startTime {
             startDate = Calendar.current.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: startDate)!
-            startTimeInMillis = Int(startDate.timeIntervalSince1970 * 1000)
+            startTimeInMillis = CalendarUtils.dateToMillis(startDate)
             startTime.text = CalendarUtils.getHoursFromDateTimestamp(startTimeInMillis)
         } else if textField == endTime {
             endDate = Calendar.current.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: endDate)!
-            endTimeInMillis = Int(endDate.timeIntervalSince1970 * 1000)
+            endTimeInMillis = CalendarUtils.dateToMillis(endDate)
             endTime.text = CalendarUtils.getHoursFromDateTimestamp(endTimeInMillis)
         }
     }

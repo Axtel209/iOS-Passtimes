@@ -23,6 +23,7 @@ class Event: Codable {
     var endDate: Int
     var maxAttendees: Int
     var attendees: [DocumentReference]
+    var isClosed: Bool = false
 
     init(eventHost: DocumentReference, sport: String, sportThumbnail: String, title: String, latitude: Double, longitude: Double, location: String, startDate: Int, endDate: Int, maxAttendees: Int, attendees: [DocumentReference]) {
         self.id = UUID.init().uuidString

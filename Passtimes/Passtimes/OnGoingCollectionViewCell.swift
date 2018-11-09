@@ -55,12 +55,8 @@ class OnGoingCollectionViewCell: UICollectionViewCell {
     public func isAttending(_ bool: Bool) {
         if bool {
             self.attendingIndicator.backgroundColor = #colorLiteral(red: 0.08800473064, green: 0.808358252, blue: 0.7374972701, alpha: 1)
-            self.month.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            self.day.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         } else {
             self.attendingIndicator.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-            self.month.textColor = #colorLiteral(red: 0.1333333333, green: 0.1294117647, blue: 0.1490196078, alpha: 1)
-            self.day.textColor = #colorLiteral(red: 0.1333333333, green: 0.1294117647, blue: 0.1490196078, alpha: 1)
         }
     }
 

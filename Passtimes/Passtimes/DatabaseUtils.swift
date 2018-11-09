@@ -100,10 +100,10 @@ class DatabaseUtils {
         }
     }
 
-    public func readFilteredDocument(from collectionReference: DatabaseReferences, field: String, values: [String], completion: @escaping ([Event]) -> Void) {
+    public func readFilteredDocument(from collectionReference: DatabaseReferences, field: String, values: [Sport], completion: @escaping ([Event]) -> Void) {
         var objectsArray: [String: Event] = [:]
         for value in values {
-            reference(to: collectionReference).whereField(field, isEqualTo: value).addSnapshotListener { (querySnapshot, error) in
+            reference(to: collectionReference).whereField(field, isEqualTo: value.category).addSnapshotListener { (querySnapshot, error) in
                 if error != nil {
                     print(error!.localizedDescription)
                     return
@@ -117,10 +117,14 @@ class DatabaseUtils {
 
                         if (diff.type == .added) {
                             //objectsArray.append(object)
-                            objectsArray[object.id] = object
+                            if CalendarUtils.dateToMillis(Date()) <= object.startDate && !object.isClosed {
+                                objectsArray[object.id] = object
+                            }
                         }
                         if (diff.type == .modified) {
-                            objectsArray[object.id] = object
+                            if CalendarUtils.dateToMillis(Date()) <= object.startDate && !object.isClosed {
+                                objectsArray[object.id] = object
+                            }
                         }
                         if (diff.type == .removed) {
                             objectsArray.removeValue(forKey: object.id)
@@ -145,22 +149,22 @@ class DatabaseUtils {
 
             // Validate DocumentSnapshot and data
             guard let document = documentSnapshot else { return }
-            guard let data = document.data() else { return }
 
             do {
                 if document.exists {
+                    guard let data = document.data() else { return }
                     // Decode document to object
                     let object = try FirestoreDecoder().decode(objectType, from: data)
 
                     // Return object after complition
                     completion(object)
                 } else {
+                    print("EVENT DOES NOT EXISTS")
                     let documentRef = self.reference(to: collectionReference).document(document.documentID)
-                    if objectType == Player.self {
-                        self.updateDocument(withReference: document.documentID, from: collectionReference, data: ["attending": FieldValue.arrayRemove([documentRef])], completion: nil)
-                    } else {
-                        self.updateDocument(withReference: document.documentID, from: collectionReference, data: ["attendees": FieldValue.arrayRemove([documentRef])], completion: nil)
+                    if objectType == Event.self {
+                        self.updateDocument(withReference: AuthUtils.currentUser()!.id, from: .players, data: ["attending": FieldValue.arrayRemove([documentRef])], completion: nil)
                     }
+                    //self.updateDocument(withReference: documentReference, from: collectionReference, data: ["attending": FieldValue.arrayRemove([documentRef])], completion: nil)
                 }
             } catch {
                 print("Decoding Document Error - " + error.localizedDescription)

@@ -23,22 +23,12 @@ class SignUpViewController: UIViewController {
         // Set Up view
         viewSetUp()
 
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        hideKeyboardWhenTappedAround()
 
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
-
-        toolbar.setItems([flexSpace, doneButton], animated: false)
-        toolbar.sizeToFit()
-
-        name.inputAccessoryView = toolbar
-        email.inputAccessoryView = toolbar
-        password.inputAccessoryView = toolbar
-        confirmPassword.inputAccessoryView = toolbar
-    }
-
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
+        name.inputAccessoryView = toolbarAccessoryView()
+        email.inputAccessoryView = toolbarAccessoryView()
+        password.inputAccessoryView = toolbarAccessoryView()
+        confirmPassword.inputAccessoryView = toolbarAccessoryView()
     }
 
     func viewSetUp() {
@@ -51,9 +41,9 @@ class SignUpViewController: UIViewController {
     @IBAction func signUp(_ sender: Any) {
         // Valiate textfields
         if let name = name.text, !name.isEmpty, let email = email.text, !email.isEmpty, let password = password.text, !password.isEmpty, let confirmPassword = confirmPassword.text {
-            if !ValidationUtils.isValid(email: email) { return }
-            if !ValidationUtils.isValid(password: password) { return }
-            if !ValidationUtils.isValid(password: password, confirm: confirmPassword) { return }
+            if !ValidationUtils.isValid(email: email) { AnimationUtils.shakeAnimation(view: self.email); return }
+            if !ValidationUtils.isValid(password: password) { AnimationUtils.shakeAnimation(view: self.password); return }
+            if !ValidationUtils.isValid(password: password, confirm: confirmPassword) { AnimationUtils.shakeAnimation(view: self.confirmPassword); return }
 
             //guard let imageData = photo.image?.pngData() else { return }
             guard let data = photo.image?.jpegData(compressionQuality: 1) else { return }
@@ -61,7 +51,7 @@ class SignUpViewController: UIViewController {
             // Start a loading indicator
             let activityIndicator = ActivityIndicatorUtils.activityIndicatorMake(view: self.view)
             activityIndicator.startAnimating()
-            self.signUp.isEnabled = false
+            self.view.isUserInteractionEnabled = false
             // SignUp user and perform segue after completion
             AuthUtils.signUpwithEmailAndPassword(email: email, password: password, name: name, photo: data) { (success) in
                 activityIndicator.stopAnimating()
@@ -70,7 +60,7 @@ class SignUpViewController: UIViewController {
                     self.performSegue(withIdentifier: "toFavorite", sender: nil)
                 }
                 
-                self.signUp.isEnabled = true
+                self.view.isUserInteractionEnabled = true
             }
 
         } else {

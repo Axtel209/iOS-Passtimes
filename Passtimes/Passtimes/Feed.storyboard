@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Going" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wd-dI-Tbr">
-                                <rect key="frame" x="16" y="194" width="343" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up Coming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wd-dI-Tbr">
+                                <rect key="frame" x="16" y="194" width="155" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1w1-4z-Cds">
-                                <rect key="frame" x="16" y="16" width="343" height="36"/>
+                                <rect key="frame" x="16" y="16" width="138.5" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -73,19 +73,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uit-Xh-YYm">
+                                <rect key="frame" x="335" y="200" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="psx-tD-YXo"/>
+                                    <constraint firstAttribute="width" constant="24" id="s3Z-dp-v9r"/>
+                                </constraints>
+                                <state key="normal" image="ic_filter"/>
+                                <connections>
+                                    <action selector="filterEvents:" destination="9Ws-5t-fJj" eventType="touchUpInside" id="EY9-ef-swN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qb5-s9-DBt" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" id="4hb-TF-u5n"/>
+                            <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="uit-Xh-YYm" secondAttribute="trailing" constant="16" id="62F-aY-88S"/>
                             <constraint firstItem="1wd-dI-Tbr" firstAttribute="top" secondItem="qb5-s9-DBt" secondAttribute="bottom" constant="10" id="BqD-bg-Bmf"/>
                             <constraint firstItem="JXT-PB-QSq" firstAttribute="top" secondItem="1wd-dI-Tbr" secondAttribute="bottom" constant="10" id="EEV-1G-trT"/>
                             <constraint firstItem="qb5-s9-DBt" firstAttribute="top" secondItem="1w1-4z-Cds" secondAttribute="bottom" constant="10" id="I5U-HV-1uL"/>
                             <constraint firstItem="1wd-dI-Tbr" firstAttribute="leading" secondItem="1w1-4z-Cds" secondAttribute="leading" id="LH5-ed-RzI"/>
                             <constraint firstItem="1w1-4z-Cds" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="16" id="P69-XK-r2n"/>
+                            <constraint firstItem="uit-Xh-YYm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1wd-dI-Tbr" secondAttribute="trailing" constant="16" id="Py8-ao-8AK"/>
                             <constraint firstItem="JXT-PB-QSq" firstAttribute="leading" secondItem="9TM-US-UEG" secondAttribute="leading" constant="10" id="QeF-5e-46e"/>
                             <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="qb5-s9-DBt" secondAttribute="trailing" id="Thb-GT-drd"/>
-                            <constraint firstItem="1wd-dI-Tbr" firstAttribute="trailing" secondItem="1w1-4z-Cds" secondAttribute="trailing" id="X9R-eb-CgD"/>
-                            <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="1w1-4z-Cds" secondAttribute="trailing" constant="16" id="Xoh-Ih-xXK"/>
+                            <constraint firstItem="uit-Xh-YYm" firstAttribute="centerY" secondItem="1wd-dI-Tbr" secondAttribute="centerY" id="WCj-Mb-4ys"/>
+                            <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1w1-4z-Cds" secondAttribute="trailing" constant="16" id="Xoh-Ih-xXK"/>
                             <constraint firstItem="9TM-US-UEG" firstAttribute="bottom" secondItem="JXT-PB-QSq" secondAttribute="bottom" id="h3k-6l-KSj"/>
                             <constraint firstItem="1w1-4z-Cds" firstAttribute="top" secondItem="9TM-US-UEG" secondAttribute="top" constant="16" id="lVf-Zv-zff"/>
                             <constraint firstItem="9TM-US-UEG" firstAttribute="trailing" secondItem="JXT-PB-QSq" secondAttribute="trailing" constant="10" id="qYo-XG-YQ0"/>
@@ -154,5 +167,6 @@
     </scenes>
     <resources>
         <image name="ic_feed" width="17" height="16"/>
+        <image name="ic_filter" width="24" height="24"/>
     </resources>
 </document>

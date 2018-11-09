@@ -66,7 +66,9 @@ class AuthUtils {
     public static func signUpwithEmailAndPassword(email: String, password: String, name: String, photo: Data, completion: ((Bool) -> Void)?) {
         auth.createUser(withEmail: email, password: password) { (authData, error) in
             if error != nil {
-                print("Something went wrong ERROR - " + error!.localizedDescription)
+                SnackbarUtils.snackbarMake(message: error!.localizedDescription, title: nil)
+                completion?(false)
+                return
             }
 
             guard let data = authData else { return }

@@ -41,40 +41,27 @@ class LoginViewController: UIViewController {
         // Add activityIndicator to view
         self.view.addSubview(activityIndicator)
 
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        hideKeyboardWhenTappedAround()
 
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
-
-        toolbar.setItems([flexSpace, doneButton], animated: false)
-        toolbar.sizeToFit()
-
-        email.inputAccessoryView = toolbar
-        password.inputAccessoryView = toolbar
-        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("endEditing:")))
-
-    }
-
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
+        email.inputAccessoryView = toolbarAccessoryView()
+        password.inputAccessoryView = toolbarAccessoryView()
     }
 
     @IBAction func login(_ sender: Any) {
         if let email = email.text, !email.isEmpty, let password = password.text, !password.isEmpty {
             self.activityIndicator.startAnimating()
-            self.loginButton.isEnabled = false
+            self.view.isUserInteractionEnabled = false
 
             AuthUtils.signInWithEmailAndPassword(email: email, password: password) { (success) in
                 // Dismiss activityIndicator
                 self.activityIndicator.stopAnimating()
-
                 if(success) {
                    self.performSegue(withIdentifier: "unwindToNavigation", sender: nil)
                 } else {
                     SnackbarUtils.snackbarMake(message: "Please make sure to enter correct email and password", title: nil)
                 }
 
-                self.loginButton.isEnabled = true
+                self.view.isUserInteractionEnabled = false
             }
         }
     }
