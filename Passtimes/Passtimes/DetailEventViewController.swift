@@ -62,8 +62,7 @@ class DetailEventViewController: UIViewController {
                     self.host = hostObject
                     self.populateDetailView(with: self.event!, host: self.host!)
                 }))
-
-                /* NEEDS REFACTOR TO READ ONCE */
+                
                 // Get each player from the attendee list
                 self.attendees.removeAll()
                 for attendee in eventObject.attendees {
@@ -206,15 +205,15 @@ class DetailEventViewController: UIViewController {
             addPlayerToAttendees()
             addEventToAttending()
         } else {
-            self.mDb.updateDocument(withReference: event!.id, from: .events, data: ["isClosed": true]) { (_) in
-                //AlertUtils.AlertMake(view: self.view, title: "", message: "Are you sure you want to close this event? This action can not be undone", style: .alert, complition: nil)
-                AlertUtils.AlertMake(view: self, title: "", message: "Are you sure you want to close this event? This action can not be undone.", style: .alert, complition: { (success) in
-                    if success {
-                        self.performSegue(withIdentifier: "toAttendance", sender: nil)
+            AlertUtils.AlertMake(view: self, title: "", message: "Are you sure you want to close this event? This action can not be undone.", style: .alert, complition: { (success) in
+                if success {
+                    self.mDb.updateDocument(withReference: self.event!.id, from: .events, data: ["isClosed": true]) { (_) in
+                        //self.performSegue(withIdentifier: "toAttendance", sender: nil)
                         self.dismiss(animated: true, completion: nil)
                     }
-                })
-            }
+                }
+            })
+
         }
     }
 

@@ -162,7 +162,7 @@ class CreateEventViewController: UIViewController {
                 }
 
                 let playerRef = mDb.documentReference(docRef: player.id, from: .players)
-                let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 1.1, longitude: 1.1, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: 5, attendees: [playerRef])
+                let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 28.595914, longitude: -81.301503, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: 5, attendees: [playerRef])
 
                 activityIndicator.startAnimating()
                 mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
