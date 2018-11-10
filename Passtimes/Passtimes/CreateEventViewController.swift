@@ -104,6 +104,7 @@ class CreateEventViewController: UIViewController {
         self.endTime.text = CalendarUtils.getHoursFromDateTimestamp(editingEvent.endDate)
         self.calendar.today = Date(timeIntervalSince1970: Double(editingEvent.startDate / 1000))
         self.maxPlayers.text = String(editingEvent.maxAttendees)
+        self.coordinates = CLLocationCoordinate2D(latitude: editingEvent.latitude, longitude: editingEvent.longitude)
 
         startTimeInMillis = self.editingEvent.startDate
         endTimeInMillis = self.editingEvent.endDate
