@@ -384,6 +384,7 @@
 				FBF223C32180DF9C00F570D6 /* Frameworks */,
 				FBF223C42180DF9C00F570D6 /* Resources */,
 				07563C4817CCDB8895DEC7F1 /* [CP] Embed Pods Frameworks */,
+				9C344E23144AC6BD28F6F045 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -518,6 +519,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C344E23144AC6BD28F6F045 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Passtimes/Pods-Passtimes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E19F5052C83B3CD28D1FFF9F /* [CP] Check Pods Manifest.lock */ = {

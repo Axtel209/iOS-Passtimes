@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFirestore
 import CodableFirebase
 import FSCalendar
+import GooglePlaces
 
 class CreateEventViewController: UIViewController {
 
@@ -42,8 +43,12 @@ class CreateEventViewController: UIViewController {
     var isEditingEvent: Bool = false
     var editingEvent: Event!
 
+    var coordinates = CLLocationCoordinate2D(latitude: 28.595914, longitude: -81.301503)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
 
         // CollectionView Setup
         sportCollection.register(UINib.init(nibName: "PickSport", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
@@ -146,6 +151,8 @@ class CreateEventViewController: UIViewController {
             self.editingEvent.startDate = startTimeInMillis
             self.editingEvent.endDate = endTimeInMillis
             self.editingEvent.maxAttendees = Int(self.maxPlayers.text!)!
+            self.editingEvent.latitude = coordinates.latitude
+            self.editingEvent.longitude = coordinates.longitude
 
             let updatedEvent = try? FirestoreEncoder().encode(editingEvent)
 
@@ -174,7 +181,7 @@ class CreateEventViewController: UIViewController {
                 }
 
                 let playerRef = mDb.documentReference(docRef: player.id, from: .players)
-                let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 28.595914, longitude: -81.301503, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: Int(max)!, attendees: [playerRef])
+                let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: coordinates.latitude, longitude: coordinates.longitude, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: Int(max)!, attendees: [playerRef])
 
                 activityIndicator.startAnimating()
                 mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
@@ -283,6 +290,10 @@ extension CreateEventViewController: UITextFieldDelegate {
                 // Add one hour to startTime
                 timePicker.date = Date(timeIntervalSince1970: Double((startTimeInMillis + 3600000) / 1000))
             }
+        } else if textField == eventLocation {
+            let autoComplete = GMSAutocompleteViewController()
+            autoComplete.delegate = self
+            self.present(autoComplete, animated: true, completion: nil)
         }
     }
 
@@ -352,5 +363,30 @@ extension CreateEventViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         maxPlayers.text = String(pickerData[row])
     }
+
+}
+
+extension CreateEventViewController: GMSAutocompleteViewControllerDelegate {
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        self.eventLocation.text = place.name
+        self.coordinates = place.coordinate
+        print(place.name)
+        print(place.formattedAddress!)
+        print(String(describing: place.attributions))
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print(error.localizedDescription)
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        print("AutoComplete was cancelled")
+        self.dismiss(animated: true, completion: nil)
+    }
+
+
+
 
 }

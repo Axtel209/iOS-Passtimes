@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import Kingfisher
 import DropDown
+import GooglePlaces
 
 let reusableIdentifier = "cellIdentifier"
 
@@ -22,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-
+        GMSPlacesClient.provideAPIKey("AIzaSyCsu9tBDEQEapbe3NpaqgEbCs8rusOXahM")
         DropDown.startListeningToKeyboard()
         return true
     }
