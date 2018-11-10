@@ -24,6 +24,7 @@ class DetailEventViewController: UIViewController {
     @IBOutlet var eventTitle: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var location: UILabel!
+    @IBOutlet var attendeesCount: UILabel!
 
     @IBOutlet var mapCard: UIView!
     @IBOutlet weak var map: MKMapView!
@@ -136,6 +137,7 @@ class DetailEventViewController: UIViewController {
         eventTitle.text = event.title
         time.text = CalendarUtils.getStartEndTimefromDateTimestamp(startTime: event.startDate, endTime: event.endDate)
         location.text = event.location
+        attendeesCount.text = "\(event.attendees.count)/\(event.maxAttendees)"
 
         // Set map location
         let coordinates = CLLocationCoordinate2D(latitude: event.latitude, longitude: event.longitude)
@@ -208,8 +210,12 @@ class DetailEventViewController: UIViewController {
 
     @IBAction func joinEvent(_ sender: UIButton) {
         if sender.tag == 0 {
-            addPlayerToAttendees()
-            addEventToAttending()
+            if event!.attendees.count < event!.maxAttendees {
+                addPlayerToAttendees()
+                addEventToAttending()
+            } else {
+                SnackbarUtils.snackbarMake(message: "Sorry there is no space left to join", title: nil)
+            }
         } else {
             // If tag == 1 it is setting the event to complete and
             AlertUtils.AlertMake(view: self, title: "", message: "Are you sure you want to close this event? This action can not be undone.", style: .alert, complition: { (success) in

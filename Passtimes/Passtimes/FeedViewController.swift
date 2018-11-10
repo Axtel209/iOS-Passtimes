@@ -21,6 +21,7 @@ class FeedViewController: UIViewController {
     var mDb: DatabaseUtils!
     var player: Player!
     var eventsArray: [Event] = []
+    var filteredEvents: [Event] = []
     var attendingEvents: [String: Event] = [:]
     var attendingEventsArray: [Event] = []
     var listeners: [ListenerRegistration] = []
@@ -40,6 +41,17 @@ class FeedViewController: UIViewController {
         onGoingCollection.register(UINib.init(nibName: "onGoingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         onGoingCollection.delegate = self
         onGoingCollection.dataSource = self
+
+        // Filter events logic
+        self.dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            if self.dropDown.selectedItem == "All" {
+                self.filteredEvents = self.eventsArray
+            } else {
+                self.filteredEvents = self.eventsArray.filter( {$0.sport == self.dropDown.selectedItem})
+            }
+            self.filteredEvents =  self.filteredEvents.sorted(by: { $0.startDate < $1.startDate })
+            self.onGoingCollection.reloadData()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,16 +86,13 @@ class FeedViewController: UIViewController {
                         if index == self.player.favorites.count - 1 {
                             self.dropDown.dataSource = self.dropDownMenuFilter
                             self.mDb.readFilteredDocument(from: .events, field: "sport", values: self.favoriteSports) { (objectArray) in
-                                self.eventsArray = objectArray
-                                // sort Array by desc date
-                                self.eventsArray =  self.eventsArray.sorted(by: { $0.startDate < $1.startDate })
+                                self.eventsArray = objectArray.sorted(by: { $0.startDate < $1.startDate})
+                                self.filteredEvents = self.eventsArray
                                 self.onGoingCollection.reloadData()
                             }
                         }
                     }))
                 }
-
-
                 self.attendingCollection.reloadData()
             })
         }
@@ -129,7 +138,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.onGoingCollection {
-            return eventsArray.count
+            return filteredEvents.count
         }
         if collectionView == self.attendingCollection {
             return attendingEventsArray.count
@@ -154,7 +163,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.onGoingCollection {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! OnGoingCollectionViewCell
 
-            let event = eventsArray[indexPath.row]
+            let event = filteredEvents[indexPath.row]
 
             let playerRef = mDb.documentReference(docRef: player.id, from: .players)
             if event.attendees.contains(playerRef) {

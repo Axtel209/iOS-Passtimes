@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import DropDown
 
 let reusableIdentifier = "cellIdentifier"
 
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
 
+        DropDown.startListeningToKeyboard()
         return true
     }
 

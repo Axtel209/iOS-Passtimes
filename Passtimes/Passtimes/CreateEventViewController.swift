@@ -18,6 +18,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var eventTitle: UITextField!
     @IBOutlet var eventLocation: UITextField!
+    @IBOutlet var maxPlayers: UITextField!
     @IBOutlet var startTime: UITextField!
     @IBOutlet var endTime: UITextField!
     @IBOutlet var titleCount: UILabel!
@@ -29,6 +30,8 @@ class CreateEventViewController: UIViewController {
     var selectedIndexPath: IndexPath = []
     var listeners: [ListenerRegistration] = []
     let timePicker = UIDatePicker()
+    let numberPicker = UIPickerView()
+    let pickerData = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
 
     var startDate = Date()
     var endDate = Date()
@@ -65,6 +68,13 @@ class CreateEventViewController: UIViewController {
         eventTitle.inputAccessoryView = toolbarAccessoryView()
         eventLocation.inputAccessoryView = toolbarAccessoryView()
 
+        numberPicker.delegate = self
+        numberPicker.dataSource = self
+        numberPicker.backgroundColor = UIColor.white
+
+        maxPlayers.inputView = numberPicker
+        maxPlayers.inputAccessoryView = toolbarAccessoryView()
+
         timePicker.datePickerMode = .time
         timePicker.frame = CGRect(x: 0.0, y: self.view.frame.height - 150.0, width: self.view.frame.width, height: 150.0)
         timePicker.backgroundColor = UIColor.white
@@ -88,6 +98,7 @@ class CreateEventViewController: UIViewController {
         self.startTime.text = CalendarUtils.getHoursFromDateTimestamp(editingEvent.startDate)
         self.endTime.text = CalendarUtils.getHoursFromDateTimestamp(editingEvent.endDate)
         self.calendar.today = Date(timeIntervalSince1970: Double(editingEvent.startDate / 1000))
+        self.maxPlayers.text = String(editingEvent.maxAttendees)
 
         startTimeInMillis = self.editingEvent.startDate
         endTimeInMillis = self.editingEvent.endDate
@@ -134,6 +145,7 @@ class CreateEventViewController: UIViewController {
             self.editingEvent.location = self.eventLocation.text!
             self.editingEvent.startDate = startTimeInMillis
             self.editingEvent.endDate = endTimeInMillis
+            self.editingEvent.maxAttendees = Int(self.maxPlayers.text!)!
 
             let updatedEvent = try? FirestoreEncoder().encode(editingEvent)
 
@@ -148,7 +160,7 @@ class CreateEventViewController: UIViewController {
             //self.mDb.updateDocument(withReference: player.id, from: .players, data: ["favorites": FieldValue.arrayUnion(sportRefs)], completion: { (success) in
         } else {
             // Validate empty form
-            if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
+            if let title = eventTitle.text , !title.isEmpty, let location = eventLocation.text , !location.isEmpty, let max = maxPlayers.text, !max.isEmpty, let start = startTime.text, !start.isEmpty, let end = endTime.text, !end.isEmpty, isSelected {
 
                 if startTimeInMillis > endTimeInMillis {
                     SnackbarUtils.snackbarMake(message: "Please enter a start time later than the end time", title: nil)
@@ -162,7 +174,7 @@ class CreateEventViewController: UIViewController {
                 }
 
                 let playerRef = mDb.documentReference(docRef: player.id, from: .players)
-                let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 28.595914, longitude: -81.301503, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: 5, attendees: [playerRef])
+                let event = Event(eventHost: playerRef, sport: sportsArray[selectedIndexPath.row].category, sportThumbnail: sportsArray[selectedIndexPath.row].active, title: title, latitude: 28.595914, longitude: -81.301503, location: location, startDate: startTimeInMillis, endDate: endTimeInMillis, maxAttendees: Int(max)!, attendees: [playerRef])
 
                 activityIndicator.startAnimating()
                 mDb.addDocument(withId: event.id, object: event, to: .events) { (success) in
@@ -319,6 +331,26 @@ extension CreateEventViewController: FSCalendarDelegate, FSCalendarDataSource {
         var endDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: endDate)
         endDateComponents.day = components.day
         self.endDate = Calendar.current.date(from: endDateComponents)!
+    }
+
+}
+
+extension CreateEventViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(pickerData[row])
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        maxPlayers.text = String(pickerData[row])
     }
 
 }

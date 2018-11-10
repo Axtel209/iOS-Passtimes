@@ -16,7 +16,7 @@ class SnackbarUtils {
         let manager = MDCSnackbarManager()
         let snackbarMessage = MDCSnackbarMessage()
         snackbarMessage.text = message
-        snackbarMessage.duration = 3
+        snackbarMessage.duration = 2
         // Show action if it has one
         if let title = title {
             let action = MDCSnackbarMessageAction()

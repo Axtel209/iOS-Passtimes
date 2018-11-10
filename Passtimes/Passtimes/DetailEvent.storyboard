@@ -147,7 +147,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attendees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATu-nE-ZKE">
-                                <rect key="frame" x="16" y="325.5" width="343" height="39.5"/>
+                                <rect key="frame" x="16" y="325.5" width="159" height="39.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -224,11 +224,18 @@
                                     <constraint firstItem="Nfg-ki-xP5" firstAttribute="centerX" secondItem="1aH-g2-ZwH" secondAttribute="centerX" id="z3j-1k-Wls"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K3-4p-5tm">
+                                <rect key="frame" x="315" y="345.5" width="44" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <color key="textColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="hi7-cB-KHc" secondAttribute="trailing" constant="16" id="0r9-uU-UNT"/>
                             <constraint firstItem="r5d-tH-7G3" firstAttribute="leading" secondItem="uNb-B9-aim" secondAttribute="leading" id="5Ha-ug-NqD"/>
+                            <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="9K3-4p-5tm" secondAttribute="trailing" constant="16" id="6Ko-v5-5hq"/>
                             <constraint firstItem="hi7-cB-KHc" firstAttribute="leading" secondItem="H5a-A2-MLp" secondAttribute="trailing" constant="16" id="EsD-A4-KIp"/>
                             <constraint firstItem="hi7-cB-KHc" firstAttribute="centerY" secondItem="4CZ-BF-V0u" secondAttribute="centerY" id="EvV-iI-HhW"/>
                             <constraint firstItem="hQk-X9-qOc" firstAttribute="height" secondItem="0Sx-Ty-E28" secondAttribute="height" multiplier="0.2" id="Evw-tU-kWt"/>
@@ -239,6 +246,7 @@
                             <constraint firstItem="FRw-mM-cVL" firstAttribute="bottom" secondItem="r5d-tH-7G3" secondAttribute="bottom" constant="10" id="LKr-FK-z7G"/>
                             <constraint firstItem="hi7-cB-KHc" firstAttribute="bottom" secondItem="4CZ-BF-V0u" secondAttribute="bottom" id="SCt-Nh-Bxd"/>
                             <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="r5d-tH-7G3" secondAttribute="trailing" id="XC7-hU-Ill"/>
+                            <constraint firstItem="9K3-4p-5tm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ATu-nE-ZKE" secondAttribute="trailing" constant="4" id="YNx-J7-uPJ"/>
                             <constraint firstItem="hQk-X9-qOc" firstAttribute="leading" secondItem="4CZ-BF-V0u" secondAttribute="leading" id="Yte-2A-3AI"/>
                             <constraint firstItem="ATu-nE-ZKE" firstAttribute="leading" secondItem="uNb-B9-aim" secondAttribute="leading" constant="16" id="aVF-Nu-fMU"/>
                             <constraint firstItem="1aH-g2-ZwH" firstAttribute="top" secondItem="hQk-X9-qOc" secondAttribute="bottom" constant="16" id="afl-2W-tPc"/>
@@ -248,7 +256,7 @@
                             <constraint firstItem="hQk-X9-qOc" firstAttribute="top" secondItem="4CZ-BF-V0u" secondAttribute="bottom" id="qdu-lv-Nwu"/>
                             <constraint firstItem="FRw-mM-cVL" firstAttribute="leading" secondItem="uNb-B9-aim" secondAttribute="leading" id="r9j-7Y-9FS"/>
                             <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="hQk-X9-qOc" secondAttribute="trailing" constant="16" id="rfT-Is-kUr"/>
-                            <constraint firstItem="uNb-B9-aim" firstAttribute="trailing" secondItem="ATu-nE-ZKE" secondAttribute="trailing" constant="16" id="sbH-ld-iUF"/>
+                            <constraint firstItem="9K3-4p-5tm" firstAttribute="bottom" secondItem="ATu-nE-ZKE" secondAttribute="bottom" id="rpe-f2-yMF"/>
                             <constraint firstItem="hi7-cB-KHc" firstAttribute="top" secondItem="4CZ-BF-V0u" secondAttribute="top" id="tTz-Dh-d2C"/>
                             <constraint firstItem="4CZ-BF-V0u" firstAttribute="top" secondItem="uNb-B9-aim" secondAttribute="top" constant="16" id="yDV-Vh-bDe"/>
                             <constraint firstItem="H5a-A2-MLp" firstAttribute="centerY" secondItem="hi7-cB-KHc" secondAttribute="centerY" id="zxW-uD-Vbx"/>
@@ -257,6 +265,7 @@
                     </view>
                     <connections>
                         <outlet property="attendeesCollectionView" destination="r5d-tH-7G3" id="3mf-dx-bCc"/>
+                        <outlet property="attendeesCount" destination="9K3-4p-5tm" id="NnA-Ag-bYk"/>
                         <outlet property="day" destination="ROp-Re-wgv" id="r41-Sp-HNC"/>
                         <outlet property="delete" destination="hi7-cB-KHc" id="8Jd-0d-Ng9"/>
                         <outlet property="edit" destination="H5a-A2-MLp" id="GTF-GX-fPQ"/>
