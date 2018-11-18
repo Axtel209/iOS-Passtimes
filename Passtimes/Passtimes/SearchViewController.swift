@@ -20,10 +20,11 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        playerCollection.register(UINib(nibName: "PlayerList", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
+        playerCollection.register(UINib(nibName: "SearchPlayer", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         playerCollection.delegate = self
         playerCollection.dataSource = self
         playerCollection.backgroundView = background(message: "Passtimes")
+        mDb = DatabaseUtils.sharedInstance
 
         searchBar = UISearchController(searchResultsController: nil)
         self.navigationItem.searchController = searchBar
@@ -31,8 +32,6 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         self.navigationItem.searchController?.searchResultsUpdater = self
         self.navigationItem.searchController?.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-
-        mDb = DatabaseUtils.sharedInstance
 
         mDb.readDecuments(from: .players, returning: Player.self) { (playersArray) in
             self.allPlayers.removeAll()
@@ -52,6 +51,10 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         return messageLabel
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+
+    }
+
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == "" {
             searchPlayers = allPlayers
@@ -59,6 +62,12 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
             searchPlayers = allPlayers.filter{ $0.name.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         self.playerCollection.reloadData()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let playerId = sender as? String, let destination = segue.destination as? PlayerProfileViewController {
+            destination.playerId = playerId
+        }
     }
 
 }
@@ -79,17 +88,21 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 343, height: 55)
+        return CGSize(width: 343, height: 100)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! PlayerListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! SearchPlayerCollectionViewCell
 
         let player = searchPlayers[indexPath.row]
 
         cell.configureCell(with: player)
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toPlayerProfile", sender: searchPlayers[indexPath.row].id)
     }
 
 }

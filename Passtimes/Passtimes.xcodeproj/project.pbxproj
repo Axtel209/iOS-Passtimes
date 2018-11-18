@@ -20,6 +20,9 @@
 		FB2BD7B2219611D0009F0173 /* CompleteEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2BD7B1219611D0009F0173 /* CompleteEvent.storyboard */; };
 		FB2BD7B5219612B5009F0173 /* CompleteEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BD7B4219612B5009F0173 /* CompleteEventViewController.swift */; };
 		FB49A5D4218749070089E7DF /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49A5D3218749070089E7DF /* OnboardingPage.swift */; };
+		FB5D44F421A21F7800550B65 /* SearchPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5D44F321A21F7800550B65 /* SearchPlayer.xib */; };
+		FB5D44F621A21F9000550B65 /* SearchPlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5D44F521A21F9000550B65 /* SearchPlayerCollectionViewCell.swift */; };
+		FB5D44F921A22A4000550B65 /* PlayerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5D44F821A22A4000550B65 /* PlayerProfileViewController.swift */; };
 		FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */; };
 		FBA0CE5B21A201E50086A48E /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0CE5A21A201E50086A48E /* Search.storyboard */; };
 		FBA0CE5D21A20BB50086A48E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0CE5C21A20BB50086A48E /* SearchViewController.swift */; };
@@ -84,6 +87,9 @@
 		FB2BD7B1219611D0009F0173 /* CompleteEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompleteEvent.storyboard; sourceTree = "<group>"; };
 		FB2BD7B4219612B5009F0173 /* CompleteEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteEventViewController.swift; sourceTree = "<group>"; };
 		FB49A5D3218749070089E7DF /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		FB5D44F321A21F7800550B65 /* SearchPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlayer.xib; sourceTree = "<group>"; };
+		FB5D44F521A21F9000550B65 /* SearchPlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlayerCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB5D44F821A22A4000550B65 /* PlayerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfileViewController.swift; sourceTree = "<group>"; };
 		FB60096021880FDD00DCC481 /* kitten_swash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kitten_swash.ttf; sourceTree = "<group>"; };
 		FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FBA0CE5A21A201E50086A48E /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -190,6 +196,9 @@
 			children = (
 				FBA0CE5A21A201E50086A48E /* Search.storyboard */,
 				FBA0CE5C21A20BB50086A48E /* SearchViewController.swift */,
+				FB5D44F321A21F7800550B65 /* SearchPlayer.xib */,
+				FB5D44F521A21F9000550B65 /* SearchPlayerCollectionViewCell.swift */,
+				FB5D44F821A22A4000550B65 /* PlayerProfileViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -459,6 +468,7 @@
 				FBCEE71D21870D0700ED9C9C /* PlayerList.xib in Resources */,
 				FBCEE70D21863D6900ED9C9C /* Profile.storyboard in Resources */,
 				FB1F5EAC21936570003A5206 /* Leaderboard.storyboard in Resources */,
+				FB5D44F421A21F7800550B65 /* SearchPlayer.xib in Resources */,
 				FBF223D12180DF9D00F570D6 /* Assets.xcassets in Resources */,
 				FB1F5EB22193C13F003A5206 /* RankingList.xib in Resources */,
 				FBF223F921812D8A00F570D6 /* DetailEvent.storyboard in Resources */,
@@ -594,6 +604,7 @@
 				FBAC820E21815B77003546D5 /* Sport.swift in Sources */,
 				FB1F5EB02193B674003A5206 /* AlertUtils.swift in Sources */,
 				FBCEE70721863A8C00ED9C9C /* ProfileViewController.swift in Sources */,
+				FB5D44F921A22A4000550B65 /* PlayerProfileViewController.swift in Sources */,
 				FBCEE710218689C800ED9C9C /* AttendingCollectionViewCell.swift in Sources */,
 				FBAC82262182F1EB003546D5 /* ActivityIndicatorUtils.swift in Sources */,
 				FB2BD7AB21954266009F0173 /* UIViewControllerExtension.swift in Sources */,
@@ -603,6 +614,7 @@
 				FB1F5EAE21936684003A5206 /* LeaderboardViewController.swift in Sources */,
 				FBAC822021828323003546D5 /* NavigationController.swift in Sources */,
 				FB2BD7B5219612B5009F0173 /* CompleteEventViewController.swift in Sources */,
+				FB5D44F621A21F9000550B65 /* SearchPlayerCollectionViewCell.swift in Sources */,
 				FBF223E92180E7B300F570D6 /* OnGoingCollectionViewCell.swift in Sources */,
 				FBF223F321812A4400F570D6 /* CreateEventViewController.swift in Sources */,
 				FBAC82152182450D003546D5 /* OnBoardingViewController.swift in Sources */,

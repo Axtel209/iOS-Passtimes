@@ -1,33 +1,32 @@
 //
-//  ProfileViewController.swift
+//  PlayerProfileViewController.swift
 //  Passtimes
 //
-//  Created by Giorgio Doganiero on 10/28/18.
+//  Created by Giorgio Doganiero on 11/18/18.
 //  Copyright © 2018 Passtimes. All rights reserved.
 //
 
 import UIKit
 import FirebaseFirestore
 
-class ProfileViewController: UIViewController {
+class PlayerProfileViewController: UIViewController {
 
-    /* Outlets */
     @IBOutlet var attendingCollection: UICollectionView!
     @IBOutlet var profilePhoto: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var overallXP: UILabel!
 
     /* Member Variables */
-    var queue: DispatchGroup!
+    var playerId: String!
     var mDb: DatabaseUtils!
     var player: Player!
     var attendingEvents: [String: Event] = [:]
     var attendingEventsArray: [Event] = []
     var listeners: [ListenerRegistration] = []
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        queue = DispatchGroup()
 
         attendingCollection.register(UINib(nibName: "AttendingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         attendingCollection.delegate = self
@@ -49,7 +48,7 @@ class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         mDb = DatabaseUtils.sharedInstance
-        listeners.append(self.mDb.readDocument(from: .players, reference: AuthUtils.currentUser()!.id, returning: Player.self) { (playerObject) in
+        listeners.append(self.mDb.readDocument(from: .players, reference: playerId, returning: Player.self) { (playerObject) in
             self.player = playerObject
             self.viewSetUp()
             self.attendingEvents.removeAll()
@@ -85,26 +84,13 @@ class ProfileViewController: UIViewController {
         overallXP.text = String(player.overallXP)
     }
 
-    @IBAction func editProfile(_ sender: Any) {
-        performSegue(withIdentifier: "toEditProfile", sender: nil)
-    }
-
-    @IBAction func logout(_ sender: Any) {
-        AuthUtils.signOut()
-        if let onboarding = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as? OnBoardingViewController {
-            present(onboarding, animated: true, completion: nil)
-        }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let index = sender as? Int, let destination = segue.destination as? DetailEventViewController {
-            destination.eventId = attendingEventsArray[index].id
-        }
+    @IBAction func closePlayerDetail() {
+        dismiss(animated: true, completion: nil)
     }
 
 }
 
-extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension PlayerProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -136,5 +122,5 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toDetailView", sender: indexPath.row)
     }
-    
+
 }
