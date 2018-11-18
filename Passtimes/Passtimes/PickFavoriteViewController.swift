@@ -55,6 +55,7 @@ class PickFavoriteViewController: UIViewController {
                 }
             }
 
+            self.mDb.updateDocument(withReference: player.id, from: .players, data: ["favorites": [DocumentReference]()], completion: nil)
             self.mDb.updateDocument(withReference: player.id, from: .players, data: ["favorites": FieldValue.arrayUnion(sportRefs)], completion: { (success) in
                 activityIndicator.stopAnimating()
 

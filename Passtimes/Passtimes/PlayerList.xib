@@ -25,8 +25,21 @@
                                 <constraint firstAttribute="height" constant="44" id="rmd-ek-TKn"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sT7-Yk-qzK" userLabel="Full Name">
-                            <rect key="frame" x="68" y="16.5" width="105" height="22"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sT7-Yk-qzK" userLabel="Full Name">
+                            <rect key="frame" x="68" y="5.5" width="104.5" height="44"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_XP_black" translatesAutoresizingMaskIntoConstraints="NO" id="az2-R3-oFn">
+                            <rect key="frame" x="301" y="21" width="20" height="13"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="49j-2o-aYt"/>
+                                <constraint firstAttribute="height" constant="13" id="gva-dZ-IfJ"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EHz-Zy-RCV">
+                            <rect key="frame" x="263.5" y="17" width="33.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                             <color key="textColor" red="0.1333333333" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -34,13 +47,20 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="az2-R3-oFn" secondAttribute="trailing" constant="12" id="05i-98-aep"/>
+                        <constraint firstItem="EHz-Zy-RCV" firstAttribute="centerY" secondItem="V0i-Wx-qWb" secondAttribute="centerY" id="1tc-JZ-boi"/>
+                        <constraint firstItem="az2-R3-oFn" firstAttribute="leading" secondItem="EHz-Zy-RCV" secondAttribute="trailing" constant="4" id="45P-Qn-WTJ"/>
                         <constraint firstItem="sT7-Yk-qzK" firstAttribute="centerY" secondItem="V0i-Wx-qWb" secondAttribute="centerY" id="DwA-gB-HAa"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sT7-Yk-qzK" secondAttribute="trailing" constant="16" id="EN8-rh-D9I"/>
+                        <constraint firstItem="EHz-Zy-RCV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sT7-Yk-qzK" secondAttribute="trailing" constant="14" id="JEc-H9-IQk"/>
                         <constraint firstItem="sT7-Yk-qzK" firstAttribute="leading" secondItem="glO-HT-nzW" secondAttribute="trailing" constant="12" id="M6H-ea-fzg"/>
                         <constraint firstAttribute="bottom" secondItem="glO-HT-nzW" secondAttribute="bottom" constant="5.5" id="PBS-cD-Aks"/>
+                        <constraint firstItem="EHz-Zy-RCV" firstAttribute="width" secondItem="V0i-Wx-qWb" secondAttribute="width" multiplier="0.1" id="Pi2-b8-RIg"/>
                         <constraint firstItem="glO-HT-nzW" firstAttribute="top" secondItem="V0i-Wx-qWb" secondAttribute="top" constant="5.5" id="UN2-rV-g3X"/>
                         <constraint firstItem="glO-HT-nzW" firstAttribute="centerY" secondItem="V0i-Wx-qWb" secondAttribute="centerY" id="WNY-ph-SHP"/>
                         <constraint firstItem="glO-HT-nzW" firstAttribute="leading" secondItem="V0i-Wx-qWb" secondAttribute="leading" constant="12" id="WdO-B1-afg"/>
+                        <constraint firstItem="sT7-Yk-qzK" firstAttribute="top" secondItem="glO-HT-nzW" secondAttribute="top" id="bsN-CL-6gZ"/>
+                        <constraint firstItem="az2-R3-oFn" firstAttribute="centerY" secondItem="V0i-Wx-qWb" secondAttribute="centerY" id="odU-pA-ms6"/>
+                        <constraint firstItem="sT7-Yk-qzK" firstAttribute="bottom" secondItem="glO-HT-nzW" secondAttribute="bottom" id="rdS-DP-UCY"/>
                     </constraints>
                 </view>
             </subviews>
@@ -56,9 +76,13 @@
             <connections>
                 <outlet property="card" destination="V0i-Wx-qWb" id="Hw3-dH-Jzx"/>
                 <outlet property="name" destination="sT7-Yk-qzK" id="aJR-lB-GxN"/>
+                <outlet property="overallXP" destination="EHz-Zy-RCV" id="LP2-uj-mXj"/>
                 <outlet property="playerPhoto" destination="glO-HT-nzW" id="x8L-KK-lWh"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_XP_black" width="512" height="333"/>
+    </resources>
 </document>

@@ -49,7 +49,7 @@
                                             <action selector="editProfile:" destination="zMb-9W-YHX" eventType="touchUpInside" id="wgn-Wf-xK0"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fev-8j-4wp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fev-8j-4wp">
                                         <rect key="frame" x="255" y="10" width="24" height="24"/>
                                         <state key="normal" image="ic_favorite"/>
                                         <connections>

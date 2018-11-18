@@ -21,6 +21,8 @@
 		FB2BD7B5219612B5009F0173 /* CompleteEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BD7B4219612B5009F0173 /* CompleteEventViewController.swift */; };
 		FB49A5D4218749070089E7DF /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49A5D3218749070089E7DF /* OnboardingPage.swift */; };
 		FB7D1E5B218BF3960061E300 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */; };
+		FBA0CE5B21A201E50086A48E /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0CE5A21A201E50086A48E /* Search.storyboard */; };
+		FBA0CE5D21A20BB50086A48E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0CE5C21A20BB50086A48E /* SearchViewController.swift */; };
 		FBAC8204218149BC003546D5 /* CustomViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8203218149BC003546D5 /* CustomViewExtension.swift */; };
 		FBAC82072181569F003546D5 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBAC82062181569E003546D5 /* CreateEvent.storyboard */; };
 		FBAC820921815AAE003546D5 /* PickSport.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAC820821815AAE003546D5 /* PickSport.xib */; };
@@ -84,6 +86,8 @@
 		FB49A5D3218749070089E7DF /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		FB60096021880FDD00DCC481 /* kitten_swash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kitten_swash.ttf; sourceTree = "<group>"; };
 		FB7D1E5A218BF3960061E300 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FBA0CE5A21A201E50086A48E /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		FBA0CE5C21A20BB50086A48E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FBAC8203218149BC003546D5 /* CustomViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewExtension.swift; sourceTree = "<group>"; };
 		FBAC82062181569E003546D5 /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		FBAC820821815AAE003546D5 /* PickSport.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickSport.xib; sourceTree = "<group>"; };
@@ -179,6 +183,15 @@
 				FB2BD7B4219612B5009F0173 /* CompleteEventViewController.swift */,
 			);
 			name = CompleteEvent;
+			sourceTree = "<group>";
+		};
+		FBA0CE5921A2017D0086A48E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FBA0CE5A21A201E50086A48E /* Search.storyboard */,
+				FBA0CE5C21A20BB50086A48E /* SearchViewController.swift */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		FBAC820A21815ABA003546D5 /* PickSport */ = {
@@ -283,6 +296,7 @@
 				FBF223F721812A7D00F570D6 /* DetailEvent */,
 				FB2BD7B3219611D7009F0173 /* CompleteEvent */,
 				FBF223DB2180E0EC00F570D6 /* Feed */,
+				FBA0CE5921A2017D0086A48E /* Search */,
 				FB1F5EA82193653C003A5206 /* Leaderboard */,
 				FBCEE70821863A9200ED9C9C /* Profile */,
 				FBF223E42180E59600F570D6 /* Utils */,
@@ -437,6 +451,7 @@
 				FBF223E12180E3AB00F570D6 /* Feed.storyboard in Resources */,
 				FBCEE6FF2183D0C600ED9C9C /* SignUp.storyboard in Resources */,
 				FBF223E62180E76000F570D6 /* onGoingCollectionCell.xib in Resources */,
+				FBA0CE5B21A201E50086A48E /* Search.storyboard in Resources */,
 				FBF223D42180DF9D00F570D6 /* LaunchScreen.storyboard in Resources */,
 				FBCEE7162186D0D200ED9C9C /* PickFavorite.storyboard in Resources */,
 				FBAC82072181569F003546D5 /* CreateEvent.storyboard in Resources */,
@@ -572,6 +587,7 @@
 				FBCEE70521852B5D00ED9C9C /* StorageUtils.swift in Sources */,
 				FBAC821A21826761003546D5 /* LoginViewController.swift in Sources */,
 				FBCEE7182186D5D900ED9C9C /* PickFavoriteViewController.swift in Sources */,
+				FBA0CE5D21A20BB50086A48E /* SearchViewController.swift in Sources */,
 				FBCEE7012183D9AD00ED9C9C /* ValidationUtils.swift in Sources */,
 				FBAC820C21815AE8003546D5 /* PickSportCollectionViewCell.swift in Sources */,
 				FBAC82222182BC99003546D5 /* SnackbarUtils.swift in Sources */,

@@ -48,8 +48,6 @@ class CreateEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
         // CollectionView Setup
         sportCollection.register(UINib.init(nibName: "PickSport", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         sportCollection.delegate = self
@@ -386,8 +384,4 @@ extension CreateEventViewController: GMSAutocompleteViewControllerDelegate {
         print("AutoComplete was cancelled")
         self.dismiss(animated: true, completion: nil)
     }
-
-
-
-
 }

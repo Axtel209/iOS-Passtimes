@@ -32,6 +32,19 @@ class ProfileViewController: UIViewController {
         attendingCollection.register(UINib(nibName: "AttendingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         attendingCollection.delegate = self
         attendingCollection.dataSource = self
+        attendingCollection.backgroundView = background(message: "No past events")
+    }
+
+    func background(message: String) -> UILabel {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        messageLabel.sizeToFit()
+
+        return messageLabel
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +112,11 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if attendingEventsArray.count <= 0 {
+            collectionView.backgroundView?.isHidden = false
+        } else {
+            collectionView.backgroundView?.isHidden = true
+        }
         return attendingEventsArray.count
     }
 

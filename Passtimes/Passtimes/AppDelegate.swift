@@ -25,6 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSPlacesClient.provideAPIKey("AIzaSyCsu9tBDEQEapbe3NpaqgEbCs8rusOXahM")
         DropDown.startListeningToKeyboard()
+
+        // Navigation titles with custom font
+        let navigation = UINavigationBar.appearance()
+
+        let navigationFont = UIFont(name: "KittenSwash", size: 20)
+        let navigationLargeFont = UIFont(name: "KittenSwash", size: 34) //34 is Large Title size by default
+
+        navigation.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9257785678, green: 0.1494095027, blue: 0.3405916691, alpha: 1), NSAttributedString.Key.font: navigationFont!]
+
+        if #available(iOS 11, *){
+            navigation.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9257785678, green: 0.1494095027, blue: 0.3405916691, alpha: 1), NSAttributedString.Key.font: navigationLargeFont!]
+        }
+        
         return true
     }
 

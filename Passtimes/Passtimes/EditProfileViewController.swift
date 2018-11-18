@@ -45,6 +45,11 @@ class EditProfileViewController: UIViewController {
     @IBAction func updateProfile(_ sender: Any) {
         if let name = name.text, !name.isEmpty {
             guard let data = profilePhoto.image?.jpegData(compressionQuality: 1) else { return }
+
+            let activityIndicator = ActivityIndicatorUtils.activityIndicatorMake(view: self.view)
+            activityIndicator.startAnimating()
+            self.view.isUserInteractionEnabled = false
+
             StorageUtils.uploadImage(into: .profiles, withPath: player.id, image: data) { (imageURL) in
                 AuthUtils.updateUserInfo(name: name, photo: imageURL)
                 let db = DatabaseUtils.sharedInstance
@@ -52,6 +57,8 @@ class EditProfileViewController: UIViewController {
                     if success {
                         self.dismiss(animated: true, completion: nil)
                     }
+                    activityIndicator.stopAnimating()
+                    self.view.isUserInteractionEnabled = true
                 })
             }
         }

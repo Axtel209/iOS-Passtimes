@@ -32,15 +32,16 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // CollectionView Setup
         attendingCollection.register(UINib.init(nibName: "AttendingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         attendingCollection.delegate = self
         attendingCollection.dataSource = self
+        attendingCollection.backgroundView = background(message: "No events attending")
 
         onGoingCollection.register(UINib.init(nibName: "onGoingCollectionCell", bundle: nil), forCellWithReuseIdentifier: reusableIdentifier)
         onGoingCollection.delegate = self
         onGoingCollection.dataSource = self
+        onGoingCollection.backgroundView = background(message: "No available events")
 
         // Filter events logic
         self.dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -52,6 +53,18 @@ class FeedViewController: UIViewController {
             self.filteredEvents =  self.filteredEvents.sorted(by: { $0.startDate < $1.startDate })
             self.onGoingCollection.reloadData()
         }
+    }
+
+    func background(message: String) -> UILabel {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        messageLabel.sizeToFit()
+
+        return messageLabel
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -138,9 +151,19 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.onGoingCollection {
+            if filteredEvents.count <= 0 {
+                self.onGoingCollection.backgroundView?.isHidden = false
+            } else {
+                self.onGoingCollection.backgroundView?.isHidden = true
+            }
             return filteredEvents.count
         }
         if collectionView == self.attendingCollection {
+            if attendingEventsArray.count <= 0 {
+                self.attendingCollection.backgroundView?.isHidden = false
+            } else {
+                self.attendingCollection.backgroundView?.isHidden = true
+            }
             return attendingEventsArray.count
         }
 
