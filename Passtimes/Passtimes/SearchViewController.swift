@@ -51,10 +51,6 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         return messageLabel
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-
-    }
-
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == "" {
             searchPlayers = allPlayers
