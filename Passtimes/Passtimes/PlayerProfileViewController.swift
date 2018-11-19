@@ -88,6 +88,12 @@ class PlayerProfileViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let index = sender as? Int, let destination = segue.destination as? DetailEventViewController {
+            destination.eventId = attendingEventsArray[index].id
+        }
+    }
+
 }
 
 extension PlayerProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

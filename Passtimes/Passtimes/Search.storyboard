@@ -180,11 +180,20 @@
                         <outlet property="name" destination="PP6-9S-VVs" id="BqL-e7-sV2"/>
                         <outlet property="overallXP" destination="fNq-Je-G3h" id="FJa-HC-aiL"/>
                         <outlet property="profilePhoto" destination="nhd-dm-aXc" id="cjz-Pz-u2q"/>
+                        <segue destination="cAo-wI-obG" kind="showDetail" identifier="toDetailView" id="bJf-7U-i4P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1i-AD-45O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2394" y="-163"/>
+        </scene>
+        <!--DetailEvent-->
+        <scene sceneID="yAA-aT-xbU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailEvent" id="cAo-wI-obG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iri-4O-oeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3129" y="-164"/>
         </scene>
         <!--Search-->
         <scene sceneID="bCL-bf-iWt">
