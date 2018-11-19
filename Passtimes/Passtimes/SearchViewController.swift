@@ -53,7 +53,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == "" {
-            searchPlayers = allPlayers
+            searchPlayers = [Player]()
         } else {
             searchPlayers = allPlayers.filter{ $0.name.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
